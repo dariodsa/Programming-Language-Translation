@@ -75,15 +75,13 @@ string obrada_pravila()
 	string pravilo="";
 	for(int j=i+1;j<q.length();++j)
 		pravilo+=q[j];
-	//cout<<"Ulazak: "<<pravilo<<endl;
+	
 	ulazak_u_lek_analizatora[pravila.size()]=pravilo;
 	return ime;
 }
 string obrada_reg_definicija(string def)
 {
-	//string def=mapa[regularne_definicije[i]];
 	bool jos=true;
-	//int br=0;
 	while(jos)
 	{
 		jos=false;
@@ -92,11 +90,11 @@ string obrada_reg_definicija(string def)
 			int found=def.find(regularne_definicije[j]);
 			if(found!=string::npos)
 			{
-				//cout<<"Nasao "<<regularne_definicije[j]<< " "<<mapa[regularne_definicije[j]];
-				//cout<<def<<" -->"<<endl;
+				//"Nasao "<<regularne_definicije[j]<< " "<<mapa[regularne_definicije[j]];
+				
 				string nova_def="("+mapa[regularne_definicije[j]]+")";
 				def.replace(found-1,regularne_definicije[j].size()+2,nova_def);
-				//cout<<def<<" -->"<<endl;
+				
 				jos=true;
 			}
 		}
@@ -129,10 +127,6 @@ struct Automat
 	}
 	void dodaj_prijelaz(int stanjeA,int stanjeB,int znak)
 	{
-	//	cout<<"Znak "<<znak<<" "<<stanjeA<<" "<<stanjeB<<endl;
-	//	printf("%d\n",Q1.size());
-		//A->prijelazi[stanjeA][stanjeB]=znak;
-		
 		Q1.push_back(stanjeA);
 		Q2.push_back(stanjeB);
 		P.push_back(znak);
@@ -147,24 +141,7 @@ struct Automat
 		br_stanja++;
 		return br_stanja-1;
 	}
-	string obrada(string izraz)
-	{
-		string ans="";
-		int kol=0;
-		int br_zagrada;
-		for(int i=0;i<izraz.length();++i)
-		{
-			if(izraz[i]=='(' && je_operator(izraz,i))
-				br_zagrada++;
-			else if(izraz[i]==')' && je_operator(izraz,i))
-				br_zagrada--;
-			else if(br_zagrada==0)
-				++kol;
-		}
-		if(kol==0)for(int i=1;i<izraz.length()-1;++i)ans+=izraz[i];
-		else ans=izraz;
-		return ans;
-	}
+	
 	ParStanja pretvori(string izraz)
 	{
 		int br_zagrada=0;
@@ -246,7 +223,7 @@ struct Automat
 				}
 				else
 				{
-					printf("ioi %c\n",izraz[i]);
+					
 					//2
 					if(izraz[i]=='\\')
 					{
@@ -359,16 +336,11 @@ int main()
 			}
 		}
 	}
-	//printf("Hk");
 	vector<Automat>automati;
 	for(int i=0;i<regularne_definicije.size();++i)
 	{
-		//cout<<obrada_reg_definicija(mapa[regularne_definicije[i]])<<endl;
 		mapa[regularne_definicije[i]]=obrada_reg_definicija(mapa[regularne_definicije[i]]);
-		/*Automat A;
-		A.br_stanja=0;
-		ParStanja rezultat=pretvori(mapa[regularne_definicije[i]],A);
-		automati.push_back(A);*/
+		
 	}
 	for(int i=0;i<pravila.size();++i)
 	{
@@ -382,7 +354,7 @@ int main()
 		ParStanja rezultat=A.pretvori(ulazak_u_lek_analizatora[i]);
 		A.pocetno_stanje=rezultat.lijevo_stanje;
 		A.prihvatljivo_stanje=rezultat.desno_stanje;
-		//printf("%d a\n",A.br_stanja);
+		
 		automati.push_back(A);
 	}
 	freopen("tablica.txt","w",stdout);

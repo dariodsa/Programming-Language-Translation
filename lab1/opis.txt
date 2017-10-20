@@ -1,0 +1,19 @@
+Program radi tako da se generatoru daje ulazni niz koji opisuje naš jezik. Mi u generatoru
+moramo stvoriti automate i predati ih analizatoru koji kada dobije ulazni kod moci reci 
+pripada li taj kod tom jeziku ili ne. 
+Generator ovo daje analizatoru:
+taj format se sprema u tablica.txt kojeg po potrebi cita analizator
+N - broj automata
+pa N puta
+	M broj prijelaza 
+		Q1 Q2 Znak -> iz stanja Q1 idem u stanje Q2 ako mi dode znak Znak, epsilon znak je ¨
+	Q1 i Qn - pocetno i prihvatljivo stanje automata
+	M broj pravila koja se moraju izvesti ukoliko automat dode u prihvatljivo stanje
+		u M linija string naredbi ( naredbe kao VRATI_SE 2, UDJI_U_STANJE NOVI_REDAK ...)
+te se na kraju svega ispisuje pocetno stanje analiaztora ( najcesce je to S_pocetno)
+
+Kada to analizator ucita skupa sa kodom, on krece u obradu.
+U pocetni string dodaje sve vise znakova dok ne dode do kraja koda. Kada dode do 
+kraja koda onda se pita tko ga je zadnji prihvatio (pravilo prihvacanja(poredak automata , prioritet)).
+Ako ga je netko prihvatio onda se krecu izvrsiti naredbe za to stanje. 
+Ukoliko nije, tj. uocena je leksicka pogreska onda se mora maknuti prvi znak sa pocetka, resetirati sve automate te probati ispocetka. 

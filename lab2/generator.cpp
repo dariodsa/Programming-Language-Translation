@@ -31,14 +31,20 @@ vector<string> split(string S,char spliter)
 		if(S[i]==spliter)
 		{
 			if(pom.length()>0)
+			{
 				answer.push_back(pom);
+			}
 			pom="";
 		}
 		else
+		{			
 			pom+=S[i];
+		}
 	}
 	if(pom.length()>0)
+	{
 		answer.push_back(pom);
+	}
 	return answer;
 }
 int main()

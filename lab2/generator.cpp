@@ -6,8 +6,9 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <queue>
 using namespace std;
-
+vector<string>popisSvihZnakova;
 struct Prijelaz
 {
 	bool epsilon;
@@ -25,6 +26,7 @@ struct Prijelaz
 		izStanja=_izStanja;
 		uStanje=_uStanje;
 		znakZaPrijelaz=_znakZaPrijelaz;
+		epsilon=false;
 	}
 	
 };
@@ -56,6 +58,22 @@ struct Stanje
 			desnaStrana.push_back(niz[i]);
 		}
 	}
+	void ispis()
+	{
+		printf("mirkec");
+		cout<<" "<<popisSvihZnakova[lijevaStrana]<<" --> ";
+		for(int j=0;j<desnaStrana.size();++j)
+		{
+			if(tocka==j)cout<<"*";
+			cout<<popisSvihZnakova[desnaStrana[j]];
+		}
+		cout<<" {";
+		for(int j=0;j<skup.size();++j)
+		{
+			cout<<popisSvihZnakova[skup[j]]<<",";
+		}
+		cout<<"}"<<endl;
+	}
 };
 struct Produkcija
 {
@@ -75,7 +93,6 @@ vector<Produkcija>produkcije;
 vector<Stanje>stanja;
 vector<Prijelaz>prijelazi;
 map<string,int>skupSvihZnakova;
-vector<string>popisSvihZnakova;
 map<string,bool>sinkronizacijskiZnak;
 int zapocinje[1500][1500];
 vector<int>zapocinjeZnakom[5000];
@@ -203,6 +220,32 @@ void dodajStanjaKojaSlijedeIz(Stanje S,int pos)
 		prijelazi.push_back(P);
 	}
 	return;
+}
+void bfs(int pos,bool* bio)
+{
+	vector<Stanje>istaStanja;
+	queue<int>Q;
+	Q.push(pos);
+	bio[pos]=true;
+	while(!Q.empty())
+	{
+		int pos=Q.front();
+		Q.pop();
+		istaStanja.push_back(stanja[pos]);
+		for(int i=0;i<prijelazi.size();++i)
+		{
+			if(prijelazi[i].izStanja==pos && prijelazi[i].epsilon && bio[prijelazi[i].uStanje]==false)
+			{
+				bio[prijelazi[i].uStanje]=true;
+				Q.push(prijelazi[i].uStanje);
+			}
+		}
+	}
+	cout<<"Ista stanja"<<endl;
+	for(int i=0;i<istaStanja.size();++i)
+	{
+		istaStanja[i].ispis();
+	}
 }
 int main()
 {
@@ -351,21 +394,15 @@ int main()
 			}	
 		}
 	}
+	//stanja[0].ispis();
+	bool* bio =(bool*)malloc(stanja.size());
+	memset(bio,false,sizeof bio);
 	for(int i=1;i<stanja.size();++i)
 	{
-		cout<<i<<" "<<popisSvihZnakova[stanja[i].lijevaStrana]<<" --> ";
-		for(int j=0;j<stanja[i].desnaStrana.size();++j)
-		{
-			if(stanja[i].tocka==j)cout<<"*";
-			cout<<popisSvihZnakova[stanja[i].desnaStrana[j]];
-		}
-		cout<<" {";
-		for(int j=0;j<stanja[i].skup.size();++j)
-		{
-			cout<<popisSvihZnakova[stanja[i].skup[j]]<<",";
-		}
-		cout<<"}"<<endl;
+		if(!bio[i])
+			bfs(i,bio);
 	}
+	
 	printf("E-NKA stanja %d\n",stanja.size());
 	return 0;
 }

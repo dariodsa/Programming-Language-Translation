@@ -13,6 +13,7 @@ struct Produkcija
 	vector<int>desnaStrana;
 };
 const string EPSILON="$";
+const string POCETNI="%";
 int a,b,c,d,e,f;
 int brojSvihZnakova=0;
 string q;
@@ -147,6 +148,17 @@ int main()
 	}
 	skupSvihZnakova[EPSILON]=brojSvihZnakova++; // dodajem dodatno epsilon znak u skup svih znakova
 	popisSvihZnakova.push_back(EPSILON);
+	
+	//dodajem pocetni nezavrsni znak
+	skupSvihZnakova[POCETNI]=brojSvihZnakova++;
+	popisSvihZnakova.push_back(POCETNI);
+	
+	//dodaj produkciju da pocetni nezavrsni znak ide u prvi nezavrsni
+	Produkcija P;
+	P.lijevaStrana=skupSvihZnakova[POCETNI];
+	P.desnaStrana.push_back(skupSvihZnakova[nezavrsniZnakovi[0]]);
+	produkcije.push_back(P);
+	
 	string znak;
 	while(getline(cin,temp))
 	{

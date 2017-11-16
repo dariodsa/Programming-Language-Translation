@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <algorithm>
 #include <string>
+#include <utility>
 #include <string.h>
 #include <stack>
 #include <map>
@@ -10,15 +11,20 @@
 using namespace std;
 int a,b,c,d,e,f;
 int n,m;
+map<pair<string,int> ,int>novoStanjeTablica;
 struct Akcija
 {
 	char action;
 	int additionalNumber;
 	int stanje;
-	char znak;
+	string znak;
 	bool jesiLiReduciraj()
 	{
 		return action=='R';
+	}
+	bool jesiLiProdukcija()
+	{
+		return action=='P';
 	}
 };
 struct Redukcija
@@ -40,7 +46,7 @@ void StogMakniNClanaSaStoga(int broj)
 }
 void StogDodajBrojStanje(int broj)
 {
-	string S=";";
+	string pomS=";";
 	vector<char>znamenke;
 	while(broj)
 	{
@@ -49,8 +55,8 @@ void StogDodajBrojStanje(int broj)
 	}
 	reverse(znamenke.begin(),znamenke.end());
 	for(int i=0;i<znamenke.size();++i)
-		S+=(znamenke[i]+'0');
-	S.insert(S);
+		pomS+=(znamenke[i]+'0');
+	S.push(pomS);
 }
 int StogDohvatiBrojStanje()
 {
@@ -84,6 +90,23 @@ int nasliReduciraj(string ulaz)
 	
 	return idRedukcije;
 }
+int odrediNovoStanje(string input)
+{
+	int stanjeNaStogu=StogDohvatiBrojStanje();
+	for(int i=0;i<akcije.size();++i)
+	{
+		if(akcije[i].jesiLiProdukcija() && akcije[i].stanje==stanjeNaStogu && akcije[i].znak==input)
+		{
+			return akcije[i].additionalNumber;
+		}
+	}
+	return -1;
+}
+bool nasliNovoStanje(string input)
+{
+	return odrediNovoStanje(input)!=-1;
+}
+
 int main()
 {
 	FILE *pfile=fopen("tablica.txt","r");
@@ -147,7 +170,7 @@ int main()
 	{
 		if(nasliNovoStanje(ulazniZnakovi[pos]))
 		{
-			int novoStanje=novoStanje(ulazniZnakovi[pos]);
+			int novoStanje=odrediNovoStanje(ulazniZnakovi[pos]);
 			S.push(ulazniZnakovi[pos]);
 			StogDodajBrojStanje(novoStanje);//S.push(novoStanje)
 			++pos;
@@ -157,7 +180,12 @@ int main()
 			Redukcija R=redukcije[nasliReduciraj(ulazniZnakovi[pos])];
 			int broj=R.brojZnakova;
 			StogMakniNClanaSaStoga(broj*2);
-			dodajLijeviZnak(R.lijeviZnak);
+			int brojZaNovoStanje=StogDohvatiBrojStanje();
+			S.push(R.lijeviZnak);//dodajLijeviZnak(R.lijeviZnak);
+			//pogledaj u tablicu novoStanje
+			
+			int novoStanje=novoStanjeTablica[make_pair(R.lijeviZnak,brojZaNovoStanje)];
+			StogDodajBrojStanje(novoStanje);
 		}
 	}
 	

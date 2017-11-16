@@ -33,7 +33,8 @@ struct Redukcija
 	string lijeviZnak;
 };
 vector<Akcija>akcije;
-vector<char>znakovi;
+vector<string>znakovi;
+vector<string>nezavrsni;
 char temp[20];
 vector<string>ulazniZnakovi;
 vector<Redukcija>redukcije;
@@ -111,11 +112,21 @@ int main()
 {
 	FILE *pfile=fopen("tablica.txt","r");
 	//Znakovi koji se mogu naci na stogu, u ulaznoj datoteci je vec ukljucen kraj stoga
+	
 	fscanf(pfile,"%d",&n);
 	for(int i=0;i<n;++i)
 	{
 		fscanf(pfile,"%s",temp);
-		znakovi.push_back(temp[0]);
+		string p=temp;
+		nezavrsni.push_back(p);
+	}
+	
+	fscanf(pfile,"%d",&n);
+	for(int i=0;i<n;++i)
+	{
+		fscanf(pfile,"%s",temp);
+		string p=temp;
+		znakovi.push_back(p);
 	}
 	//Ucitavam tablicu Akcija
 	fscanf(pfile,"%d%d",&n,&m);
@@ -143,7 +154,17 @@ int main()
 	}
 	//ucitavam tablicu NovoStanje
 	fscanf(pfile,"%d%d",&n,&m);
-	
+	for(int i=0;i<n;++i)
+	{
+		for(int j=0;j<m;++j)
+		{
+			fscanf(pfile,"%s",temp);
+			if(temp[0]=='S')
+			{
+				scanf("%d",&a);
+			}
+		}
+	}
 	
 	fscanf(pfile,"%d",&n);
 	for(int i=0;i<n;++i)

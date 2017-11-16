@@ -38,6 +38,7 @@ struct Stanje
 	vector<int>skup;	
 	void podesiSkup(vector<int> niz)
 	{
+		skup.clear();
 		for(int i=0;i<niz.size();++i)
 		{
 			bool imaLiGa=false;
@@ -49,6 +50,45 @@ struct Stanje
 			if(!imaLiGa)
 				skup.push_back(niz[i]);
 		}
+	}
+	void dodajSkup(vector<int> niz)
+	{
+		for(int i=0;i<niz.size();++i)
+		{
+			bool imaLiGa=false;
+			for(int j=0;j<skup.size();++j)
+			{
+				if(skup[j]==niz[i])
+					imaLiGa=true;
+			}
+			if(!imaLiGa)
+				skup.push_back(niz[i]);
+		}
+	}
+	int znakIzaTocke()
+	{
+		if(tocka+1>desnaStrana.size())
+		   return -567; //ne postoji takav znak
+		else
+		{
+			return desnaStrana[tocka];
+		}
+	}
+	int znakIza2Tocke()
+	{
+		if(tocka+2>desnaStrana.size())
+		   return -577; //ne postoji takav znak
+		else
+		{
+			return desnaStrana[tocka+1];
+		}
+	}
+	int znakIspredTocke()
+	{
+		if(tocka==0)
+		 return -698; //ne postoji takav znak
+		else
+		 return desnaStrana[tocka-1];
 	}
 	void dodajDesnuStranu(vector<int> niz)
 	{
@@ -74,6 +114,18 @@ struct Stanje
 		}
 		cout<<"}"<<endl;
 	}
+	bool imamoLiIstiSkup(vector<int>drugiSkup)
+	{
+		if(skup.size()!=drugiSkup.size())return false;
+		
+		sort(drugiSkup.begin(),drugiSkup.end());
+		sort(skup.begin(),skup.end());
+		
+		for(int i=0;i<skup.size();++i)
+			if(drugiSkup[i]!=skup[i])
+				return false;
+		return true;
+	}
 };
 struct Produkcija
 {
@@ -82,6 +134,7 @@ struct Produkcija
 };
 const string EPSILON="$";
 const string POCETNI="<%>";
+int brojZaEpsilon=0;
 int a,b,c,d,e,f;
 int brojSvihZnakova=0;
 string q;
@@ -91,6 +144,7 @@ vector<string> zavrsniZnakovi;
 vector<string> sinkronizacijskiZnakovi;
 vector<Produkcija>produkcije;
 vector<Stanje>stanja;
+vector<Stanje>stanja2;
 vector<Prijelaz>prijelazi;
 map<string,int>skupSvihZnakova;
 map<string,bool>sinkronizacijskiZnak;
@@ -281,6 +335,7 @@ int main()
 		
 		popisSvihZnakova.push_back(zavrsniZnakovi[i]);
 	}
+	brojZaEpsilon=brojSvihZnakova;
 	skupSvihZnakova[EPSILON]=brojSvihZnakova++; // dodajem dodatno epsilon znak u skup svih znakova
 	popisSvihZnakova.push_back(EPSILON);
 	
@@ -325,7 +380,164 @@ int main()
 	Prijelaz pocetni=Prijelaz(0,1,true);
 	prijelazi.push_back(pocetni);
 	
-	Stanje S;
+	//kreiraj Stanja sa tockama
+	for(int i=1;i<produkcije.size();++i)
+	{
+		if(produkcije[i].desnaStrana.size()==1 
+		  && produkcije[i].desnaStrana[0]==brojZaEpsilon)
+		{
+			  	Stanje S;
+				S.tocka=1;
+				S.lijevaStrana=produkcije[i].lijevaStrana;
+				S.dodajDesnuStranu(produkcije[i].desnaStrana);
+				stanja.push_back(S);
+		}
+		else  
+			for(int j=0;j<produkcije[i].desnaStrana.size()+1;++j)
+			{
+				Stanje S;
+				S.tocka=j;
+				S.lijevaStrana=produkcije[i].lijevaStrana;
+				S.dodajDesnuStranu(produkcije[i].desnaStrana);
+				stanja.push_back(S);
+			}
+	}	
+	//kreni u dodavanje skupova u stanja i kreiranje mogucih prijelaza
+	
+	for(int i=0;i<stanja.size();++i)
+	{
+		//if(i==10)break;
+		vector<Stanje>tempStanja;
+		for(int j=0;j<stanja.size();++j)
+		{
+			//imamo 2 slucaja
+			//cout<<stanja[i].znakIzaTocke()<<" "<<stanja[j].lijevaStrana<<" "<<stanja[j].tocka<<endl;
+			
+			if(stanja[i].lijevaStrana == stanja[j].lijevaStrana &&
+			   stanja[i].znakIzaTocke() == stanja[j].znakIspredTocke())
+			{
+				if(stanja[j].skup.size()==0)
+				{
+				 	stanja[j].podesiSkup(stanja[i].skup);
+				 	Prijelaz P=Prijelaz(i,j,stanja[i].znakIzaTocke(),false);
+					
+					prijelazi.push_back(P);
+				}
+				else
+				{
+					if(stanja[j].imamoLiIstiSkup(stanja[i].skup))
+					{
+						Prijelaz P=Prijelaz(i,j,stanja[i].znakIzaTocke(),false);
+						
+						prijelazi.push_back(P);
+					}
+					//kreiraj novo stanje koje ce se razlikovati po skupu, a po ostalome ce biti jednako
+					else
+					{
+						Stanje S;
+						S.lijevaStrana=stanja[j].lijevaStrana;
+						S.dodajDesnuStranu(stanja[j].desnaStrana);
+						S.tocka=stanja[j].tocka;
+						S.podesiSkup(stanja[i].skup);
+						
+						Prijelaz P=Prijelaz(i,stanja.size()+tempStanja.size(),stanja[i].znakIzaTocke(),false);
+					
+						
+						prijelazi.push_back(P);
+						
+						tempStanja.push_back(S);
+					}
+				}
+				
+			}
+			else if(stanja[i].znakIzaTocke() == stanja[j].lijevaStrana &&
+			        stanja[j].tocka==0
+			        )
+			{
+				printf("USAO %d %d\n",i,j);
+				int znak=stanja[i].znakIza2Tocke();
+				if(znak<0)
+				{
+					if(stanja[j].skup.size()==0)
+					{
+						stanja[j].podesiSkup(stanja[i].skup);
+						Prijelaz P=Prijelaz(i,j,true);
+						
+						
+						prijelazi.push_back(P);	
+					}
+					else
+					{
+						Stanje S;
+						S.lijevaStrana=stanja[j].lijevaStrana;
+						S.dodajDesnuStranu(stanja[j].desnaStrana);
+						S.tocka=stanja[j].tocka;
+						S.podesiSkup(stanja[i].skup);
+						
+						Prijelaz P=Prijelaz(i,stanja.size()+tempStanja.size(),true);
+						
+						prijelazi.push_back(P);
+						
+						tempStanja.push_back(S);
+					}
+				}
+				else
+				{
+					//postoji znak beta
+					
+					if(stanja[j].skup.size()==0)
+					{
+						stanja[j].podesiSkup(zapocinjeZnakom[znak]);
+						if(ideLiTrazeniZnakUEpsilon(znak))
+							stanja[j].dodajSkup(stanja[i].skup);
+						Prijelaz P=Prijelaz(i,j,true);
+						
+						prijelazi.push_back(P);
+					}
+					else
+					{
+						Stanje S;
+						S.lijevaStrana=stanja[j].lijevaStrana;
+						S.dodajDesnuStranu(stanja[j].desnaStrana);
+						S.tocka=stanja[j].tocka;
+						
+						S.podesiSkup(zapocinjeZnakom[znak]);
+						if(ideLiTrazeniZnakUEpsilon(znak))
+							S.dodajSkup(stanja[i].skup);
+						
+						if(stanja[j].imamoLiIstiSkup(S.skup))
+						{
+							Prijelaz P=Prijelaz(i,j,true);
+						
+							prijelazi.push_back(P);
+						}
+						else
+						{
+							Prijelaz P=Prijelaz(i,stanja.size()+tempStanja.size(),true);
+						
+							prijelazi.push_back(P);
+							tempStanja.push_back(S);
+						}
+					}
+				}
+			}
+		}
+		for(int k=0;k<tempStanja.size();++k)stanja.push_back(tempStanja[k]);
+	}
+	for(int i=0;i<stanja.size();++i)
+	{
+		stanja[i].ispis();
+	}
+	
+	for(int i=0;i<prijelazi.size();++i)
+	{
+		string znak=prijelazi[i].epsilon==false?popisSvihZnakova[prijelazi[i].znakZaPrijelaz]:"oko";
+		cout<<"Znak za prijelaz "<<znak<<endl;
+		stanja[prijelazi[i].izStanja].ispis();
+		stanja[prijelazi[i].uStanje].ispis();
+	}
+	
+	/*Stanje S;
 	S.lijevaStrana=-1;
 	S.skup.push_back(skupSvihZnakova[POCETNI]);
 	stanja.push_back(S);
@@ -395,14 +607,14 @@ int main()
 		}
 	}
 	//stanja[0].ispis();
-	bool* bio =(bool*)malloc(stanja.size());
+	/*bool* bio =(bool*)malloc(stanja.size());
 	memset(bio,false,sizeof bio);
 	for(int i=1;i<stanja.size();++i)
 	{
 		if(!bio[i])
 			bfs(i,bio);
 	}
-	
+	*/
 	printf("E-NKA stanja %d\n",stanja.size());
 	return 0;
 }

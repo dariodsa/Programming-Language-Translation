@@ -6,11 +6,12 @@ University of Zagreb, FER
 - Paula Rinkovec     
 - Dario Sindicic   
 - Josip Nimac    
-- Mario Kalac  
+- Mario Kalac   
+
 ## Labosi :             
 - [x] Prvi labos         
 - [ ] Drugi labos    
 - [ ] Treci labos  
 - [ ] Cetvrti labos
                     
- :confused: :+1:    
+ :smile: :+1:    

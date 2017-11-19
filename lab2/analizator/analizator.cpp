@@ -26,16 +26,25 @@ struct Akcija
 	{
 		return action=='P';
 	}
+	bool jesiLiPrihvati()
+	{
+		return action=='A';
+	}
+	bool jesiLiOdbaci()
+	{
+		return action=='F';
+	}
 };
 struct Redukcija
 {
+	int stanje;
 	int brojZnakova;
 	string lijeviZnak;
 };
 vector<Akcija>akcije;
 vector<string>znakovi;
 vector<string>nezavrsni;
-char temp[20];
+char temp[30];
 vector<string>ulazniZnakovi;
 vector<Redukcija>redukcije;
 stack<string>S;
@@ -107,7 +116,30 @@ bool nasliNovoStanje(string input)
 {
 	return odrediNovoStanje(input)!=-1;
 }
-
+bool nasaoPrihvati(string input)
+{
+	int stanje=StogDohvatiBrojStanje();
+	for(int i=0;i<akcije.size();++i)
+	{
+		if(akcije[i].stanje==stanje && akcije[i].znak==input && akcije[i].jesiLiPrihvati())
+		{
+			return true;
+		}
+	}
+	return false;
+}
+bool nasaoOdbaci(string input)
+{
+	int stanje=StogDohvatiBrojStanje();
+	for(int i=0;i<akcije.size();++i)
+	{
+		if(akcije[i].stanje==stanje && akcije[i].znak==input && akcije[i].jesiLiOdbaci())
+		{
+			return true;
+		}
+	}
+	return false;
+}
 int main()
 {
 	FILE *pfile=fopen("tablica.txt","r");
@@ -118,24 +150,29 @@ int main()
 	{
 		fscanf(pfile,"%s",temp);
 		string p=temp;
-		nezavrsni.push_back(p);
+		znakovi.push_back(p);
 	}
 	
 	fscanf(pfile,"%d",&n);
+	
 	for(int i=0;i<n;++i)
 	{
 		fscanf(pfile,"%s",temp);
 		string p=temp;
-		znakovi.push_back(p);
+		nezavrsni.push_back(p);
 	}
+	
 	//Ucitavam tablicu Akcija
 	fscanf(pfile,"%d%d",&n,&m);
+	
 	for(int i=0;i<n;++i)
 	{
 		for(int j=0;j<m;++j)
 		{
+			
 			Akcija A;
 			fscanf(pfile,"%s",temp);
+			
 			if(temp[0]=='F' || temp[0]=='A')
 			{
 				//failed or accepted
@@ -152,6 +189,7 @@ int main()
 			akcije.push_back(A);
 		}
 	}
+	printf("Novo stanje\n");
 	//ucitavam tablicu NovoStanje
 	fscanf(pfile,"%d%d",&n,&m);
 	for(int i=0;i<n;++i)
@@ -161,7 +199,9 @@ int main()
 			fscanf(pfile,"%s",temp);
 			if(temp[0]=='S')
 			{
-				scanf("%d",&a);
+				fscanf(pfile,"%d",&a);
+				cout<<nezavrsni[j]<<","<<i<<"-->"<<a<<endl;
+				novoStanjeTablica[make_pair(nezavrsni[j],i)]=a;
 			}
 		}
 	}
@@ -169,30 +209,52 @@ int main()
 	fscanf(pfile,"%d",&n);
 	for(int i=0;i<n;++i)
 	{
-		scanf("%s",temp);
+		fscanf(pfile,"%s",temp);
 		string lijeviZnak=temp;
-		scanf("%d",&m);
+		fscanf(pfile,"%d",&m);
 		
 		Redukcija R;
 		R.lijeviZnak=temp;
 		R.brojZnakova=m;
-		
+		R.stanje=i;
+		cout<<"redukcija ->"<<R.lijeviZnak<<" + "<<R.brojZnakova<<endl;
 		redukcije.push_back(R);
 	}
 	/**/
 	
-	string ulaz="";
-	while(getline(cin,ulaz))
+	string opis="";
+	int linija=0;
+	while(scanf("%s",temp)!=EOF)
 	{
+		scanf("%d",&linija);
+		getline(cin,opis);
+		cout<<temp<<"--> u liniji "<<linija<<". Sa opisom ->"<<opis<<endl;
+		string ulaz=temp;
 		ulazniZnakovi.push_back(ulaz);
 	}
+	ulazniZnakovi.push_back("%");
 	int pos=0;
+	printf("Input prosao.\n");
+	S.push(znakovi[znakovi.size()-1]);
+	StogDodajBrojStanje(0);
 	while(pos<ulazniZnakovi.size())
 	{
+		if(nasaoPrihvati(ulazniZnakovi[pos]))
+		{
+			printf("PRIHVACEN NIZ!!!!\n");
+			break;
+		}
+		if(nasaoOdbaci(ulazniZnakovi[pos]))
+		{
+			printf("%d/%d\n",pos,ulazniZnakovi.size());
+			printf("ODBACEN NIZ!!!!\n");
+			break;
+		}
 		if(nasliNovoStanje(ulazniZnakovi[pos]))
 		{
 			int novoStanje=odrediNovoStanje(ulazniZnakovi[pos]);
 			S.push(ulazniZnakovi[pos]);
+			printf("Novo stanje %d\n",novoStanje);
 			StogDodajBrojStanje(novoStanje);//S.push(novoStanje)
 			++pos;
 		}
@@ -200,13 +262,17 @@ int main()
 		{
 			Redukcija R=redukcije[nasliReduciraj(ulazniZnakovi[pos])];
 			int broj=R.brojZnakova;
+			printf("Redukcija stanje %d\n",nasliReduciraj(ulazniZnakovi[pos]));
 			StogMakniNClanaSaStoga(broj*2);
 			int brojZaNovoStanje=StogDohvatiBrojStanje();
+			cout<<"Broj za novo Stanje"<<brojZaNovoStanje<<endl;
+			cout<<"Dodajem "<<R.lijeviZnak<<endl;
 			S.push(R.lijeviZnak);//dodajLijeviZnak(R.lijeviZnak);
 			//pogledaj u tablicu novoStanje
-			
+			cout<<R.lijeviZnak<<" "<<brojZaNovoStanje<<endl;
 			int novoStanje=novoStanjeTablica[make_pair(R.lijeviZnak,brojZaNovoStanje)];
 			StogDodajBrojStanje(novoStanje);
+			cout<<"novo stanje"<<novoStanje<<endl;
 		}
 	}
 	

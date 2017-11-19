@@ -8,6 +8,12 @@
 #include <map>
 #include <vector>
 #include <iostream>
+
+#include <iomanip>
+#include <locale>
+#include <sstream>
+#include <string> 
+
 using namespace std;
 int a,b,c,d,e,f;
 int n,m;
@@ -48,6 +54,19 @@ char temp[30];
 vector<string>ulazniZnakovi;
 vector<Redukcija>redukcije;
 stack<string>S;
+vector<int>V[1500];
+string naziviCvorova[1500];
+string input[1500];
+void ispisStabla(int pos,int razmak)
+{
+	for(int i=0;i<razmak;++i)cout<<" ";
+	cout<<naziviCvorova[pos]<<endl;
+	for(int i=V[pos].size()-1;i>=0;--i)
+	{
+		ispisStabla(V[pos][i],razmak+1);
+	}
+	return;
+}
 void StogMakniNClanaSaStoga(int broj)
 {
 	while(broj--)
@@ -189,7 +208,7 @@ int main()
 			akcije.push_back(A);
 		}
 	}
-	printf("Novo stanje\n");
+	//printf("Novo stanje\n");
 	//ucitavam tablicu NovoStanje
 	fscanf(pfile,"%d%d",&n,&m);
 	for(int i=0;i<n;++i)
@@ -200,7 +219,7 @@ int main()
 			if(temp[0]=='S')
 			{
 				fscanf(pfile,"%d",&a);
-				cout<<nezavrsni[j]<<","<<i<<"-->"<<a<<endl;
+				//cout<<nezavrsni[j]<<","<<i<<"-->"<<a<<endl;
 				novoStanjeTablica[make_pair(nezavrsni[j],i)]=a;
 			}
 		}
@@ -217,31 +236,39 @@ int main()
 		R.lijeviZnak=temp;
 		R.brojZnakova=m;
 		R.stanje=i;
-		cout<<"redukcija ->"<<R.lijeviZnak<<" + "<<R.brojZnakova<<endl;
+		//cout<<"redukcija ->"<<R.lijeviZnak<<" + "<<R.brojZnakova<<endl;
 		redukcije.push_back(R);
 	}
 	/**/
 	
 	string opis="";
 	int linija=0;
+	int br=0;
 	while(scanf("%s",temp)!=EOF)
 	{
 		scanf("%d",&linija);
 		getline(cin,opis);
-		cout<<temp<<"--> u liniji "<<linija<<". Sa opisom ->"<<opis<<endl;
+		
+		//cout<<temp<<"--> u liniji "<<linija<<". Sa opisom ->"<<opis<<endl;
 		string ulaz=temp;
+		string linijaBr = static_cast<ostringstream*>( &(ostringstream() << linija) )->str();
+		
+		
+		input[br++]=ulaz+" "+linijaBr+""+opis;
 		ulazniZnakovi.push_back(ulaz);
 	}
 	ulazniZnakovi.push_back("%");
 	int pos=0;
-	printf("Input prosao.\n");
+	//printf("Input prosao.\n");
 	S.push(znakovi[znakovi.size()-1]);
 	StogDodajBrojStanje(0);
+	stack<int>lokalniStog;
+	int brojCvorova=0;
 	while(pos<ulazniZnakovi.size())
 	{
 		if(nasaoPrihvati(ulazniZnakovi[pos]))
 		{
-			printf("PRIHVACEN NIZ!!!!\n");
+			//printf("PRIHVACEN NIZ!!!!\n");
 			break;
 		}
 		if(nasaoOdbaci(ulazniZnakovi[pos]))
@@ -252,9 +279,12 @@ int main()
 		}
 		if(nasliNovoStanje(ulazniZnakovi[pos]))
 		{
+			naziviCvorova[brojCvorova]=input[pos];
+			lokalniStog.push(brojCvorova++);
+			
 			int novoStanje=odrediNovoStanje(ulazniZnakovi[pos]);
 			S.push(ulazniZnakovi[pos]);
-			printf("Novo stanje %d\n",novoStanje);
+			//printf("Novo stanje %d\n",novoStanje);
 			StogDodajBrojStanje(novoStanje);//S.push(novoStanje)
 			++pos;
 		}
@@ -262,20 +292,30 @@ int main()
 		{
 			Redukcija R=redukcije[nasliReduciraj(ulazniZnakovi[pos])];
 			int broj=R.brojZnakova;
-			printf("Redukcija stanje %d\n",nasliReduciraj(ulazniZnakovi[pos]));
+			//printf("Redukcija stanje %d\n",nasliReduciraj(ulazniZnakovi[pos]));
 			StogMakniNClanaSaStoga(broj*2);
 			int brojZaNovoStanje=StogDohvatiBrojStanje();
-			cout<<"Broj za novo Stanje"<<brojZaNovoStanje<<endl;
-			cout<<"Dodajem "<<R.lijeviZnak<<endl;
+			//cout<<"Broj za novo Stanje"<<brojZaNovoStanje<<endl;
+			
+			//cout<<"Dodajem "<<R.lijeviZnak<<endl;
+			naziviCvorova[brojCvorova++]=R.lijeviZnak;
+			for(int i=0;i<broj;++i)
+			{
+				int br=lokalniStog.top();
+				V[brojCvorova-1].push_back(br);
+				lokalniStog.pop();
+			}
+			
+			lokalniStog.push(brojCvorova-1);
 			S.push(R.lijeviZnak);//dodajLijeviZnak(R.lijeviZnak);
 			//pogledaj u tablicu novoStanje
-			cout<<R.lijeviZnak<<" "<<brojZaNovoStanje<<endl;
+			//cout<<R.lijeviZnak<<" "<<brojZaNovoStanje<<endl;
 			int novoStanje=novoStanjeTablica[make_pair(R.lijeviZnak,brojZaNovoStanje)];
 			StogDodajBrojStanje(novoStanje);
-			cout<<"novo stanje"<<novoStanje<<endl;
+			//cout<<"novo stanje"<<novoStanje<<endl;
 		}
 	}
-	
+	ispisStabla(brojCvorova-1,0);
 	
 	return 0;
 }

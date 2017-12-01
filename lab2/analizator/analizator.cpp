@@ -50,17 +50,23 @@ struct Redukcija
 vector<Akcija>akcije;
 vector<string>znakovi;
 vector<string>nezavrsni;
-char temp[30];
+char temp[300];
 vector<string>ulazniZnakovi;
 vector<Redukcija>redukcije;
 stack<string>S;
 vector<int>V[1500];
 string naziviCvorova[1500];
 string input[1500];
+vector<string>sinkronizacijskiZnakovi;
 void ispisStabla(int pos,int razmak)
 {
 	for(int i=0;i<razmak;++i)cout<<" ";
 	cout<<naziviCvorova[pos]<<endl;
+	if(V[pos].size()==0 && naziviCvorova[pos][0]=='<')
+	{
+		for(int i=0;i<razmak+1;++i)cout<<" "; 
+		cout<<"$"<<endl;	
+	}
 	for(int i=V[pos].size()-1;i>=0;--i)
 	{
 		ispisStabla(V[pos][i],razmak+1);
@@ -124,9 +130,11 @@ int odrediNovoStanje(string input)
 	int stanjeNaStogu=StogDohvatiBrojStanje();
 	for(int i=0;i<akcije.size();++i)
 	{
-		if(akcije[i].jesiLiProdukcija() && akcije[i].stanje==stanjeNaStogu && akcije[i].znak==input)
+		if(akcije[i].stanje==stanjeNaStogu && akcije[i].znak==input)
 		{
-			return akcije[i].additionalNumber;
+			//cout<<"Akcija "<<akcije[i].action<<endl;
+			if(akcije[i].jesiLiProdukcija())
+				return akcije[i].additionalNumber;
 		}
 	}
 	return -1;
@@ -163,8 +171,8 @@ int main()
 {
 	FILE *pfile=fopen("tablica.txt","r");
 	//Znakovi koji se mogu naci na stogu, u ulaznoj datoteci je vec ukljucen kraj stoga
-	
 	fscanf(pfile,"%d",&n);
+	
 	for(int i=0;i<n;++i)
 	{
 		fscanf(pfile,"%s",temp);
@@ -210,6 +218,7 @@ int main()
 	}
 	//printf("Novo stanje\n");
 	//ucitavam tablicu NovoStanje
+	
 	fscanf(pfile,"%d%d",&n,&m);
 	for(int i=0;i<n;++i)
 	{
@@ -239,6 +248,13 @@ int main()
 		//cout<<"redukcija ->"<<R.lijeviZnak<<" + "<<R.brojZnakova<<endl;
 		redukcije.push_back(R);
 	}
+	fscanf(pfile,"%d",&n);
+	for(int i=0;i<n;++i)
+	{
+		fscanf(pfile,"%s",temp);
+		string s=temp;
+		sinkronizacijskiZnakovi.push_back(s);
+	}
 	/**/
 	
 	string opis="";
@@ -257,9 +273,10 @@ int main()
 		input[br++]=ulaz+" "+linijaBr+""+opis;
 		ulazniZnakovi.push_back(ulaz);
 	}
+	
 	ulazniZnakovi.push_back("%");
 	int pos=0;
-	//printf("Input prosao.\n");
+	
 	S.push(znakovi[znakovi.size()-1]);
 	StogDodajBrojStanje(0);
 	stack<int>lokalniStog;
@@ -268,19 +285,60 @@ int main()
 	{
 		if(nasaoPrihvati(ulazniZnakovi[pos]))
 		{
-			//printf("PRIHVACEN NIZ!!!!\n");
+			//printf("PRIHVACEN NIZ!!!! %d/%d\n",pos,ulazniZnakovi.size());
 			break;
 		}
 		if(nasaoOdbaci(ulazniZnakovi[pos]))
 		{
-			printf("%d/%d\n",pos,ulazniZnakovi.size());
+			/*printf("%d/%d\n",pos,ulazniZnakovi.size());
+			cout<<"Znak "<<ulazniZnakovi[pos]<<endl;*/
 			printf("ODBACEN NIZ!!!!\n");
-			break;
+			printf("Oporavak\n");
+			//++pos;
+			
+			for(int i=pos;i<ulazniZnakovi.size();++i)
+			{
+				bool sinkro=false;
+				//printf("%d %d\n",i,pos);
+				for(int j=0;j<sinkronizacijskiZnakovi.size();++j)
+				{
+					if(sinkronizacijskiZnakovi[j]==ulazniZnakovi[i])
+					{
+						pos=i;
+						sinkro=true;
+						break;
+					}
+				}
+				if(sinkro)break;
+			}
+			
+			//printf("Nasli sinkro\n");
+			//odbacuje sa stoga stanja ( i cvorove i ostale podatke)
+			while(nasaoOdbaci(ulazniZnakovi[pos]))
+			{
+				S.pop();
+				//printf("Izbacen cvor\n");
+				cout<<naziviCvorova[lokalniStog.top()]<<endl;
+				lokalniStog.pop();
+				
+				while(S.top()[0]!=';')
+				{
+				  S.pop();
+				  
+				}
+				//break;
+			}
+			//++pos;
+			
+			//dokle god ne nade akcija[s,sinkro znak]
+					
+			//printf("Pos %d\n",pos);	
 		}
 		if(nasliNovoStanje(ulazniZnakovi[pos]))
 		{
 			naziviCvorova[brojCvorova]=input[pos];
 			lokalniStog.push(brojCvorova++);
+			//S.push(";")
 			
 			int novoStanje=odrediNovoStanje(ulazniZnakovi[pos]);
 			S.push(ulazniZnakovi[pos]);
@@ -303,6 +361,7 @@ int main()
 			{
 				int br=lokalniStog.top();
 				V[brojCvorova-1].push_back(br);
+				//cout<<"Cvor "<<naziviCvorova[br]<<endl;
 				lokalniStog.pop();
 			}
 			

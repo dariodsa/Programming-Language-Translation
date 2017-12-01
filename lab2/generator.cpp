@@ -76,17 +76,9 @@ struct Stanje
 		if(skup.size()!=S.skup.size())return false;
 		
 		
-		/*vector<int>skup1=skup;
-		skup1.insert(skup1.end(), skup.begin(), skup.end());
-		vector<int>skup2=S.skup;
-		skup2.insert(skup2.end(), S.skup.begin(), S.skup.end());*/
-		
-		/*sort(desnaStrana1.begin(),desnaStrana1.end());
-		sort(desnaStrana2.begin(),desnaStrana2.end());
-		sort(skup1.begin(),skup1.end());
-		sort(skup2.begin(),skup2.end());*/
 		for(int i=0,len=desnaStrana.size();i<len;++i)
 			if(desnaStrana[i]!=S.desnaStrana[i])return false;
+		
 		for(int i=0,len=skup.size();i<len;++i)
 			if(skup[i]!=S.skup[i])return false;
 		return true;
@@ -156,7 +148,7 @@ struct Stanje
 	void dodajDesnuStranu(vector<int> niz)
 	{
 		desnaStrana.clear();
-		for(int i=0;i<niz.size();++i)
+		for(int i=0,len=niz.size();i<len;++i)
 		{
 			desnaStrana.push_back(niz[i]);
 		}
@@ -207,7 +199,7 @@ struct DKAStanje
 	vector<Stanje>stanja;
 	void postaviStanja(vector<Stanje> niz)
 	{
-		for(int i=0;i<niz.size();++i)
+		for(int i=0,len=niz.size();i<len;++i)
 		{
 			stanja.push_back(niz[i]);
 		}
@@ -216,7 +208,7 @@ struct DKAStanje
 	bool istaStanja(vector<Stanje>niz)
 	{
 		bool isti=true;
-		if(niz.size()!=stanja.size())return false;
+		//if(niz.size()!=stanja.size())return false;
 		//sort(niz.begin(),niz.end(),cmp);
 		//sort(stanja.begin(),stanja.end(),cmp);
 		for(int i=0,len=niz.size();i<len;++i)
@@ -363,6 +355,7 @@ bool jedinstvenoStanje(Stanje S)
 {
 	for(int i=0,len=stanjaPolje[S.poredakProdukcije].size();i<len;++i)
 	{
+		if(S.tocka==stanjaPolje[S.poredakProdukcije][i].tocka)
 		if(S.istiKao(stanjaPolje[S.poredakProdukcije][i]))
 			return false;
 	}
@@ -370,155 +363,139 @@ bool jedinstvenoStanje(Stanje S)
 }
 int jedinstvenoDKAStanje(vector<Stanje>niz)
 {
+	int len2=niz.size();
 	for(int i=0,len=dkaStanja.size();i<len;++i)
 	{
-		if(dkaStanja[i].istaStanja(niz))return i;
+		if(len2==dkaStanja[i].stanja.size())
+			if(dkaStanja[i].istaStanja(niz))return i;
 	}
 	return -1;
 }
 void bfs(pair<int,int> pos,int parent,int znak,vector<pair<int,int> >dodaniZnakovi)
 {
-	printf("BFS %d %d\n",dkaStanja.size(),dkaPrijelazi.size());
-	//if(znak!=-1)cout<<popisSvihZnakova[znak]<<endl;
-	vector<Stanje>istaStanja;
+	queue<pair<int,int> > Qpos;
+	queue<int>Qparent;
+	queue<int>Qznak;
+	queue<vector<pair<int,int> > >QdodaniZnakovi;
 	
-	
-	queue<pair<int,int> >Q;
-	
-	bio.clear();
-	
-	Q.push(pos);
-	for(int i=0,len=dodaniZnakovi.size();i<len;++i)
+	Qpos.push(pos);
+	Qparent.push(parent);
+	Qznak.push(znak);
+	QdodaniZnakovi.push(dodaniZnakovi);
+	int bfsNum=0;
+	while(!Qpos.empty())
 	{
-		Q.push(dodaniZnakovi[i]);
-		bio[dodaniZnakovi[i]]=true;
-		istaStanja.push_back(stanjaPolje[dodaniZnakovi[i].first][dodaniZnakovi[i].second]);
-	}
-	bio[pos]=true;
-	//int poz=pos;
-	istaStanja.push_back(stanjaPolje[pos.first][pos.second]);
-	
-	
-	set<pair<int,int> >prijelaziUDrugaStanja[150];
-	while(!Q.empty())
-	{
-		pair<int,int> pos=Q.front();
-		Q.pop();
-		for(int i=0,len=mapa[pos].size();i<len;++i)
+		bfsNum++;
+		pos=Qpos.front();
+		parent=Qparent.front();
+		znak=Qznak.front();
+		dodaniZnakovi=QdodaniZnakovi.front();
+		Qpos.pop();Qparent.pop();Qznak.pop();QdodaniZnakovi.pop();
+		
+		
+		if(dkaPrijelazi.size()%100==0)printf("BFS %d %d %d --> %d\n",dkaStanja.size(),dkaPrijelazi.size(),popisSvihZnakova.size(),bfsNum);
+		//if(znak!=-1)cout<<popisSvihZnakova[znak]<<endl;
+		vector<Stanje>istaStanja;
+		
+		
+		queue<pair<int,int> >Q;
+		
+		map<pair<int,int> , bool>bio;//bool bio[1500];
+		set<pair<int,int> >prijelaziUDrugaStanja[popisSvihZnakova.size()];
+		Q.push(pos);
+		for(int i=0,len=dodaniZnakovi.size();i<len;++i)
 		{
-			if(mapaZnak[pos][i]==-1 && bio[mapa[pos][i]]==false)
-			{
-				bio[mapa[pos][i]]=true;
-				
-				istaStanja.push_back(stanjaPolje[mapa[pos][i].first][mapa[pos][i].second]);
-				Q.push(mapa[pos][i]);
-			}
-			if(mapaZnak[pos][i]!=-1/* && bio[mapa[pos][i]]==false*/)
-			{
-				bool ok=true;
-				/*for(int z=0;z<prijelaziUDrugaStanja[mapaZnak[pos][i]].size();++z)
-				{
-					if( prijelaziUDrugaStanja[mapaZnak[pos][i]][z].first==mapa[pos][i].first && 
-					   prijelaziUDrugaStanja[mapaZnak[pos][i]][z].second==mapa[pos][i].second)
-					   ok=false;
-				}*/
-				if(ok)
-					prijelaziUDrugaStanja[mapaZnak[pos][i]].insert(mapa[pos][i]);
-				//cout<<mapaZnak[pos][i]<<" velicina "<<prijelaziUDrugaStanja[mapaZnak[pos][i]].size()<<endl;
-				
-			}
-			/*if(mapaZnak[pos][i]!=-1 && bio[mapa[pos][i]]==true)
-			{
-				bool ok=true;
-				
-				
-				//if(ok)
-				prijelaziUDrugaStanja[mapaZnak[pos][i]].insert(mapa[pos][i]);
-			}*/
+			Q.push(dodaniZnakovi[i]);
+			bio[dodaniZnakovi[i]]=true;
+			istaStanja.push_back(stanjaPolje[dodaniZnakovi[i].first][dodaniZnakovi[i].second]);
 		}
-	}
-	
-	//Dodajem stanja povezana epsilon prijelazom u isto stanje u DKA automatu
-	
-	DKAStanje S;
-	S.idStanja=dkaStanja.size();
-	sort(istaStanja.begin(),istaStanja.end(),cmp);
-	S.postaviStanja(istaStanja);
-	int ponovljeno=jedinstvenoDKAStanje(istaStanja);
-	if(ponovljeno==-1)
-	{	
-		dkaStanja.push_back(S);
-		int idRoditelja=dkaStanja.size()-1;
-		if(parent!=-1)
+		bio[pos]=true;
+		//int poz=pos;
+		istaStanja.push_back(stanjaPolje[pos.first][pos.second]);
+		
+		
+		int p=0;
+		while(!Q.empty())
 		{
-			bool find=false;
-			//ako ne postoji dka prijelaz izmedu roditelja i djeteta - povezi ih
-			/*for(int i=0;i<dkaPrijelazi.size();++i)
+			pair<int,int> pos=Q.front();
+			Q.pop();
+			for(int i=0,len=mapa[pos].size();i<len;++i)
 			{
-				if(dkaPrijelazi[i].izStanja==parent && dkaPrijelazi[i].uStanje==dkaStanja.size()-1)find=true;
-			}*/
-			
-			if(!find)
-			{
-				Prijelaz P=Prijelaz(parent,dkaStanja.size()-1,znak,false);
-				printf("Dodajem prijelaz iz %d u %d sa znakom %d\n",parent,dkaStanja.size()-1,znak);
-				dkaPrijelazi.push_back(P);
-			}
-			else if(find)
-			{
-				printf("NE.  Postoji prijelaz iz %d u %d sa znakom %d\n",parent,dkaStanja.size()-1,znak);
+				if(mapaZnak[pos][i]==-1 && bio[mapa[pos][i]]==false)
+				{
+					bio[mapa[pos][i]]=true;
+					
+					istaStanja.push_back(stanjaPolje[mapa[pos][i].first][mapa[pos][i].second]);
+					Q.push(mapa[pos][i]);
+				}
+				if(mapaZnak[pos][i]!=-1)
+				{
+					prijelaziUDrugaStanja[mapaZnak[pos][i]].insert(mapa[pos][i]);
+					++p;
+				}
+				
 			}
 		}
 		
-		//moguci prijelazi u nova stanja iz trenutnog dka stanja
-		for(int j=0,len=popisSvihZnakova.size();j<len;++j)
-		{
-			if(prijelaziUDrugaStanja[j].size()==0)continue;
-			else
+		//Dodajem stanja povezana epsilon prijelazom u isto stanje u DKA automatu
+		printf("%d %d\n",istaStanja.size(),p);
+		DKAStanje S;
+		S.idStanja=dkaStanja.size();
+		//sort(istaStanja.begin(),istaStanja.end(),cmp);
+		S.postaviStanja(istaStanja);
+		int ponovljeno=jedinstvenoDKAStanje(S.stanja);
+		if(ponovljeno==-1)
+		{	
+			dkaStanja.push_back(S);
+			int idRoditelja=S.idStanja;
+			if(parent!=-1)
 			{
-				vector<pair<int,int> >dodani;
-				set<pair<int,int> >::iterator it;
-				pair<int,int> Prvi;
-				for(it=prijelaziUDrugaStanja[j].begin();it!=prijelaziUDrugaStanja[j].end();++it)//for(int k=1;k<prijelaziUDrugaStanja[j].size();++k)
+				bool find=false;
+				//ako ne postoji dka prijelaz izmedu roditelja i djeteta - povezi ih
+				/*for(int i=0;i<dkaPrijelazi.size();++i)
 				{
-					if(it==prijelaziUDrugaStanja[j].begin())Prvi=*it;
-					else dodani.push_back(*it);
-				}
-				/*bool dalje=true;
-				for(int z=0;z<dkaPrijelazi.size();++z)
+					if(dkaPrijelazi[i].izStanja==parent && dkaPrijelazi[i].uStanje==dkaStanja.size()-1)find=true;
+				}*/
+				
+				if(!find)
 				{
-					if(debug)
-					{
-						cout<<dkaPrijelazi[z].izStanja<<"-->"<<dkaPrijelazi[z].uStanje<<" "<<dkaPrijelazi[z].znakZaPrijelaz<<endl;
-					}
-					if(dkaPrijelazi[z].izStanja==idRoditelja && dkaPrijelazi[z].znakZaPrijelaz==j)
-					{
-					  printf("Pokusavam zabraniti iz stanja %d sa znakom %d\n",idRoditelja,j);
-					  
-					  dalje=false;
-					  break;
-					}
+					Prijelaz P=Prijelaz(parent,dkaStanja.size()-1,znak,false);
+				//	printf("Dodajem prijelaz iz %d u %d sa znakom %d\n",parent,dkaStanja.size()-1,znak);
+					dkaPrijelazi.push_back(P);
 				}
-				if(dalje)*/
-				bfs(Prvi,idRoditelja,j,dodani);
+				else if(find)
+				{
+					printf("NE.  Postoji prijelaz iz %d u %d sa znakom %d\n",parent,dkaStanja.size()-1,znak);
+				}
+			}
+			
+			//moguci prijelazi u nova stanja iz trenutnog dka stanja
+			for(int j=0,len=popisSvihZnakova.size();j<len;++j)
+			{
+				if(prijelaziUDrugaStanja[j].empty())continue;
+				else
+				{
+					vector<pair<int,int> >dodani;
+					set<pair<int,int> >::iterator it;
+					pair<int,int> Prvi;
+					for(it=prijelaziUDrugaStanja[j].begin();it!=prijelaziUDrugaStanja[j].end();++it)//for(int k=1;k<prijelaziUDrugaStanja[j].size();++k)
+					{
+						if(it==prijelaziUDrugaStanja[j].begin())Prvi=*it;
+						else dodani.push_back(*it);
+					}
+					
+					//bfs(Prvi,idRoditelja,j,dodani);
+					Qpos.push(Prvi);
+					Qparent.push(idRoditelja);
+					Qznak.push(j);
+					QdodaniZnakovi.push(dodani);
+				}
 			}
 		}
-	}
-	else
-	{
-		bool find=false;
-		for(int i=0,len=dkaPrijelazi.size();i<len;++i)
-		{
-			if(dkaPrijelazi[i].izStanja==parent && dkaPrijelazi[i].uStanje==ponovljeno){find=true;break;}
-		}
-		if(!find)
+		else
 		{
 			Prijelaz P=Prijelaz(parent,ponovljeno,znak,false);
 			dkaPrijelazi.push_back(P);
-		}
-		else 
-		{
-			cout<<"Ponovljeno"<<parent<<" --> "<<ponovljeno<<" uz "<<popisSvihZnakova[znak]<<" "<<znak<<endl;
 		}
 	}
 	return;
@@ -880,7 +857,7 @@ int main()
 	
 	//kreni u dodavanje skupova u stanja i kreiranje mogucih prijelaza
 	
-	for(int z=0;z<18;++z)
+	for(int z=0;z<16;++z)
 	{
 		dodajStanjaV2();printf("%d\n",z);
 		int stanja=0;
@@ -1001,8 +978,13 @@ int main()
 	for(int i=0;i<produkcije.size();++i)
 	{
 		cout<<popisSvihZnakova[produkcije[i].lijevaStrana]<<" ";
-		cout<<produkcije[i].desnaStrana.size()<<endl;
+		if(produkcije[i].desnaStrana.size()==1 && produkcije[i].desnaStrana[0]==skupSvihZnakova["$"])cout<<0<<endl;
+		else cout<<produkcije[i].desnaStrana.size()<<endl;
 	}
-	
+	cout<<sinkronizacijskiZnakovi.size()<<endl;
+	for(int i=0;i<sinkronizacijskiZnakovi.size();++i)
+	{
+		cout<<sinkronizacijskiZnakovi[i]<<endl;
+	}
 	return 0;
 }

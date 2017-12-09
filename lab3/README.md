@@ -4,7 +4,7 @@
 - treba se obici generativno stablo i na standOut ispisati produkciju u kojoj je otkrivena prva semanti?ka pogreška
 - ne treba se provoditi nikakav postupak oporavka, nego se prestaje sa radom 
 - ako je stablo ispravno na izlaz se ne ispisuje nista
-- nema vise direktorija analizator   a
+- nema vise direktorija analizator                     a
 ## Jezik ppjC
 ## Tipovi
 ### Brojevi tipovi

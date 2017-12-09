@@ -1,4 +1,4 @@
-#Opcenito
+# Opcenito
 - testiranje   
    `LA <program.c | SA | SemantickiAnalizator`  
 - treba se obici generativno stablo i na standOut ispisati produkciju u kojoj je otkrivena prva semanti?ka pogreška  
@@ -6,41 +6,41 @@
 - ako je stablo ispravno na izlaz se ne ispisuje nista  
 - nema vise direktorija analizator  
 
-#jezik ppjC
-##Tipovi
-###Brojevi tipovi
+# jezik ppjC
+## Tipovi
+### Brojevi tipovi
 - char [0..255]
 - int  [- 2^31 .. 2^31- 1]
 - oznaka u uputi je T
-###Const- kvalifikator
+### Const- kvalifikator
 - const ( uniformni znak KR_CONST)
 - `const(T)`
 - ili u uputi kao `T ili const(T)`
-###Nizovi(array)
+### Nizovi(array)
 - isklju?ivo brojevni tipovi ( const ili ne)
 - ne postoji višedimenizionalni niz ( osigurano u sintaksnoj analizi)
 - `niz(X)`
-###void
+### void
 - **isklju?ivo** povratni tip funckije
-###Tip funkcija
+### Tip funkcija
 - odre?en tipom povratne vrijednosti i svih formalnih parametara
 - `funkcija([char,char]- >int` , `funckija([int]- >void)`  , `funkcija(void- >void)`
 - tipovi parametara su organizirani u **listu** 
 - ako funkcija nema parametara to je ozna?eno sa void , **a ne sa [void]**
-###Implicitne promjene tipa
+### Implicitne promjene tipa
 - sve const(T) može se implicitno pretvoriti u vrijednost tipa T
 - **Važno je uo?iti da se promjene tipa odvijaju nad vrijednostima a ne na tipu varijable, koji se ne može promijeniti**
 - tako?er vrijedi obrat, tj. sve vrijednosti tipa int || char mogu ici u const
 - svaki char može ici u int, pri tome se njegova vrijednost ne mijenja
 - niz(T) gdje T nije const može i?i u niz(const(T))
-###Logi?ki podtip int- a ( Boolean)
+### Logi?ki podtip int- a ( Boolean)
 - nije poseban
 - (0 || 1)
-###Eksplicitne promjene tipa
+### Eksplicitne promjene tipa
 - dozvoljene samo nad vrijednostima brojevnih tipova => zadaje se sa cast operatorom
 -  samo iz int u char, ako je int u domeni chara super
 -  **ako ne ....**
-##Konstante
+## Konstante
 - brojevne konstante ( uniformni znak BROJ) , tip int
 - znakovne konstante ( uniformni znak ZNAK) , tip char, ascii kod
 - za znakovne potrebna provjera ispravnosti 
@@ -49,19 +49,19 @@
 - konstantni znakovni niz ( NIZ_ZNAKOVA) tipa niz(const(char))
 - **implicitno završavaju sa '\0'**
 - **pazi, fusnota 9**
-##Djelokrug deklaracija i životni vijek varijabli
+## Djelokrug deklaracija i životni vijek varijabli
 - stati?ko pravilo **bez ugnijež?enih procedura**
 - ali podržava ugnjež?ene blokove
-###Globalne varijable
+### Globalne varijable
 - život po?inje u trenutku definicije
 - završava krajem programa
-###Lokalne za neki blok
+### Lokalne za neki blok
 - to uklju?uje i parametre funkcija
 - život po?inje definicijom 
 - završava krajem tog bloka
 - **FUSNOTA 10**
 - **Primjeri 4.2 - 4.5** ++ **4.6**
-##Funkcije
+## Funkcije
 - mora imati funkciju int main(void) => ulazna to?ka za izvo?enje programa
 - sve funkcije koje ne primaju argumente => `f(void)` , `f()` je **neispravno** => sintaksna
 - prije korištenja mora biti deklarirana, pri cemu je njena definicija i deklaracija
@@ -70,7 +70,7 @@
 - sve deklaracije moraju imati identicne povratne tipove i tipove formalnih parametara
 - ignorirati imena varijabla u deklaraciji ( gledati samo tipove)
 - **rekurzije**
-###Povratni tip
+### Povratni tip
 - char ili int bez const 
 - ili void
 - pogreska je kada void funkcija nesto pokusa vratiti
@@ -90,6 +90,6 @@
    f(x,a); // x = 3, a[0] = 1
    return 0;
  }`
-##Operatori
+## Operatori
 - a
 

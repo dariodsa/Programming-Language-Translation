@@ -80,7 +80,8 @@ a
 ### Argumenti                                                                                                        
 - vrijednost argumenata brojevnog tipa prenosi se u odgovarajuce parametre                                             
 - ako je niz X a[] , onda se prenosi adresa                                                                              
-```c
+
+```c++
 void f(int x,int a[]){                                                                                                    
    x=x+1;
    a[0]=a[0]+1;
@@ -90,7 +91,9 @@ void f(int x,int a[]){
    int a[8] = {0};
    f(x,a); // x = 3, a[0] = 1
    return 0;
- }```           
+ }
+```           
+
 ## Operatori    
 - a               
       

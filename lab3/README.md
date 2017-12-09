@@ -44,7 +44,7 @@ a
 - brojevne konstante ( uniformni znak BROJ) , tip int     
 - znakovne konstante ( uniformni znak ZNAK) , tip char, ascii kod    
 - za znakovne potrebna provjera ispravnosti                                         
-- `’\t’, ’\n’, ’\0’, ’\’’(jednostruki navodnik), ’\"’ (dvostruki navodnik) i ’\\’`    
+- `â€™\tâ€™, â€™\nâ€™, â€™\0â€™, â€™\â€™â€™(jednostruki navodnik), â€™\"â€™ (dvostruki navodnik) i â€™\\â€™`    
 - svi ostali sa jednostrukim navodicima -  **greska** ako im je duljina veca od 1       
 - konstantni znakovni niz ( NIZ_ZNAKOVA) tipa niz(const(char))                            
 - **implicitno završavaju sa '\0'**                                                         

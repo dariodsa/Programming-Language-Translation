@@ -4,12 +4,15 @@
 - treba se obici generativno stablo i na standOut ispisati produkciju u kojoj je otkrivena prva semanti?ka pogreška
 - ne treba se provoditi nikakav postupak oporavka, nego se prestaje sa radom 
 - ako je stablo ispravno na izlaz se ne ispisuje nista
-- nema vise direktorija analizator# jezik ppjC
+- nema vise direktorija analizator   # jezik ppjC
+
 ## Tipovi
+
 ### Brojevi tipovi
 - char [0..255] 
 - int  [- 2^31 .. 2^31- 1]
 - oznaka u uputi je T 
+
 ### Const- kvalifikator
 - const ( uniformni znak KR_CONST)
 - `const(T)`

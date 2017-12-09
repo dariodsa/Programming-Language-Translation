@@ -5,7 +5,7 @@
 - ne treba se provoditi nikakav postupak oporavka, nego se prestaje sa radom 
 - ako je stablo ispravno na izlaz se ne ispisuje nista
 - nema vise direktorija analizator   a
-# Jezik ppjC
+## Jezik ppjC
 ## Tipovi
 ### Brojevi tipovi
 - char [0..255] 

@@ -1,24 +1,23 @@
 # Opcenito
-- testiranje   
-   `LA <program.c | SA | SemantickiAnalizator`  
-- treba se obici generativno stablo i na standOut ispisati produkciju u kojoj je otkrivena prva semanti?ka pogreška  
-- ne treba se provoditi nikakav postupak oporavka, nego se prestaje sa radom   
-- ako je stablo ispravno na izlaz se ne ispisuje nista  
-- nema vise direktorija analizator  
-# jezik ppjC
+- testiranje 
+   `LA <program.c | SA | SemantickiAnalizator`
+- treba se obici generativno stablo i na standOut ispisati produkciju u kojoj je otkrivena prva semanti?ka pogreška
+- ne treba se provoditi nikakav postupak oporavka, nego se prestaje sa radom 
+- ako je stablo ispravno na izlaz se ne ispisuje nista
+- nema vise direktorija analizator# jezik ppjC
 ## Tipovi
 ### Brojevi tipovi
-- char [0..255]      
-- int  [- 2^31 .. 2^31- 1]  
-- oznaka u uputi je T         
+- char [0..255] 
+- int  [- 2^31 .. 2^31- 1]
+- oznaka u uputi je T 
 ### Const- kvalifikator
-- const ( uniformni znak KR_CONST)   
-- `const(T)`                           
-- ili u uputi kao `T ili const(T)`       
+- const ( uniformni znak KR_CONST)
+- `const(T)`
+- ili u uputi kao `T ili const(T)`
 ### Nizovi(array)
-- isklju?ivo brojevni tipovi ( const ili ne)  
-- ne postoji višedimenizionalni niz ( osigurano u sintaksnoj analizi)  
-- `niz(X)`  
+- isklju?ivo brojevni tipovi ( const ili ne)
+- ne postoji višedimenizionalni niz ( osigurano u sintaksnoj analizi)
+- `niz(X)`
 ### void  
 - **isklju?ivo** povratni tip funckije  
 ### Tip funkcija  

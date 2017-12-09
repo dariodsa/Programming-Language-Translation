@@ -4,7 +4,7 @@
 - treba se obici generativno stablo i na standOut ispisati produkciju u kojoj je otkrivena prva semanti?ka pogreška
 - ne treba se provoditi nikakav postupak oporavka, nego se prestaje sa radom 
 - ako je stablo ispravno na izlaz se ne ispisuje nista
-- nema vise direktorija analizator# jezik ppjC
+- nema vise direktorija analizator# Jezik ppjC
 ## Tipovi
 ### Brojevi tipovi
 - char [0..255] 
@@ -18,7 +18,7 @@
 - isklju?ivo brojevni tipovi ( const ili ne)
 - ne postoji višedimenizionalni niz ( osigurano u sintaksnoj analizi)
 - `niz(X)`
-### void  
+### Void  
 - **isklju?ivo** povratni tip funckije  
 ### Tip funkcija  
 - odre?en tipom povratne vrijednosti i svih formalnih parametara  

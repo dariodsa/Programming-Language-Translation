@@ -1,0 +1,20 @@
+<definicija_funkcije> <ime_tipa> IDN L_ZAGRADA KR_VOID D_ZAGRADA <slozena_naredba>
+<definicija_funkcije> <ime_tipa> IDN L_ZAGRADA <lista_parametara> D_ZAGRADA <slozena_naredba>
+<lista_parametara> <deklaracija_parametra>
+<lista_parametara> <lista_parametara> ZAREZ <deklaracija_parametra>
+<deklaracija_parametra> <ime_tipa> IDN
+<deklaracija_parametra> <ime_tipa> IDN L_UGL_ZAGRADA D_UGL_ZAGRADA
+<lista_deklaracija> <deklaracija>
+<lista_deklaracija> <lista_deklaracija> <deklaracija>
+<deklaracija> <ime_tipa> <lista_init_deklaratora> TOCKAZAREZ
+<lista_init_deklaratora> <init_deklarator>
+<lista_init_deklaratora> <lista_init_deklaratora> ZAREZ <init_deklarator>
+<init_deklarator> <izravni_deklarator>
+<init_deklarator> <izravni_deklarator> OP_PRIDRUZI <inicijalizator>
+<izravni_deklarator> IDN
+<izravni_deklarator> IDN L_UGL_ZAGRADA BROJ D_UGL_ZAGRADA
+<izravni_deklarator> IDN L_ZAGRADA KR_VOID D_ZAGRADA
+<izravni_deklarator> IDN L_ZAGRADA <lista_parametara> D_ZAGRADA
+<inicijalizator> <izraz_pridruzivanja>
+<inicijalizator> L_VIT_ZAGRADA <lista_izraza_pridruzivanja> D_VIT_ZAGRADA
+<lista_izraza_pridruzivanja> <izraz_pridruzivanja>

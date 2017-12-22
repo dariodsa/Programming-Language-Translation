@@ -282,8 +282,114 @@ void popisNaredba(int pos,int broj)
 		start(V[pos][1]);
 		start(V[pos][2]);
 	}
-	else if(broj==2)
+	else if(broj==2) // <lista_naredbi> ::= <naredba>
 	{
+		start(V[pos][0]);
+	}
+	else if(broj==3) // <lista_naredbi> ::= <lista_naredbi> <naredba>
+	{
+		start(V[pos][0]);
+		start(V[pos][1]);
+	}
+	else if(broj==4) // <naredba> <slozena_naredba>
+	{
+		start(V[pos][0]);
+	}
+	else if(broj==5) // <naredba> <izraz_naredba>
+	{
+		start(V[pos][0]);
+	}
+	else if(broj==6) // <naredba> <naredba_grananja>
+	{
+		start(V[pos][0]);
+	}
+	else if(broj==7) // <naredba> <naredba_petlje>
+	{
+		start(V[pos][0]);
+	}
+	else if(broj==8) // <naredba> <naredba_skoka>
+	{
+		start(V[pos][0]);
+	}
+	else if(broj==9) // <izraz_naredba> ::= TOCKAZAREZ
+	{
+		semantika[pos].tip = Tip(KR_INT, false, false);
+	}
+	else if(broj==10) // <izraz_naredba> ::= <izraz> TOCKAZAREZ
+	{
+		start(V[pos][0]);
+		semantika[pos].tip = semantika[V[pos][0]].tip;
+	}
+	else if(broj==11) // KR_IF L_ZAGRADA <izraz> D_ZAGRADA <naredba>
+	{
+		start(V[pos][2]);
+		//relacijaImplicitna(semantika[V[pos][2]].tip, Tip(KR_INT, false, false))
+		start(V[pos][4]);
+	}
+	else if(broj==12) //<naredba_grananja> ::= KR_IF L_ZAGRADA <izraz> D_ZAGRADA <naredba>1 KR_ELSE <naredba>2
+	{
+		start(V[pos][2]);
+		//relacijaImplicitna(semantika[V[pos][2]].tip, Tip(KR_INT, false, false))
+		start(V[pos][4]);
+		start(V[pos][6]);
+	}
+	else if(broj==13) // <naredba_petlje> ::= KR_WHILE L_ZAGRADA <izraz> D_ZAGRADA <naredba>
+	{
+		start(V[pos][2]);
+		//relacijaImplicitna(semantika[V[pos][2]].tip, Tip(KR_INT,false,false))
+		start(V[pos][4]);
+	}
+	else if(broj==14) // <naredba_petlje> ::= KR_FOR L_ZAGRADA <izraz_naredba>1 <izraz_naredba>2 D_ZAGRADA <naredba>
+	{
+		start(V[pos][2]);
+		start(V[pos][3]);
+		//relacijaImplicitna(semantika[V[pos][3]].tip, Tip(KR_INT, false, false))
+		start(V[pos][5]);
+	}
+	else if(broj==15)  //KR_FOR L_ZAGRADA <izraz_naredba>1 <izraz_naredba>2 <izraz> D_ZAGRADA <naredba>
+	{
+		start(V[pos][2]);
+		start(V[pos][3]);
+		//relacijaImplicitna(semantika[V[pos][3]].tip, Tip(KR_INT, false, false))
+		start(V[pos][4]);
+		start(V[pos][6]);
+	}
+	else if(broj==16) // <naredba_skoka> ::= (KR_CONTINUE  TOCKAZAREZ
+	{
+		// naredba se nalazi unutar petlje ili bloka koji je u petlji 
+	}
+	else if(broj==23) // <naredba_skoka> ::= (KR_BREAK  TOCKAZAREZ
+	{}
+	else if(broj==17) // <naredba_skoka> ::= KR_RETURN TOCKAZAREZ
+	{
+		//nalazi se unutar funkcije params -> void
+	}
+	else if(broj==18) // <naredba_skoka> ::= KR_RETURN <izraz> TOCKAZAREZ
+	{
+		start(V[pos][1]);
+		//naredba se nalazi unutar funkcije tipa params -> pov i vrijedi izraz.tip ~~ pov
+	}
+	else if(broj==19) // <prijevodna_jedinica> ::= <vanjska_deklaracija>
+	{
+		start(V[pos][0]);
+	}
+	else if(broj==20) // <prijevodna_jedinica> ::= <prijevodna_jedinica> <vanjska_deklaracija>
+	{
+		start(V[pos][0]);
+		start(V[pos][1]);
+	}
+	else if(broj==21) // <vanjska deklaracija> <definicija_funkcije>
+	{
+		start(V[pos][0]);
+	}
+	else if(broj==22) // <vanjska deklaracija> <deklaracija>
+	{
+		start(V[pos][0]);
+	}
+	else 
+	{
+		fprintf(stderr, "Nisam nasao produkciju u naredbenoj strukuturi\n");
+		exit(404);
 	}
 }
 void popisIzraza(int pos,int broj)
@@ -645,6 +751,10 @@ void popisIzraza(int pos,int broj)
 		semantika[pos].tip = semantika[V[pos][2]].tip;
 		semantika[pos].l_izraz = 0;
 	}
+	else
+	{
+		fprintf(stderr, "ERROR:  izraz se ne nalazi u izrazima.\n");
+		exit(404);
 }
 void start(int pos)
 {

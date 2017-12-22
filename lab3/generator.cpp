@@ -55,13 +55,15 @@ struct Varijabla
 struct Funkcija
 {
 	string naziv;
-	int tip;
+	vector<Tip>tipovi;
 	bool deklaracija;
 	bool definicija;
-	Funkcija(string _naziv, int _tip)
+	Funkcija(string _naziv, vector<Tip>_tipovi)
 	{
 		naziv = _naziv;
-		tip = _tip;
+		tipovi.clear();
+		for(int i=0;i<_tipovi.size();++i)
+			tipovi.push_back(_tipovi[i]);
 		definicija = false;
 		deklaracija = false;
 	}
@@ -231,48 +233,161 @@ void init()
 
 int izvrsiIzraz(int pos)
 {
-	fprintf(stderr,"Jesam izraz.\n");
 	string S1 = getStringToCompare(pos);
 	for(int i=0;i<funkcijeIzrazi.size();++i)
 	{
 		if(S1.compare(funkcijeIzrazi[i])==0)
 		{
-			fprintf(stderr,"Nasao %d\n",i);
 			return i;
 		}
 	}
+	return -1;
 }
 int izvrsiStrukturu(int pos)
 {
-	fprintf(stderr,"Jesam struktura.\n");
 	string S1 = getStringToCompare(pos);
 	for(int i=0;i<funkcijeNaredbe.size();++i)
 	{
 		if(S1.compare(funkcijeNaredbe[i])==0)
 		{
-			fprintf(stderr,"Nasao %d\n",i);
 			return i;
 		}
 	}
+	return -1;
 }
 int izvrsiDeklaraciju(int pos)
 {
-	fprintf(stderr,"Jesam deklaracija.\n");
 	string S1 = getStringToCompare(pos);
 	for(int i=0;i<funkcijeDeklaracije.size();++i)
 	{
 		if(S1.compare(funkcijeDeklaracije[i])==0)
 		{
-			fprintf(stderr,"Nasao %d\n",i);
 			return i;
 		}
 	}
+	return -1;
 }
 void start(int pos);
 void popisDeklaracija(int pos,int broj)
-{}
+{
+	if(broj==0) // <definicija_funkcije> ::= <ime_tipa> IDN L_ZAGRADA KR_VOID D_ZAGRADA <slozena_naredba>
+	{
+		start(V[pos][0]);
+		if(semantika[V[pos][0]].tip.konstanta == true)
+		{
+			printf("ERROR\n");
+			exit(404);
+		}
+		//provjera definiranih ime funkcije
+		//provjera deklariranih
+		//zabiljezi deklaraciju i definiciju
+		start(V[pos][5]);
+	}
+	else if(broj==1) // <definicija_funkcije> ::= <ime_tipa> IDN L_ZAGRADA <lista_parametara> D_ZAGRADA <slozena_naredba>
+	{
+		start(V[pos][0]);
+		if(semantika[V[pos][0]].tip.konstanta == true)
+		{
+			printf("ERROR\n");
+			exit(404);
+		}
+		start(V[pos][3]);
+		
+	}
+	else if(broj==2) // <lista_parametara> ::= <deklaracija_parametra>
+	{
+		start(V[pos][0]);
+	}
+	else if(broj==3) // <lista_parametara> ::= <lista_parametara> ZAREZ <deklaracija_parametra>
+	{
+		start(V[pos][0]);
+		start(V[pos][2]);
+	}
+	else if(broj==4) // <deklaracija_parametra> ::= <ime_tipa> IDN
+	{
+		start(V[pos][0]);
+		semantika[pos].tip = semantika[V[pos][0]].tip;
+		//semantika[pos].ime = 
+	}
+	else if(broj==5) // <deklaracija_parametra> ::= <ime_tipa> IDN L_UGL_ZAGRADA D_UGL_ZAGRADA
+	{
+		start(V[pos][0]);
+		
+	}
+	else if(broj==6) // <lista_deklaracija> ::= <deklaracija>
+	{
+		start(V[pos][0]);
+	}
+	else if(broj==7) // <lista_deklaracija> ::= <lista_deklaracija> <deklaracija>
+	{
+		start(V[pos][0]);
+		start(V[pos][1]);
+	}
+	else if(broj==8) // <deklaracija> ::= <ime_tipa> <lista_init_deklaratora> TOCKAZAREZ
+	{
+		start(V[pos][0]);
+		start(V[pos][1]);
+	}
+	else if(broj==9) // <lista_init_deklaratora> ::= <init_deklarator>
+	{
+		start(V[pos][0]);
+	}
+	else if(broj==10) // <lista_init_deklaratora>1 ::= <lista_init_deklaratora>2 ZAREZ <init_deklarator>
+	{
+		start(V[pos][0]);
+		start(V[pos][2]);
+	}
+	else if(broj==11) // <init_deklarator> ::= <izravni_deklarator>
+	{
+		start(V[pos][0]);
+		//
+	}	
+	else if(broj==12) // <init_deklarator> ::= <izravni_deklarator> OP_PRIDRUZI <inicijalizator>
+	{
+		start(V[pos][0]);
+		start(V[pos][2]);
+	}
+	else if(broj==13) // <izravni_deklarator> ::= IDN
+	{
+	}
+	else if(broj==14) // <izravni_deklarator> ::= IDN L_UGL_ZAGRADA BROJ D_UGL_ZAGRADA
+	{
+	}
+	else if(broj==15) //  <izravni_deklarator> ::= IDN L_ZAGRADA KR_VOID D_ZAGRADA
+	{
+	}
+	else if(broj==16) // <izravni_deklarator> ::= IDN L_ZAGRADA <lista_parametara> D_ZAGRADA
+	{
+		start(V[pos][2]);
+	}
+	else if(broj==17) //  <inicijalizator> ::= <izraz_pridruzivanja>
+	{
+		start(V[pos][0]);
+	}
+	else if(broj==18) // <inicijalizator> ::= L_VIT_ZAGRADA <lista_izraza_pridruzivanja> D_VIT_ZAGRADA
+	{
+		start(V[pos][1]);
+	}
+	else if(broj==19) // <lista_izraza_pridruzivanja> ::= <izraz_pridruzivanja>
+	{
+		start(V[pos][0]);
+	}
+	else if(broj==20) // <lista_izraza_pridruzivanja> ::= <lista_izraza_pridruzivanja> ZAREZ <izraz_pridruzivanja>
+	{
+		start(V[pos][0]);
+		start(V[pos][2]);
+	}
+	else
+	{
+		cout<<getStringToCompare(pos)<<endl;
+		fprintf(stderr,"ERROR: Nisam nasao dobru deklaraciju!\n");
+		exit(404);
+	}
+	
+}
 void popisNaredba(int pos,int broj)
 {
+	printf("%d %d\n",pos,broj);
 	if(broj==0) // <slozena_naredba> ::= L_VIT_ZAGRADA <lista_naredbi> D_VIT_ZAGRADA
 	{
 		start(V[pos][1]);
@@ -398,7 +513,7 @@ void popisIzraza(int pos,int broj)
 	{
 		fprintf(stderr,"GRESKA, NE ZNAM STO DA RADIM??\n");
 		//Provjera deklaracija
-		exit(404);
+		//exit(404);
 	}
 	else if(broj==1) // <primarni_izraz> = BROJ
 	{
@@ -755,11 +870,18 @@ void popisIzraza(int pos,int broj)
 	{
 		fprintf(stderr, "ERROR:  izraz se ne nalazi u izrazima.\n");
 		exit(404);
+	}
 }
 void start(int pos)
 {
 	if(pos>=input.size())return;
+	cout<<getStringToCompare(pos)<<endl;
 	//cout<<input[pos].identifikator<<endl;
+	printf("Pos %d\n",pos);
+	for(int i=0;i<V[pos].size();++i)
+	{
+		printf("djeca %d\n",V[pos][i]);
+	}
 	if(input[pos].jesamLiIzraz())
 	{
 		int broj = izvrsiIzraz(pos);
@@ -783,7 +905,6 @@ void start(int pos)
 	{
 		fprintf(stderr,"Greska: nas izraz se ne nalazi u polju.\n");
 	}
-	start(pos+1);
 }
 int main()
 {

@@ -22,45 +22,28 @@ struct Tip
 	int tip;
 	bool polje;
 	bool konstanta;
+	bool jesamFunkcija;
+	
+	string ime;
+	vector<Tip>tipovi;
+	bool deklaracija;
+	bool definicija;
+	Tip(){}
 	Tip(int _tip,bool _polje, bool _konstanta)
 	{
 		tip = _tip;
 		polje = _polje;
 		konstanta = _konstanta;
+		jesamFunkcija = false;
 	}
-};
-bool relacijaImplicitna(Tip tip1,Tip tip2)
-{
-	// U ~ V
-	//ako se U moze prebaciti u V
-	if(tip1.konstanta && !tip2.konstanta && tip1.tip==tip2.tip && tip1.polje==false && tip2.polje==false) return true;
-	if(!tip1.konstanta && !tip2.konstanta && tip1.tip==KR_INT && tip2.tip==KR_CHAR && tip1.polje==false && tip2.polje==false) return true;
-	if(!tip1.konstanta && !tip2.konstanta && tip2.tip==KR_INT && tip1.tip==KR_CHAR && tip1.polje==false && tip2.polje==false) return true;
-	if(!tip1.konstanta && tip2.konstanta && tip1.tip==tip2.tip && tip1.polje && tip2.polje) return true;
-	return false;
-}
-struct Varijabla
-{
-	string ime;
-	int tip;
-	bool konstanta;
-	
-	Varijabla(string _ime, int _tip, bool _konstanta)
+	bool operator==(Tip A)
 	{
+		return tip==A.tip && polje==A.polje && konstanta==A.konstanta;
+	}
+	Tip(string _ime, vector<Tip>_tipovi)
+	{
+		jesamFunkcija = true;
 		ime = _ime;
-		tip = _tip;
-		konstanta = _konstanta;
-	}
-};
-struct Funkcija
-{
-	string naziv;
-	vector<Tip>tipovi;
-	bool deklaracija;
-	bool definicija;
-	Funkcija(string _naziv, vector<Tip>_tipovi)
-	{
-		naziv = _naziv;
 		tipovi.clear();
 		for(int i=0;i<_tipovi.size();++i)
 			tipovi.push_back(_tipovi[i]);
@@ -76,7 +59,26 @@ struct Funkcija
 		deklaracija = true;
 	}
 };
-
+bool relacijaImplicitna(Tip tip1,Tip tip2)
+{
+	// U ~ V
+	//ako se U moze prebaciti u V
+	if(tip1.konstanta && !tip2.konstanta && tip1.tip==tip2.tip && tip1.polje==false && tip2.polje==false) return true;
+	if(!tip1.konstanta && !tip2.konstanta && tip1.tip==KR_INT && tip2.tip==KR_CHAR && tip1.polje==false && tip2.polje==false) return true;
+	if(!tip1.konstanta && !tip2.konstanta && tip2.tip==KR_INT && tip1.tip==KR_CHAR && tip1.polje==false && tip2.polje==false) return true;
+	if(!tip1.konstanta && tip2.konstanta && tip1.tip==tip2.tip && tip1.polje && tip2.polje) return true;
+	return false;
+}
+struct Varijabla
+{
+	string ime;
+	Tip tip;
+	Varijabla(string _ime,Tip _tip)
+	{
+		ime = _ime;
+		tip = _tip;
+	}
+};
 int razmak(string s)
 {
 	int cnt = 0;
@@ -182,16 +184,54 @@ struct Input
 struct Semantika
 {
 	int l_izraz;
-	Tip tip = Tip(KR_INT,false,false);
+	Tip tip;
+	Tip ntip;
+	string ime;
+	int br_elem;
+	vector<string>imena;
+	vector<Tip>tipovi;
 	Semantika()
 	{
 		 
 	};
 };
+struct Djelokrug
+{
+	int parent;
+	vector<Varijabla>varijable;
+	Djelokrug(int _parent)
+	{
+		parent = _parent;
+	}
+};
+int AKTIVNI_DJELOKRUG=0;
+int AKTIVNE_PETLJE = 0;
+vector<Djelokrug>djelokrugovi;
 vector<pair<string,int> >ulaz[5000];
 vector<int>V[10000];
 vector<Input>input;
 vector<Semantika>semantika;
+bool usporedbaParametara(vector<Tip> tipoviFunkcije, vector<Tip>tipoviParam)
+{
+	for(int i=0;i<tipoviParam.size();++i)
+	{
+		if(!(tipoviParam[i] == tipoviFunkcije[i]))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+bool findTheVariable(Varijabla varijabla,int poc)
+{
+	for(int i=0;i<djelokrugovi[poc].varijable.size();++i)
+	{
+		if(djelokrugovi[poc].varijable[i].ime.compare(varijabla.ime)==0)
+			return true;
+	}
+	if(djelokrugovi[poc].parent==-1)return false;
+	return findTheVariable(varijabla, djelokrugovi[poc].parent);
+}
 string getStringToCompare(int pos)
 {
 	string ans = input[pos].identifikator;
@@ -200,6 +240,24 @@ string getStringToCompare(int pos)
 		ans += " " + input[V[pos][i]].identifikator;
 	}
 	return ans;
+}
+void ispis(int pos)
+{
+	string temp = getStringToCompare(pos);
+	cout<<"Pogreska : "<<endl;
+	cout<<pos<<". => "<<temp<<endl;
+	
+	exit(0);
+}
+bool castPromjena(Tip A,Tip B)
+{
+	//4.3.1
+	if(A == Tip(KR_INT, false, false) && A == B)return true;
+	if(A == Tip(KR_CHAR, false, false) && A == B)return true;
+	if(A == Tip(KR_INT, false, false) && B == Tip(KR_CHAR, false, false))
+		return true;
+	
+	return false;
 }
 void init()
 {
@@ -273,15 +331,57 @@ void popisDeklaracija(int pos,int broj)
 	if(broj==0) // <definicija_funkcije> ::= <ime_tipa> IDN L_ZAGRADA KR_VOID D_ZAGRADA <slozena_naredba>
 	{
 		start(V[pos][0]);
+		start(V[pos][1]);
 		if(semantika[V[pos][0]].tip.konstanta == true)
 		{
-			printf("ERROR\n");
-			exit(404);
+			ispis(pos);
+			exit(0);
 		}
 		//provjera definiranih ime funkcije
+		/*bool found = false;
+		for(int i=0;i<djelokrugovi[AKTIVNI_DJELOKRUG].varijable.size();++i)
+		{
+			if(djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].definicija==false && 
+			   djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].ime.compare(semantika[V[pos][1]].ime)!=0)
+			   {}
+			else 
+			{
+				found = true;
+				break;
+			}
+		}
+		if(found)
+		{
+			printf("ERROR\n");exit(0);
+		}
 		//provjera deklariranih
+		found = false;
+		for(int i=0;i<djelokrugovi[AKTIVNI_DJELOKRUG].varijable.size();++i)
+		{
+			if(djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].deklaracija && 
+			   djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].ime.compare(semantika[V[pos][1]].ime)==0)
+			{
+				if(djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].tipovi[0]==Tip(KR_VOID, false, false) && 
+				   djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].tipovi[1]==semantika[V[pos][0]].tip &&
+				   djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].tipovi.size()==2)
+				   {}
+				else found = true;
+			}
+		}
+		if(found)
+		{
+			printf("ERROR\n");exit(0);
+		}
 		//zabiljezi deklaraciju i definiciju
-		start(V[pos][5]);
+		vector<Tip>_tipovi;
+		_tipovi.push_back(Tip(KR_VOID, false, false));
+		_tipovi.push_back(semantika[V[pos][0]].tip);
+		Funkcija F = Funkcija(semantika[V[pos][1]].ime,_tipovi);
+		F.definicija = true;
+		F.deklaracija = true;
+		funkcije.push_back(F);
+		
+		start(V[pos][5]);*/
 	}
 	else if(broj==1) // <definicija_funkcije> ::= <ime_tipa> IDN L_ZAGRADA <lista_parametara> D_ZAGRADA <slozena_naredba>
 	{
@@ -289,29 +389,77 @@ void popisDeklaracija(int pos,int broj)
 		if(semantika[V[pos][0]].tip.konstanta == true)
 		{
 			printf("ERROR\n");
-			exit(404);
+			exit(0);
+		}
+		bool found = false;
+		/*for(int i=0;i<funkcije.size();++i)
+		{
+			if(funkcije[i].ime.compare(semantika[V[pos][1]].ime)==0 && funkcije[i].definicija==true)
+			{
+				found = true;
+			}
+		}*/
+		if(found)
+		{
+			printf("ERROR\n");
+			exit(0);
 		}
 		start(V[pos][3]);
+		start(V[pos][5]);
 		
 	}
 	else if(broj==2) // <lista_parametara> ::= <deklaracija_parametra>
 	{
 		start(V[pos][0]);
+		semantika[pos].tipovi.push_back(semantika[V[pos][0]].tip);
+		semantika[pos].imena.push_back(semantika[V[pos][0]].ime);
 	}
 	else if(broj==3) // <lista_parametara> ::= <lista_parametara> ZAREZ <deklaracija_parametra>
 	{
 		start(V[pos][0]);
 		start(V[pos][2]);
+		bool found = false;
+		for(int i=0;i<semantika[V[pos][0]].imena.size();++i)
+		{
+			if(semantika[V[pos][2]].ime.compare(semantika[V[pos][0]].imena[i])==0)
+				found = true;
+		}
+		if(found)
+		{
+			printf("ERROR\n");exit(0);
+		}
+		semantika[pos].tipovi.clear();
+		semantika[pos].imena.clear();
+		for(int i=0;i<semantika[V[pos][0]].imena.size();++i)
+		{
+			semantika[pos].imena.push_back(semantika[V[pos][0]].imena[i]);
+			semantika[pos].tipovi.push_back(semantika[V[pos][0]].tipovi[i]);
+		}
+		semantika[pos].imena.push_back(semantika[V[pos][2]].ime);
+		semantika[pos].tipovi.push_back(semantika[V[pos][2]].tip);
 	}
 	else if(broj==4) // <deklaracija_parametra> ::= <ime_tipa> IDN
 	{
 		start(V[pos][0]);
+		start(V[pos][1]);
+		if(semantika[V[pos][0]].tip.tip==KR_VOID)
+		{
+			printf("ERROR\n");exit(0);
+		}
 		semantika[pos].tip = semantika[V[pos][0]].tip;
+		semantika[pos].ime = semantika[V[pos][1]].ime;
 		//semantika[pos].ime = 
 	}
 	else if(broj==5) // <deklaracija_parametra> ::= <ime_tipa> IDN L_UGL_ZAGRADA D_UGL_ZAGRADA
 	{
 		start(V[pos][0]);
+		start(V[pos][1]);
+		if(semantika[V[pos][0]].tip.tip==KR_VOID)
+		{
+			printf("ERROR\n");exit(0);
+		}
+		semantika[pos].tip = semantika[V[pos][0]].tip;
+		semantika[pos].ime = semantika[V[pos][1]].ime;
 		
 	}
 	else if(broj==6) // <lista_deklaracija> ::= <deklaracija>
@@ -326,21 +474,30 @@ void popisDeklaracija(int pos,int broj)
 	else if(broj==8) // <deklaracija> ::= <ime_tipa> <lista_init_deklaratora> TOCKAZAREZ
 	{
 		start(V[pos][0]);
+		semantika[V[pos][1]].tip = semantika[V[pos][0]].tip;
 		start(V[pos][1]);
 	}
 	else if(broj==9) // <lista_init_deklaratora> ::= <init_deklarator>
 	{
+		semantika[V[pos][0]].tip = semantika[pos].tip;
 		start(V[pos][0]);
 	}
 	else if(broj==10) // <lista_init_deklaratora>1 ::= <lista_init_deklaratora>2 ZAREZ <init_deklarator>
 	{
+		semantika[V[pos][0]].tip = semantika[pos].tip;
 		start(V[pos][0]);
+		semantika[V[pos][2]].tip = semantika[pos].tip;
 		start(V[pos][2]);
 	}
 	else if(broj==11) // <init_deklarator> ::= <izravni_deklarator>
 	{
+		semantika[V[pos][0]].tip = semantika[pos].tip;
 		start(V[pos][0]);
-		//
+		if(semantika[V[pos][0]].tip.konstanta || 
+		  (semantika[V[pos][0]].tip.konstanta && semantika[V[pos][0]].tip.polje))
+		{
+			ispis(pos);
+		}
 	}	
 	else if(broj==12) // <init_deklarator> ::= <izravni_deklarator> OP_PRIDRUZI <inicijalizator>
 	{
@@ -349,9 +506,41 @@ void popisDeklaracija(int pos,int broj)
 	}
 	else if(broj==13) // <izravni_deklarator> ::= IDN
 	{
+		start(V[pos][0]);
+		if(semantika[pos].tip.tip==KR_VOID)
+			ispis(pos);
+		bool find = false;
+		for(int i=0;i<djelokrugovi[AKTIVNI_DJELOKRUG].varijable.size();++i)
+		{
+			Varijabla temp = djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i];
+			if(temp.ime.compare(semantika[V[pos][0]].ime)==0)
+				find = true;
+		}
+		if(find) ispis(pos);
+		Varijabla _varijabla = Varijabla(semantika[V[pos][0]].ime,semantika[pos].tip);
+		djelokrugovi[AKTIVNI_DJELOKRUG].varijable.push_back(_varijabla);
 	}
 	else if(broj==14) // <izravni_deklarator> ::= IDN L_UGL_ZAGRADA BROJ D_UGL_ZAGRADA
 	{
+		if(semantika[pos].tip.tip==KR_VOID)ispis(pos);
+		start(V[pos][0]);
+		bool find = false;
+		for(int i=0;i<djelokrugovi[AKTIVNI_DJELOKRUG].varijable.size();++i)
+		{
+			Varijabla temp = djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i];
+			if(temp.ime.compare(semantika[V[pos][0]].ime)==0)
+				find = true;
+		}
+		if(find) ispis(pos);
+		if(!rasponBroja(input[V[pos][2]].ostalo,"1","1024"))ispis(pos);
+		
+		Tip _tip;
+		_tip.tip =  semantika[pos].tip.tip;
+		_tip.polje = true;
+		_tip.konstanta = semantika[pos].tip.konstanta;
+		Varijabla _varijabla = Varijabla(semantika[V[pos][0]].ime,_tip);
+		djelokrugovi[AKTIVNI_DJELOKRUG].varijable.push_back(_varijabla);
+		
 	}
 	else if(broj==15) //  <izravni_deklarator> ::= IDN L_ZAGRADA KR_VOID D_ZAGRADA
 	{
@@ -381,7 +570,7 @@ void popisDeklaracija(int pos,int broj)
 	{
 		cout<<getStringToCompare(pos)<<endl;
 		fprintf(stderr,"ERROR: Nisam nasao dobru deklaraciju!\n");
-		exit(404);
+		exit(0);
 	}
 	
 }
@@ -390,12 +579,20 @@ void popisNaredba(int pos,int broj)
 	printf("%d %d\n",pos,broj);
 	if(broj==0) // <slozena_naredba> ::= L_VIT_ZAGRADA <lista_naredbi> D_VIT_ZAGRADA
 	{
+		Djelokrug D = Djelokrug(AKTIVNI_DJELOKRUG);
+		djelokrugovi.push_back(D);
+		AKTIVNI_DJELOKRUG = djelokrugovi.size() - 1;
 		start(V[pos][1]);
+		AKTIVNI_DJELOKRUG = djelokrugovi[AKTIVNI_DJELOKRUG].parent;
 	}
 	else if(broj==1) // <slozena_naredba> ::= L_VIT_ZAGRADA <lista_deklaracija> <lista_naredbi> D_VIT_ZAGRADA
 	{
+		Djelokrug D = Djelokrug(AKTIVNI_DJELOKRUG);
+		djelokrugovi.push_back(D);
+		AKTIVNI_DJELOKRUG = djelokrugovi.size() - 1;
 		start(V[pos][1]);
 		start(V[pos][2]);
+		AKTIVNI_DJELOKRUG = djelokrugovi[AKTIVNI_DJELOKRUG].parent;
 	}
 	else if(broj==2) // <lista_naredbi> ::= <naredba>
 	{
@@ -438,43 +635,73 @@ void popisNaredba(int pos,int broj)
 	else if(broj==11) // KR_IF L_ZAGRADA <izraz> D_ZAGRADA <naredba>
 	{
 		start(V[pos][2]);
-		//relacijaImplicitna(semantika[V[pos][2]].tip, Tip(KR_INT, false, false))
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip, Tip(KR_INT, false, false)))
+		{
+			printf("ERROR\n");exit(0);
+		}
 		start(V[pos][4]);
 	}
 	else if(broj==12) //<naredba_grananja> ::= KR_IF L_ZAGRADA <izraz> D_ZAGRADA <naredba>1 KR_ELSE <naredba>2
 	{
 		start(V[pos][2]);
-		//relacijaImplicitna(semantika[V[pos][2]].tip, Tip(KR_INT, false, false))
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip, Tip(KR_INT, false, false)))
+		{
+			printf("ERROR\n");exit(0);
+		}
 		start(V[pos][4]);
 		start(V[pos][6]);
 	}
 	else if(broj==13) // <naredba_petlje> ::= KR_WHILE L_ZAGRADA <izraz> D_ZAGRADA <naredba>
 	{
 		start(V[pos][2]);
-		//relacijaImplicitna(semantika[V[pos][2]].tip, Tip(KR_INT,false,false))
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip, Tip(KR_INT,false,false)))
+		{
+			printf("ERROR\n");exit(0);
+		}
+		AKTIVNE_PETLJE++;
 		start(V[pos][4]);
+		AKTIVNE_PETLJE--;
 	}
 	else if(broj==14) // <naredba_petlje> ::= KR_FOR L_ZAGRADA <izraz_naredba>1 <izraz_naredba>2 D_ZAGRADA <naredba>
 	{
 		start(V[pos][2]);
 		start(V[pos][3]);
-		//relacijaImplicitna(semantika[V[pos][3]].tip, Tip(KR_INT, false, false))
+		if(!relacijaImplicitna(semantika[V[pos][3]].tip, Tip(KR_INT, false, false)))
+		{
+			printf("ERROR\n");exit(0);
+		}
+		AKTIVNE_PETLJE++;
 		start(V[pos][5]);
+		AKTIVNE_PETLJE--;
 	}
 	else if(broj==15)  //KR_FOR L_ZAGRADA <izraz_naredba>1 <izraz_naredba>2 <izraz> D_ZAGRADA <naredba>
 	{
 		start(V[pos][2]);
 		start(V[pos][3]);
-		//relacijaImplicitna(semantika[V[pos][3]].tip, Tip(KR_INT, false, false))
+		if(!relacijaImplicitna(semantika[V[pos][3]].tip, Tip(KR_INT, false, false)))
+		{
+			printf("ERROR\n");exit(0);
+		}
 		start(V[pos][4]);
+		AKTIVNE_PETLJE++;
 		start(V[pos][6]);
+		AKTIVNE_PETLJE--;
 	}
 	else if(broj==16) // <naredba_skoka> ::= (KR_CONTINUE  TOCKAZAREZ
 	{
+		if(AKTIVNE_PETLJE == 0)
+		{
+			printf("ERROR\n");exit(0);
+		}
 		// naredba se nalazi unutar petlje ili bloka koji je u petlji 
 	}
 	else if(broj==23) // <naredba_skoka> ::= (KR_BREAK  TOCKAZAREZ
-	{}
+	{
+		if(AKTIVNE_PETLJE == 0)
+		{
+			printf("ERROR\n");exit(0);
+		}
+	}
 	else if(broj==17) // <naredba_skoka> ::= KR_RETURN TOCKAZAREZ
 	{
 		//nalazi se unutar funkcije params -> void
@@ -504,26 +731,45 @@ void popisNaredba(int pos,int broj)
 	else 
 	{
 		fprintf(stderr, "Nisam nasao produkciju u naredbenoj strukuturi\n");
-		exit(404);
+		exit(0);
 	}
 }
 void popisIzraza(int pos,int broj)
 {
-	if(broj==0)
+	if(broj==0) // <primarni_izraz> = IDN
 	{
+		start(V[pos][0]);
+		Varijabla Va = Varijabla(semantika[V[pos][0]].ime,Tip());
+		if(!findTheVariable(Va,AKTIVNI_DJELOKRUG))
+		{
+			printf("ERROR NISAM NASAO VARIJABLU\n");exit(0);
+		}
+		semantika[pos].tip = semantika[V[pos][0]].tip;
+		semantika[pos].l_izraz = semantika[V[pos][0]].l_izraz;
+		
 		fprintf(stderr,"GRESKA, NE ZNAM STO DA RADIM??\n");
 		//Provjera deklaracija
-		//exit(404);
+		//exit(0);
 	}
 	else if(broj==1) // <primarni_izraz> = BROJ
 	{
 		semantika[pos].l_izraz = 0;
 		semantika[pos].tip = Tip(KR_INT,false,false);
+		if(!rasponBroja("-2147483648","2147483647"))
+			ispis(pos);
 	}
 	else if(broj==2) // <primarni_izraz> o= ZNAK
 	{
 		semantika[pos].l_izraz = 0;
 		semantika[pos].tip = Tip(KR_CHAR,false,false);
+		if(input[pos].ostalo.length()>2)ispis(pos);
+		if(input[pos].ostalo.length()==2 && 
+		  (input[pos].ostalo=="\t" || input[pos].ostalo=="\n" || 
+		   input[pos].ostalo=="\0" || input[pos].ostalo=="\\" ||
+		   (input[pos].ostalo[0]==92 && input[pos].ostalo[1]==39)
+		    || (input[pos].ostalo[0]==92 && input[pos].ostalo[2]==34))){}
+		else
+			ispis(pos);
 	}
 	else if(broj==3) // <primarni_izraz> = NIZ_ZNAKOVA
 	{
@@ -545,54 +791,130 @@ void popisIzraza(int pos,int broj)
 	else if(broj==6) // <postfiks_izraz> ::= <postfiks_izraz> L_UGL_ZAGRADA <izraz> D_UGL_ZAGRADA
 	{
 		start(V[pos][0]);
+		if(semantika[V[pos][0]].tip.polje==false)
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);
 		if(relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT,false,false))==false)
-		{fprintf(stderr,"ERROR ERROR ERROR\n");}
+		{
+			ispis(pos);
+		}
+		semantika[pos].tip = Tip(semantika[V[pos][0]].tip.tip, false, false);
+		semantika[pos].l_izraz=semantika[V[pos][0]].tip.konstanta?0:1;
 		//nije dovrseno
 	}
 	else if(broj==7) // <postfiks_izraz> ::= <postfiks_izraz> L_ZAGRADA D_ZAGRADA
 	{
 		start(V[pos][0]);
-				
+		
+		if(!(semantika[V[pos][0]].tip.jesamLiFunkcija && 
+		   semantika[V[pos][0]].tip.tipovi[0].tip==KR_VOID && 
+		   semantika[V[pos][0]].tip.tipovi.size()==2))
+		   {
+		   	ispis(pos);
+		   }
+		semantika[pos].tip     = semantika[V[pos][0]].tip.tipovi[semantika[V[pos][0]].tip.tipovi.size()-1];
+		semantika[pos].l_izraz = 0;
+		//semantika[pos].tip = ;
 	}
 	else if(broj==8) // <postfiks_izraz> ::= <postfiks_izraz> L_ZAGRADA <lista_argumenata> D_ZAGRADA
 	{
 		start(V[pos][0]);
 		start(V[pos][2]);
+		
+		if(!(semantika[V[pos][0]].tip.jesamLiFunkcija && 
+		     semantika[V[pos][0]].tip.tipovi.size() == semantika[V[pos][2]].tipovi.size()
+		    )
+	    {
+	    	ispis(pos);
+	    }
+		
+		if(!usporedbaParametar(semantika[V[pos][0]].tip.tipovi,
+		                       semantika[V[pos][2]].tipovi))
+        {
+	    	ispis(pos);
+	    }
+		
+		
+		semantika[pos].tip = semantika[V[pos][0]].tip.tipovi[semantika[V[pos][0]].tip.tipovi.size()-1];
+		semantika[pos].l_izraz = 0;
 	}
 	else if(broj==9) // <postfiks_izraz> ::= <postfiks_izraz> (OP_INC
 	{
 		start(V[pos][0]);
-		
+		if(!(relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT, false, false)) && 
+		   semantika[V[pos][0]].l_izraz == 1))
+		{
+			ispis(pos);
+		}
+		semantika[pos].tip = Tip(KR_INT, false, false);
+		semantika[pos].l_izraz = 0;
 	}
 	else if(broj==10) // <postfiks_izraz> ::= <postfiks_izraz> (OP_DEC
 	{
 		start(V[pos][0]);
+		if(!(relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT, false, false)) && 
+		   semantika[V[pos][0]].l_izraz == 1))
+		{
+			ispis(pos);
+		}
+		semantika[pos].tip = Tip(KR_INT, false, false);
+		semantika[pos].l_izraz = 0;
 	}
 	else if(broj==11) // <lista_argumenata> ::= <izraz_pridruzivanja>
 	{
 		start(V[pos][0]);
+		semantika[pos].tipovi.clear();
+		semantika[pos].tipovi.push_back(semantika[V[pos][0]].tip);
 	}
 	else if(broj==12) // <lista_argumenata> ::= <lista_argumenata> ZAREZ <izraz_pridruzivanja>
 	{
 		start(V[pos][0]);
 		start(V[pos][2]);
+		semantika[pos].tipovi.clear();
+		for(int k=0;k<semantika[V[pos][0]].tipovi.size();++k)
+		{
+			semantika[pos].tipovi.push_back(semantika[V[pos][0]].tipovi[k]);
+		}
+		semantika[pos].tipovi.push_back(semantika[V[pos][2]].tip);
 	}
 	else if(broj==13) // <unarni_izraz> ::= <postfiks_izraz>
 	{
 		start(V[pos][0]);
+		semantika[pos].tip = semantika[V[pos][0]].tip;
+		semantika[pos].l_izraz = semantika[V[pos][0]].l_izraz;
 	}
 	else if(broj==14) //  <unarni_izraz> ::= (OP_INC  <unarni_izraz>
 	{
 		start(V[pos][1]);
+		if(!(semantika[V[pos][1]].l_izraz==1 && relacijaImplicitna(semantika[V[pos][1]].tip,Tip(KR_INT, false, false))))
+		{
+			ispis(pos);
+		}
+		semantika[pos].l_izraz = 0;
+		semantika[pos].tip = Tip(KR_INT, false, false);
 	}
 	else if(broj==15) //  <unarni_izraz> ::= (OP_DEC  <unarni_izraz>
 	{
 		start(V[pos][1]);
+		if(!(semantika[V[pos][1]].l_izraz==1 && relacijaImplicitna(semantika[V[pos][1]].tip,Tip(KR_INT, false, false))))
+		{
+			ispis(pos);
+		}
+		semantika[pos].l_izraz = 0;
+		semantika[pos].tip = Tip(KR_INT, false, false);
 	}
 	else if(broj==16) // <unarni_izraz> ::= <unarni_operator> <cast_izraz>
 	{
 		start(V[pos][1]);
+		if(!relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT, false, false)))
+		{
+			ispis(pos);
+			exit(0);
+		}
+		semantika[pos].tip = Tip(KR_INT, false, false);
+		semantika[pos].l_izraz = 0;
 	}
 	else if(broj==17)// <unarni_operator> plus
 	{}
@@ -605,19 +927,36 @@ void popisIzraza(int pos,int broj)
 	else if(broj==21)// <cast_izraz> ::= <unarni_izraz>
 	{
 		start(V[pos][0]);
+		semantika[pos].tip =semantika[V[pos][0]].tip;
+		semantika[pos].l_izraz = semantika[V[pos][0]].l_izraz;
 	}
 	else if(broj==22) // <cast_izraz> ::= L_ZAGRADA <ime_tipa> D_ZAGRADA <cast_izraz>
 	{
 		start(V[pos][1]);
 		start(V[pos][3]);
+		if(!castPromjena(semantika[V[pos][3]].tip,semantika[V[pos][1]].tip))
+		{
+			ispis(pos);
+			exit(0);
+		}
+		semantika[pos].tip = semantika[V[pos][1]].tip;
+		semantika[pos].l_izraz = 0;
 	}
 	else if(broj==23) // <ime_tipa> ::= <specifikator_tipa>
 	{
 		start(V[pos][0]);
+		semantika[pos].tip = semantika[V[pos][0]].tip;
 	}
 	else if(broj==24) // <ime_tipa> ::= KR_CONST <specifikator_tipa>
 	{
 		start(V[pos][1]);
+		if(semantika[V[pos][1]].tip.tip==KR_VOID)
+		{
+			ispis(pos);
+		}
+		Tip A = Tip(2,false,false);
+		semantika[pos].tip = Tip(semantika[V[pos][0]].tip.tip,semantika[V[pos][0]].tip.polje,true);
+		
 	}
 	else if(broj==25) // <specifikator_tipa> ::= KR_VOID
 	{
@@ -640,27 +979,45 @@ void popisIzraza(int pos,int broj)
 	else if(broj==29) // <multiplikativni_izraz> ::= <multiplikativni_izraz> (OP_PUTA ) <cast_izraz>
 	{
 		start(V[pos][0]);
-		//relacijaImplicitna()
+		if(!relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT, false, false)))
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);	
-		//relacijaImplicitna()
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT, false, false)))
+		{
+			ispis(pos);
+		}
 		semantika[pos].l_izraz=0;
 		semantika[pos].tip = Tip (KR_INT,false,false);
 	}
 	else if(broj==30) // <multiplikativni_izraz> ::= <multiplikativni_izraz> (OP_DIJELI ) <cast_izraz>
 	{
 		start(V[pos][0]);
-		//relacijaImplicitna()
+		if(!relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT, false, false)))
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);	
-		//relacijaImplicitna()
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT, false, false)))
+		{
+			ispis(pos);
+		}
 		semantika[pos].l_izraz=0;
 		semantika[pos].tip = Tip (KR_INT,false,false);
 	}
 	else if(broj==31) // <multiplikativni_izraz> ::= <multiplikativni_izraz> (OP_MOD ) <cast_izraz>
 	{
 		start(V[pos][0]);
-		//relacijaImplicitna()
+		if(!relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT, false, false)))
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);	
-		//relacijaImplicitna()
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT, false, false)))
+		{
+			ispis(pos);
+		}
 		semantika[pos].l_izraz=0;
 		semantika[pos].tip = Tip (KR_INT,false,false);
 	}
@@ -673,18 +1030,30 @@ void popisIzraza(int pos,int broj)
 	else if(broj==33) // <aditivni_izraz> ::= <aditivni_izraz> (MINUS) <multiplikativni_izraz>
 	{
 		start(V[pos][0]);
-		//relacijaImplicitna()
+		if(!relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT, false, false)))
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);
-		//relacijaImplicitna()
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT, false, false)))
+		{
+			ispis(pos);
+		}
 		semantika[pos].tip = Tip (KR_INT,false,false);
 		semantika[pos].l_izraz = 0;
 	}
 	else if(broj==34) // <aditivni_izraz> ::= <aditivni_izraz> (PLUS) <multiplikativni_izraz>
 	{
 		start(V[pos][0]);
-		//relacijaImplicitna()
+		if(!relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT, false, false)))
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);
-		//relacijaImplicitna()
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT, false, false)))
+		{
+			ispis(pos);
+		}
 		semantika[pos].tip = Tip (KR_INT,false,false);
 		semantika[pos].l_izraz = 0;
 	}
@@ -697,36 +1066,64 @@ void popisIzraza(int pos,int broj)
 	else if(broj==36) // <odnosni_izraz> ::= <odnosni_izraz> OP_LT  <aditivni_izraz>
 	{
 		start(V[pos][0]);
-		//relacijaImplicitna(,Tip(KR_INT,false,false))
+		if(!relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT,false,false)))
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);
-		//relacijaImplicitna(,Tip(KR_INT,false,false))
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT,false,false)))
+		{
+			ispis(pos);
+		}
+		
 		semantika[pos].tip = Tip(KR_INT,false,false);	
 		semantika[pos].l_izraz = 0;
 	}
 	else if(broj==37) // <odnosni_izraz> ::= <odnosni_izraz> OP_GT  <aditivni_izraz>
 	{
 		start(V[pos][0]);
-		//relacijaImplicitna(,Tip(KR_INT,false,false))
+		if(!relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT,false,false)))
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);
-		//relacijaImplicitna(,Tip(KR_INT,false,false))
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT,false,false)))
+		{
+			ispis(pos);
+		}
+		
 		semantika[pos].tip = Tip(KR_INT,false,false);	
 		semantika[pos].l_izraz = 0;
 	}
 	else if(broj==38) // <odnosni_izraz> ::= <odnosni_izraz> OP_LTE  <aditivni_izraz>
 	{
 		start(V[pos][0]);
-		//relacijaImplicitna(,Tip(KR_INT,false,false))
+		if(!relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT,false,false)))
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);
-		//relacijaImplicitna(,Tip(KR_INT,false,false))
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT,false,false)))
+		{
+			ispis(pos);
+		}
+		
 		semantika[pos].tip = Tip(KR_INT,false,false);	
 		semantika[pos].l_izraz = 0;
 	}
 	else if(broj==39) // <odnosni_izraz> ::= <odnosni_izraz> OP_GTE  <aditivni_izraz>
 	{
 		start(V[pos][0]);
-		//relacijaImplicitna(,Tip(KR_INT,false,false))
+		if(!relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT,false,false)))
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);
-		//relacijaImplicitna(,Tip(KR_INT,false,false))
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT,false,false)))
+		{
+			ispis(pos);
+		}
+		
 		semantika[pos].tip = Tip(KR_INT,false,false);	
 		semantika[pos].l_izraz = 0;
 	}
@@ -739,20 +1136,34 @@ void popisIzraza(int pos,int broj)
 	else if(broj==41) // <jednakosni_izraz> ::= <jednakosni_izraz> OP_EQ
 	{
 		start(V[pos][0]);
-		//relacijaImplicitna(Tip(KR_INT,false,false))
+		if(!relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT,false,false)))
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);
-		//relacijaImplicitna(Tip(KR_INT,false,false))
-		semantika[pos].tip = semantika[V[pos][0]].tip;
-		semantika[pos].l_izraz = semantika[V[pos][0]].l_izraz;
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT,false,false)))
+		{
+			ispis(pos);
+		}
+		
+		semantika[pos].tip = Tip(KR_INT, false, false);
+		semantika[pos].l_izraz = 0;
 	}
 	else if(broj==42) // <jednakosni_izraz> ::= <jednakosni_izraz> OP_NEQ
 	{
 		start(V[pos][0]);
-		//relacijaImplicitna(Tip(KR_INT,false,false))
+		if(!relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT,false,false)))
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);
-		//relacijaImplicitna(Tip(KR_INT,false,false))
-		semantika[pos].tip = semantika[V[pos][0]].tip;
-		semantika[pos].l_izraz = semantika[V[pos][0]].l_izraz;
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT,false,false)))
+		{
+			ispis(pos);
+		}
+		
+		semantika[pos].tip = Tip(KR_INT, false, false);
+		semantika[pos].l_izraz = 0;
 	}
 	else if(broj==43) // <bin_i_izraz> ::= <jednakosni_izraz>
 	{
@@ -763,10 +1174,15 @@ void popisIzraza(int pos,int broj)
 	else if(broj==44) // <bin_i_izraz> ::= <bin_i_izraz> OP_BIN_I <jednakosni_izraz>
 	{
 		start(V[pos][0]);
-		//relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT,false,false));
+		if(!relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT,false,false)))
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);
-		//relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT,false,false));
-		
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT,false,false)))
+		{
+			ispis(pos);
+		}
 		semantika[pos].tip = Tip(KR_INT,false,false);
 		semantika[pos].l_izraz = 0;
 	}
@@ -779,9 +1195,15 @@ void popisIzraza(int pos,int broj)
 	else if(broj==46) // <bin_xili_izraz> ::= <bin_xili_izraz> OP_BIN_XILI <bin_i_izraz>
 	{
 		start(V[pos][0]);
-		//relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT,false,false))
+		if(!relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT,false,false)))
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);
-		//relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT,false,false))
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT,false,false)))
+		{
+			ispis(pos);
+		}
 		
 		semantika[pos].tip = Tip ( KR_INT, false, false);
 		semantika[pos].l_izraz = 0;
@@ -795,9 +1217,15 @@ void popisIzraza(int pos,int broj)
 	else if(broj==48) // <bin_ili_izraz> ::= <bin_ili_izraz> OP_BIN_ILI <bin_xili_izraz>
 	{
 		start(V[pos][0]);
-		//relacijaImplicitna(semantika[V[pos][0].tip,Tip(KR_INT, false, false))
+		if(!relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT, false, false)))
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);
-		//relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT, false, false))
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT, false, false)))
+		{
+			ispis(pos);
+		}
 		
 		semantika[pos].tip = Tip(KR_INT, false, false);
 		semantika[pos].l_izraz = 0;
@@ -811,9 +1239,15 @@ void popisIzraza(int pos,int broj)
 	else if(broj==50) // <log_i_izraz> ::= <log_i_izraz> OP_I <bin_ili_izraz>
 	{
 		start(V[pos][0]);
-		//relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT, false, false))
+		if(!relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT, false, false)))
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);
-		//relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT, false, false))
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT, false, false)))
+		{
+			ispis(pos);
+		}
 		semantika[pos].tip = Tip(KR_INT, false, false);
 		semantika[pos].l_izraz = 0;
 	}
@@ -827,9 +1261,15 @@ void popisIzraza(int pos,int broj)
 	else if(broj==52) // <log_ili_izraz> ::= <log_ili_izraz> OP_ILI <log_i_izraz>
 	{
 		start(V[pos][0]);
-		//relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT, false, false))
+		if(!relacijaImplicitna(semantika[V[pos][0]].tip,Tip(KR_INT, false, false)))
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);
-		//relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT, false, false))
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT, false, false)))
+		{
+			ispis(pos);
+		}
 		
 		semantika[pos].tip = Tip(KR_INT, false, false);
 		semantika[pos].l_izraz = 0;
@@ -844,9 +1284,15 @@ void popisIzraza(int pos,int broj)
 	else if(broj==54) // <izraz_pridruzivanja> ::= <postfiks_izraz> OP_PRIDRUZI <izraz_pridruzivanja>
 	{
 		start(V[pos][0]);
-		//if(semantika[V[pos][0]].l_izraz == 1) 
+		if(semantika[V[pos][0]].l_izraz != 1) 
+		{
+			ispis(pos);
+		}
 		start(V[pos][2]);
-		//relacijaImplicitna(semantika[V[pos][2]].tip, semantika[V[pos][0]].tip)
+		if(!relacijaImplicitna(semantika[V[pos][2]].tip, semantika[V[pos][0]].tip))
+		{
+			ispis(pos);
+		}
 		
 		semantika[pos].tip = semantika[V[pos][0]].tip;
 		semantika[pos].l_izraz = 0;
@@ -869,7 +1315,7 @@ void popisIzraza(int pos,int broj)
 	else
 	{
 		fprintf(stderr, "ERROR:  izraz se ne nalazi u izrazima.\n");
-		exit(404);
+		exit(0);
 	}
 }
 void start(int pos)
@@ -899,7 +1345,26 @@ void start(int pos)
 	}
 	else if(input[pos].identifikator[0]!='<')
 	{
-		fprintf(stderr,"Greska: ovo se ne bi trebalo dogoditi.\n");
+		if(input[pos].identifikator.compare("IDN")==0)
+		{
+			semantika[pos].ime=input[pos].ostalo;
+			for(int k=0;k<djelokrugovi[AKTIVNI_DJELOKRUG].varijable.size();++k)
+			{
+				if(djelokrugovi[AKTIVNI_DJELOKRUG].varijable[k].ime.compare(semantika[pos].ime)==0)
+				{
+					if((djelokrugovi[AKTIVNI_DJELOKRUG].varijable[k].tip.tip==KR_INT ||
+					    djelokrugovi[AKTIVNI_DJELOKRUG].varijable[k].tip.tip==KR_CHAR) && 
+						djelokrugovi[AKTIVNI_DJELOKRUG].varijable[k].tip.konstanta==false)
+						{
+							semantika[pos].l_izraz = 1;
+							break;
+						}
+					else semantika[pos].l_izraz = 0;
+				}
+			}
+		}
+		else
+			fprintf(stderr,"Greska: ovo se ne bi trebalo dogoditi.\n");
 	}
 	else
 	{
@@ -932,6 +1397,9 @@ int main()
 		semantika.push_back(S);
 	}
 	init();
+	Djelokrug D = Djelokrug(-1);
+	djelokrugovi.push_back(D);
+	AKTIVNI_DJELOKRUG = 0;
 	start(0);
 	return 0;
 }

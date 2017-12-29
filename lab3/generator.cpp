@@ -266,6 +266,7 @@ bool castPromjena(Tip A,Tip B)
 	
 	return false;
 }
+
 bool usporedbaParametara(vector<Tip> _tipovi1, vector<Tip> _tipovi2)
 {
 	if(_tipovi1.size()!=_tipovi2.size())
@@ -279,32 +280,50 @@ bool usporedbaParametara(vector<Tip> _tipovi1, vector<Tip> _tipovi2)
 }
 void init()
 {
-	ifstream inFile;
-	inFile.open("pom.txt");
+	ifstream inFile ("pom.txt");
 	string temp = "";
 	while(getline(inFile,temp))
 	{
-		funkcijeNaredbe.push_back(temp);
+		string t1="";
+		for(int i=0;i<temp.length();++i)
+		{
+			if(temp[i]!=13)
+				t1+=temp[i];
+		}
+		funkcijeNaredbe.push_back(t1);
 		//cout<<temp<<endl;
 	}
 	inFile.close();
 	
-	inFile.open("pom2.txt");
+	ifstream inFile2 ("pom2.txt");
 	temp = "";
-	while(getline(inFile,temp))
+	while(getline(inFile2,temp))
 	{
-		funkcijeDeklaracije.push_back(temp);
+		string t1="";
+		for(int i=0;i<temp.length();++i)
+		{
+			if(temp[i]!=13)
+				t1+=temp[i];
+		}
+		funkcijeDeklaracije.push_back(t1);
 		//cout<<temp<<endl;
 	}
-	inFile.close();
-	inFile.open("pom3.txt");
+	inFile2.close();
+	ifstream inFile3 ("pom3.txt");
 	temp = "";
-	while(getline(inFile,temp))
+	while(getline(inFile3,temp))
 	{
-		funkcijeIzrazi.push_back(temp);
+		string t1="";
+		for(int i=0;i<temp.length();++i)
+		{
+			if(temp[i]!=13)
+				t1+=temp[i];
+		}
+		funkcijeIzrazi.push_back(t1);
 		//cout<<temp<<endl;
 	}
-	inFile.close();
+	inFile3.close();
+	printf("%d %d %d\n",funkcijeDeklaracije.size(),funkcijeNaredbe.size(),funkcijeIzrazi.size());
 }
 
 int izvrsiIzraz(int pos)
@@ -572,7 +591,7 @@ void popisDeklaracija(int pos,int broj)
 				find = true;
 		}
 		if(find) ispis(pos);
-	//	if(!rasponBroja(input[V[pos][2]].ostalo,"1","1024"))
+		//if(!rasponBroja(input[V[pos][2]].ostalo,"1","1024"))
 	//		ispis(pos);
 		
 		Tip _tip;
@@ -582,13 +601,91 @@ void popisDeklaracija(int pos,int broj)
 		Varijabla _varijabla = Varijabla(semantika[V[pos][0]].ime,_tip);
 		djelokrugovi[AKTIVNI_DJELOKRUG].varijable.push_back(_varijabla);
 		
+		semantika[pos].br_elem = 1024;
+		
 	}
 	else if(broj==15) //  <izravni_deklarator> ::= IDN L_ZAGRADA KR_VOID D_ZAGRADA
 	{
+		start(V[pos][0]);
+		for(int i=0;i<djelokrugovi[AKTIVNI_DJELOKRUG].varijable.size();++i)
+		{
+			if(djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].ime.compare(semantika[V[pos][0]].ime)==0)
+			{
+				if(!(djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].tip.jesamFunkcija && 
+				djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].tip.tipovi.size()==2 && 
+				djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].tip.tipovi[0]==Tip(KR_VOID,false,false) &&
+				djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].tip.tipovi[1]==semantika[pos].tip))
+				{
+					ispis(pos);
+				}
+			}
+		}
+		vector<Tip> _tipovi;
+		_tipovi.push_back(Tip(KR_VOID,false,false));
+		_tipovi.push_back(semantika[pos].tip);
+		Tip F = Tip(semantika[V[pos][0]].ime,_tipovi);
+		F.deklaracija = true;
+		
+		semantika[pos].tip = F;
+		
+		bool find = false;
+		for(int i=0;i<djelokrugovi[AKTIVNI_DJELOKRUG].varijable.size();++i)
+		{
+			if(djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].ime.compare(semantika[V[pos][0]].ime)==0)
+			{
+				find = true;
+				break;
+			}
+		}
+		if(!find)
+		{
+			djelokrugovi[AKTIVNI_DJELOKRUG].varijable.push_back(Varijabla(semantika[V[pos][0]].ime,F));
+		}
 	}
 	else if(broj==16) // <izravni_deklarator> ::= IDN L_ZAGRADA <lista_parametara> D_ZAGRADA
 	{
 		start(V[pos][2]);
+		start(V[pos][0]);
+		for(int i=0;i<djelokrugovi[AKTIVNI_DJELOKRUG].varijable.size();++i)
+		{
+			if(djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].ime.compare(semantika[V[pos][0]].ime)==0)
+			{
+				bool _ok = true;
+				if(djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].tip.tipovi.size()-1==semantika[V[pos][2]].tipovi.size())
+				for(int j=0;j<djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].tip.tipovi.size()-1;++j)
+				{
+					if(!(djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].tip.tipovi[j]==semantika[V[pos][2]].tipovi[j]))
+						_ok = false;
+				}
+				else _ok = false;
+				if(!(djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].tip.jesamFunkcija &&
+				    _ok))
+				    ispis(pos);
+			}
+		}
+		
+		vector<Tip> _tipovi;
+		for(int i=0;i<semantika[V[pos][2]].tipovi.size();++i)
+			_tipovi.push_back(semantika[V[pos][2]].tipovi[i]);
+		_tipovi.push_back(semantika[pos].tip);
+		Tip F = Tip(semantika[V[pos][0]].ime,_tipovi);
+		F.deklaracija = true;
+		
+		semantika[pos].tip = F;
+		
+		bool find = false;
+		for(int i=0;i<djelokrugovi[AKTIVNI_DJELOKRUG].varijable.size();++i)
+		{
+			if(djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].ime.compare(semantika[V[pos][0]].ime)==0)
+			{
+				find = true;
+				break;
+			}
+		}
+		if(!find)
+		{
+			djelokrugovi[AKTIVNI_DJELOKRUG].varijable.push_back(Varijabla(semantika[V[pos][0]].ime,F));
+		}
 	}
 	else if(broj==17) //  <inicijalizator> ::= <izraz_pridruzivanja>
 	{
@@ -597,15 +694,28 @@ void popisDeklaracija(int pos,int broj)
 	else if(broj==18) // <inicijalizator> ::= L_VIT_ZAGRADA <lista_izraza_pridruzivanja> D_VIT_ZAGRADA
 	{
 		start(V[pos][1]);
+		semantika[pos].tipovi.clear();
+		for(int i=0;i<semantika[V[pos][1]].tipovi.size();++i)
+			semantika[pos].tipovi.push_back(semantika[V[pos][1]].tipovi[i]);
+		semantika[pos].br_elem = semantika[V[pos][1]].br_elem;
 	}
 	else if(broj==19) // <lista_izraza_pridruzivanja> ::= <izraz_pridruzivanja>
 	{
 		start(V[pos][0]);
+		semantika[pos].br_elem = 1;
+		semantika[pos].tipovi.clear();
+		semantika[pos].tipovi.push_back(semantika[V[pos][0]].tip);
 	}
 	else if(broj==20) // <lista_izraza_pridruzivanja> ::= <lista_izraza_pridruzivanja> ZAREZ <izraz_pridruzivanja>
 	{
 		start(V[pos][0]);
 		start(V[pos][2]);
+		
+		semantika[pos].br_elem = semantika[V[pos][0]].br_elem + 1;
+		semantika[pos].tipovi.clear();
+		for(int i=0;i<semantika[V[pos][0]].tipovi.size();++i)
+			semantika[pos].tipovi.push_back(semantika[V[pos][0]].tipovi[i]);
+		semantika[pos].tipovi.push_back(semantika[V[pos][2]].tip);
 	}
 	else
 	{
@@ -785,6 +895,7 @@ void popisNaredba(int pos,int broj)
 	else 
 	{
 		fprintf(stderr, "Nisam nasao produkciju u naredbenoj strukuturi\n");
+		ispis(pos);
 		exit(0);
 	}
 }

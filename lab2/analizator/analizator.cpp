@@ -292,8 +292,8 @@ int main()
 		{
 			/*printf("%d/%d\n",pos,ulazniZnakovi.size());
 			cout<<"Znak "<<ulazniZnakovi[pos]<<endl;*/
-			printf("ODBACEN NIZ!!!!\n");
-			printf("Oporavak\n");
+			/*printf("ODBACEN NIZ!!!!\n");
+			printf("Oporavak\n");*/
 			//++pos;
 			
 			for(int i=pos;i<ulazniZnakovi.size();++i)

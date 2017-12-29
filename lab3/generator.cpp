@@ -7,6 +7,7 @@
 #include <stack>
 #include <string>
 #include <utility>
+#include <sstream> 
 #include <fstream>
 using namespace std;
 int KR_INT = 1;
@@ -237,7 +238,7 @@ bool findTheVariable(Varijabla varijabla,int poc)
 {
 	for(int i=0;i<djelokrugovi[poc].varijable.size();++i)
 	{
-		//cout<<"Ime varijable spremljene u memoriji "<<djelokrugovi[poc].varijable[i].ime<< " polje "<<djelokrugovi[poc].varijable[i].tip.polje<<" funckija "<<djelokrugovi[poc].varijable[i].tip.jesamFunkcija<<endl;
+		cout<<"Ime varijable spremljene u memoriji "<<djelokrugovi[poc].varijable[i].ime<< " polje "<<djelokrugovi[poc].varijable[i].tip.polje<<" funckija "<<djelokrugovi[poc].varijable[i].tip.jesamFunkcija<<endl;
 		if(djelokrugovi[poc].varijable[i].ime.compare(varijabla.ime)==0)
 			return true;
 	}
@@ -253,6 +254,32 @@ Tip getTheVariable(Varijabla varijabla,int poc)
 			return djelokrugovi[poc].varijable[i].tip;
 	}
 	return getTheVariable(varijabla, djelokrugovi[poc].parent);
+}
+bool rasponBroja(string S,int mini, int maxi)
+{
+	int val = 0;
+	int poc = 0;
+	if(S[0]=='-')poc = 1;
+	for(int i=poc;i<S.length();++i)
+	{
+		val = val*10 + (S[i]-'0');
+	}
+	if(S[0]=='-')
+		val = -val;
+	
+	stringstream ss;
+	ss << val;
+	string str = ss.str();
+	if(str.length()!=S.length())
+		return false;
+	for(int i=0;i<str.length();++i)
+	{
+		if(str[i]!=S[i])
+			return false;
+	}
+	if(val <= maxi && val >=mini)
+		return true;
+	return false;
 }
 string getStringToCompare(int pos)
 {
@@ -276,6 +303,21 @@ string getStringToPrint(int pos)
 		}
 	}
 	return ans;
+}
+int usporedba(string S,string Q)
+{
+	cout<<S<<endl;
+	cout<<Q<<endl;
+	cout<<S.length()<<","<<Q.length()<<endl;
+	if(Q.length()!=S.length())
+		return -1;
+	
+	for(int i=0;i<S.length();++i)
+	{
+		if(S[i]!=Q[i])
+			return -1;
+	}
+	return 0;
 }
 void ispis(int pos)
 {
@@ -304,9 +346,8 @@ int dalje(int pos,string S)
 }
 bool usporedbaParametara(vector<Tip> _tipovi1, vector<Tip> _tipovi2)
 {
-	if(_tipovi1.size()!=_tipovi2.size())
-		return false;
-	for(int i=0;i<_tipovi1.size();++i)
+
+	for(int i=0;i<_tipovi1.size()-1;++i)
 	{
 		if(!relacijaImplicitna(_tipovi1[i],_tipovi2[i]))
 			return false;
@@ -651,8 +692,8 @@ void popisDeklaracija(int pos,int broj)
 				find = true;
 		}
 		if(find) ispis(pos);
-		//if(!rasponBroja(input[V[pos][2]].ostalo,"1","1024"))
-	//		ispis(pos);
+		if(!rasponBroja(input[V[pos][2]].ostalo,1,1024))
+			ispis(pos);
 		
 		Tip _tip;
 		_tip.tip =  semantika[pos].tip.tip;
@@ -754,7 +795,7 @@ void popisDeklaracija(int pos,int broj)
 		if(pozicija!=-1)
 		{
 			fprintf(stderr,"Prolazim kroz nesiguran kod .....\n");
-			semantika[pos].br_elem = input[pozicija].ostalo.length() + 1;
+			semantika[pos].br_elem = input[pozicija].ostalo.length() - 2 + 1; //za navodnike
 			semantika[pos].tipovi.clear();
 			for(int i=0;i<semantika[pos].br_elem;++i)
 				semantika[pos].tipovi.push_back(Tip(KR_CHAR,false,false));
@@ -980,11 +1021,13 @@ void popisIzraza(int pos,int broj)
 		Varijabla Va = Varijabla(semantika[V[pos][0]].ime,Tip());
 		if(!findTheVariable(Va,AKTIVNI_DJELOKRUG))
 		{
-			printf("ERROR NISAM NASAO VARIJABLU\n");exit(0);
+			cout<<Va.ime<<endl;
+			printf("ERROR NISAM NASAO VARIJABLU\n");
+			ispis(pos);
 		}
 		Tip T = getTheVariable(Varijabla(semantika[V[pos][0]].ime,Tip()),AKTIVNI_DJELOKRUG);
 		semantika[pos].tip = T;
-		semantika[pos].l_izraz = semantika[V[pos][0]].l_izraz;
+		semantika[pos].l_izraz = 1;
 		
 		fprintf(stderr,"GRESKA, NE ZNAM STO DA RADIM??\n");
 		//Provjera deklaracija
@@ -994,21 +1037,28 @@ void popisIzraza(int pos,int broj)
 	{
 		semantika[pos].l_izraz = 0;
 		semantika[pos].tip = Tip(KR_INT,false,false);
-		/*if(!rasponBroja("-2147483648","2147483647"))
-			ispis(pos);*/
+		if(!rasponBroja(input[V[pos][0]].ostalo,-2147483648,2147483647))
+			ispis(pos);
 	}
 	else if(broj==2) // <primarni_izraz> o= ZNAK
 	{
+		
 		semantika[pos].l_izraz = 0;
 		semantika[pos].tip = Tip(KR_CHAR,false,false);
-		if(input[pos].ostalo.length()>2)ispis(pos);
-		if(input[pos].ostalo.length()==2 && 
-		  (input[pos].ostalo=="\t" || input[pos].ostalo=="\n" || 
-		   input[pos].ostalo=="\0" || input[pos].ostalo=="\\" ||
-		   (input[pos].ostalo[0]==92 && input[pos].ostalo[1]==39)
-		    || (input[pos].ostalo[0]==92 && input[pos].ostalo[2]==34))){}
-		else
+		
+		if(input[V[pos][0]].ostalo.length()-2>2)ispis(pos);
+		if(input[V[pos][0]].ostalo.length()==4 && 
+		  (
+		  	(input[V[pos][0]].ostalo[1]==92 && input[V[pos][0]].ostalo[2]==116) || 
+			(input[V[pos][0]].ostalo[1]==92 && input[V[pos][0]].ostalo[2]==110) || 
+		    (input[V[pos][0]].ostalo[1]==92 && input[V[pos][0]].ostalo[2]==48) || 
+			(input[V[pos][0]].ostalo[1]==92 && input[V[pos][0]].ostalo[2]==92) ||
+		   (input[V[pos][0]].ostalo[1]==92 && input[V[pos][0]].ostalo[2]==39)
+		    || (input[V[pos][0]].ostalo[1]==92 && input[V[pos][0]].ostalo[2]==34))){}
+		else if(input[V[pos][0]].ostalo.length()==4)
 			ispis(pos);
+		else
+		{}
 	}
 	else if(broj==3) // <primarni_izraz> = NIZ_ZNAKOVA
 	{
@@ -1066,16 +1116,20 @@ void popisIzraza(int pos,int broj)
 		start(V[pos][2]);
 		
 		if(!(semantika[V[pos][0]].tip.jesamFunkcija && 
-		     semantika[V[pos][0]].tip.tipovi.size() == semantika[V[pos][2]].tipovi.size()
+		     semantika[V[pos][0]].tip.tipovi.size() -1 == semantika[V[pos][2]].tipovi.size()
 		    ))
 	    {
-	    	ispis(pos);
+	    	fprintf(stderr,"%d %d %d\n",semantika[V[pos][0]].tip.jesamFunkcija,
+	    				semantika[V[pos][0]].tip.tipovi.size(),
+	    				semantika[V[pos][2]].tipovi.size());
+			ispis(pos);
 	    }
 		
 		if(!usporedbaParametara(semantika[V[pos][0]].tip.tipovi,
 		                       semantika[V[pos][2]].tipovi))
         {
-	    	ispis(pos);
+	    	fprintf(stderr,"Krivi parametri.\n");
+			ispis(pos);
 	    }
 		
 		
@@ -1565,7 +1619,7 @@ void start(int pos)
 	if(pos>=input.size())return;
 	//cout<<getStringToCompare(pos)<<endl;
 	//cout<<input[pos].identifikator<<endl;
-	fprintf(stderr,"Pos %d\n",pos);
+	//fprintf(stderr,"Pos %d\n",pos);
 	/*for(int i=0;i<V[pos].size();++i)
 	{
 		printf("djeca %d\n",V[pos][i]);

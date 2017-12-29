@@ -1,0 +1,1003 @@
+/*
+ne radi nista
+*/
+void fun(int xYz) {
+    return;
+}
+
+// glavni program "testira osnovne kljucne rijeci i operatore za lekser"
+int main(void) {
+    int A[512];
+    int t[] = {1,2,3};
+    char tmp[] = "te\nst";
+    const char x[] = "\"tes\"t2\"";
+    int xYz, abc;
+    int i;
+    
+    xYz = 12345; // nekakav komentar
+    abc = xYz;
+    abc = (xYz);
+    abc = abc+++xYz;
+    abc = 054 % 5;
+    abc = 0xaafff;
+    i = 3*2+5-3|3&3^3;
+    
+    tmp[1] = 'b';
+    tmp[2] = '\n';
+    tmp[3] = '''; // leksicka greska
+    tmp[0] = '\'';
+    for (i=0; i<4; ++i) {
+        tmp[i] = (char)abc; /* komentar *
+                             * komentar *
+                             * komentar */
+        break;
+        continue;
+        return xYz;
+    }
+    
+    if (1>=3 && i>2 || i<=12) {
+        fun(3);
+    } else {
+        fun(5);
+    }
+    
+    while (1) {
+        break;
+    }
+    
+    return 0;
+}
+
+0 S_pocetno /
+2 S_komentar 
+
+3 S_komentar n
+4 S_komentar e
+5 S_komentar  
+6 S_komentar r
+7 S_komentar a
+8 S_komentar d
+9 S_komentar i
+10 S_komentar  
+11 S_komentar n
+12 S_komentar i
+13 S_komentar s
+14 S_komentar t
+15 S_komentar a
+16 S_komentar 
+
+17 S_komentar *
+19 S_pocetno 
+
+20 S_pocetno v
+KR_VOID 4 void
+24 S_pocetno  
+25 S_pocetno f
+IDN 4 fun
+28 S_pocetno (
+L_ZAGRADA 4 (
+29 S_pocetno i
+KR_INT 4 int
+32 S_pocetno  
+33 S_pocetno x
+IDN 4 xYz
+36 S_pocetno )
+D_ZAGRADA 4 )
+37 S_pocetno  
+38 S_pocetno {
+L_VIT_ZAGRADA 4 {
+39 S_pocetno 
+
+40 S_pocetno  
+41 S_pocetno  
+42 S_pocetno  
+43 S_pocetno  
+44 S_pocetno r
+KR_RETURN 5 return
+50 S_pocetno ;
+TOCKAZAREZ 5 ;
+51 S_pocetno 
+
+52 S_pocetno }
+D_VIT_ZAGRADA 6 }
+53 S_pocetno 
+
+54 S_pocetno 
+
+55 S_pocetno /
+57 S_jednolinijskiKomentar  
+58 S_jednolinijskiKomentar g
+59 S_jednolinijskiKomentar l
+60 S_jednolinijskiKomentar a
+61 S_jednolinijskiKomentar v
+62 S_jednolinijskiKomentar n
+63 S_jednolinijskiKomentar i
+64 S_jednolinijskiKomentar  
+65 S_jednolinijskiKomentar p
+66 S_jednolinijskiKomentar r
+67 S_jednolinijskiKomentar o
+68 S_jednolinijskiKomentar g
+69 S_jednolinijskiKomentar r
+70 S_jednolinijskiKomentar a
+71 S_jednolinijskiKomentar m
+72 S_jednolinijskiKomentar  
+73 S_jednolinijskiKomentar "
+74 S_jednolinijskiKomentar t
+75 S_jednolinijskiKomentar e
+76 S_jednolinijskiKomentar s
+77 S_jednolinijskiKomentar t
+78 S_jednolinijskiKomentar i
+79 S_jednolinijskiKomentar r
+80 S_jednolinijskiKomentar a
+81 S_jednolinijskiKomentar  
+82 S_jednolinijskiKomentar o
+83 S_jednolinijskiKomentar s
+84 S_jednolinijskiKomentar n
+85 S_jednolinijskiKomentar o
+86 S_jednolinijskiKomentar v
+87 S_jednolinijskiKomentar n
+88 S_jednolinijskiKomentar e
+89 S_jednolinijskiKomentar  
+90 S_jednolinijskiKomentar k
+91 S_jednolinijskiKomentar l
+92 S_jednolinijskiKomentar j
+93 S_jednolinijskiKomentar u
+94 S_jednolinijskiKomentar c
+95 S_jednolinijskiKomentar n
+96 S_jednolinijskiKomentar e
+97 S_jednolinijskiKomentar  
+98 S_jednolinijskiKomentar r
+99 S_jednolinijskiKomentar i
+100 S_jednolinijskiKomentar j
+101 S_jednolinijskiKomentar e
+102 S_jednolinijskiKomentar c
+103 S_jednolinijskiKomentar i
+104 S_jednolinijskiKomentar  
+105 S_jednolinijskiKomentar i
+106 S_jednolinijskiKomentar  
+107 S_jednolinijskiKomentar o
+108 S_jednolinijskiKomentar p
+109 S_jednolinijskiKomentar e
+110 S_jednolinijskiKomentar r
+111 S_jednolinijskiKomentar a
+112 S_jednolinijskiKomentar t
+113 S_jednolinijskiKomentar o
+114 S_jednolinijskiKomentar r
+115 S_jednolinijskiKomentar e
+116 S_jednolinijskiKomentar  
+117 S_jednolinijskiKomentar z
+118 S_jednolinijskiKomentar a
+119 S_jednolinijskiKomentar  
+120 S_jednolinijskiKomentar l
+121 S_jednolinijskiKomentar e
+122 S_jednolinijskiKomentar k
+123 S_jednolinijskiKomentar s
+124 S_jednolinijskiKomentar e
+125 S_jednolinijskiKomentar r
+126 S_jednolinijskiKomentar "
+127 S_jednolinijskiKomentar 
+
+128 S_pocetno i
+KR_INT 9 int
+131 S_pocetno  
+132 S_pocetno m
+IDN 9 main
+136 S_pocetno (
+L_ZAGRADA 9 (
+137 S_pocetno v
+KR_VOID 9 void
+141 S_pocetno )
+D_ZAGRADA 9 )
+142 S_pocetno  
+143 S_pocetno {
+L_VIT_ZAGRADA 9 {
+144 S_pocetno 
+
+145 S_pocetno  
+146 S_pocetno  
+147 S_pocetno  
+148 S_pocetno  
+149 S_pocetno i
+KR_INT 10 int
+152 S_pocetno  
+153 S_pocetno A
+IDN 10 A
+154 S_pocetno [
+L_UGL_ZAGRADA 10 [
+155 S_pocetno 5
+BROJ 10 512
+158 S_pocetno ]
+D_UGL_ZAGRADA 10 ]
+159 S_pocetno ;
+TOCKAZAREZ 10 ;
+160 S_pocetno 
+
+161 S_pocetno  
+162 S_pocetno  
+163 S_pocetno  
+164 S_pocetno  
+165 S_pocetno i
+KR_INT 11 int
+168 S_pocetno  
+169 S_pocetno t
+IDN 11 t
+170 S_pocetno [
+L_UGL_ZAGRADA 11 [
+171 S_pocetno ]
+D_UGL_ZAGRADA 11 ]
+172 S_pocetno  
+173 S_pocetno =
+OP_PRIDRUZI 11 =
+174 S_pocetno  
+175 S_pocetno {
+L_VIT_ZAGRADA 11 {
+176 S_pocetno 1
+BROJ 11 1
+177 S_pocetno ,
+ZAREZ 11 ,
+178 S_pocetno 2
+BROJ 11 2
+179 S_pocetno ,
+ZAREZ 11 ,
+180 S_pocetno 3
+BROJ 11 3
+181 S_pocetno }
+D_VIT_ZAGRADA 11 }
+182 S_pocetno ;
+TOCKAZAREZ 11 ;
+183 S_pocetno 
+
+184 S_pocetno  
+185 S_pocetno  
+186 S_pocetno  
+187 S_pocetno  
+188 S_pocetno c
+KR_CHAR 12 char
+192 S_pocetno  
+193 S_pocetno t
+IDN 12 tmp
+196 S_pocetno [
+L_UGL_ZAGRADA 12 [
+197 S_pocetno ]
+D_UGL_ZAGRADA 12 ]
+198 S_pocetno  
+199 S_pocetno =
+OP_PRIDRUZI 12 =
+200 S_pocetno  
+201 S_pocetno "
+201 S_string "
+NIZ_ZNAKOVA 12 "te\nst"
+209 S_pocetno ;
+TOCKAZAREZ 12 ;
+210 S_pocetno 
+
+211 S_pocetno  
+212 S_pocetno  
+213 S_pocetno  
+214 S_pocetno  
+215 S_pocetno c
+KR_CONST 13 const
+220 S_pocetno  
+221 S_pocetno c
+KR_CHAR 13 char
+225 S_pocetno  
+226 S_pocetno x
+IDN 13 x
+227 S_pocetno [
+L_UGL_ZAGRADA 13 [
+228 S_pocetno ]
+D_UGL_ZAGRADA 13 ]
+229 S_pocetno  
+230 S_pocetno =
+OP_PRIDRUZI 13 =
+231 S_pocetno  
+232 S_pocetno "
+232 S_string "
+NIZ_ZNAKOVA 13 "\"tes\"t2\""
+245 S_pocetno ;
+TOCKAZAREZ 13 ;
+246 S_pocetno 
+
+247 S_pocetno  
+248 S_pocetno  
+249 S_pocetno  
+250 S_pocetno  
+251 S_pocetno i
+KR_INT 14 int
+254 S_pocetno  
+255 S_pocetno x
+IDN 14 xYz
+258 S_pocetno ,
+ZAREZ 14 ,
+259 S_pocetno  
+260 S_pocetno a
+IDN 14 abc
+263 S_pocetno ;
+TOCKAZAREZ 14 ;
+264 S_pocetno 
+
+265 S_pocetno  
+266 S_pocetno  
+267 S_pocetno  
+268 S_pocetno  
+269 S_pocetno i
+KR_INT 15 int
+272 S_pocetno  
+273 S_pocetno i
+IDN 15 i
+274 S_pocetno ;
+TOCKAZAREZ 15 ;
+275 S_pocetno 
+
+276 S_pocetno  
+277 S_pocetno  
+278 S_pocetno  
+279 S_pocetno  
+280 S_pocetno 
+
+281 S_pocetno  
+282 S_pocetno  
+283 S_pocetno  
+284 S_pocetno  
+285 S_pocetno x
+IDN 17 xYz
+288 S_pocetno  
+289 S_pocetno =
+OP_PRIDRUZI 17 =
+290 S_pocetno  
+291 S_pocetno 1
+BROJ 17 12345
+296 S_pocetno ;
+TOCKAZAREZ 17 ;
+297 S_pocetno  
+298 S_pocetno /
+300 S_jednolinijskiKomentar  
+301 S_jednolinijskiKomentar n
+302 S_jednolinijskiKomentar e
+303 S_jednolinijskiKomentar k
+304 S_jednolinijskiKomentar a
+305 S_jednolinijskiKomentar k
+306 S_jednolinijskiKomentar a
+307 S_jednolinijskiKomentar v
+308 S_jednolinijskiKomentar  
+309 S_jednolinijskiKomentar k
+310 S_jednolinijskiKomentar o
+311 S_jednolinijskiKomentar m
+312 S_jednolinijskiKomentar e
+313 S_jednolinijskiKomentar n
+314 S_jednolinijskiKomentar t
+315 S_jednolinijskiKomentar a
+316 S_jednolinijskiKomentar r
+317 S_jednolinijskiKomentar 
+
+318 S_pocetno  
+319 S_pocetno  
+320 S_pocetno  
+321 S_pocetno  
+322 S_pocetno a
+IDN 18 abc
+325 S_pocetno  
+326 S_pocetno =
+OP_PRIDRUZI 18 =
+327 S_pocetno  
+328 S_pocetno x
+IDN 18 xYz
+331 S_pocetno ;
+TOCKAZAREZ 18 ;
+332 S_pocetno 
+
+333 S_pocetno  
+334 S_pocetno  
+335 S_pocetno  
+336 S_pocetno  
+337 S_pocetno a
+IDN 19 abc
+340 S_pocetno  
+341 S_pocetno =
+OP_PRIDRUZI 19 =
+342 S_pocetno  
+343 S_pocetno (
+L_ZAGRADA 19 (
+344 S_pocetno x
+IDN 19 xYz
+347 S_pocetno )
+D_ZAGRADA 19 )
+348 S_pocetno ;
+TOCKAZAREZ 19 ;
+349 S_pocetno 
+
+350 S_pocetno  
+351 S_pocetno  
+352 S_pocetno  
+353 S_pocetno  
+354 S_pocetno a
+IDN 20 abc
+357 S_pocetno  
+358 S_pocetno =
+OP_PRIDRUZI 20 =
+359 S_pocetno  
+360 S_pocetno a
+IDN 20 abc
+363 S_pocetno +
+OP_INC 20 ++
+365 S_pocetno +
+PLUS 20 +
+366 S_pocetno x
+IDN 20 xYz
+369 S_pocetno ;
+TOCKAZAREZ 20 ;
+370 S_pocetno 
+
+371 S_pocetno  
+372 S_pocetno  
+373 S_pocetno  
+374 S_pocetno  
+375 S_pocetno a
+IDN 21 abc
+378 S_pocetno  
+379 S_pocetno =
+OP_PRIDRUZI 21 =
+380 S_pocetno  
+381 S_pocetno 0
+BROJ 21 054
+384 S_pocetno  
+385 S_pocetno %
+OP_MOD 21 %
+386 S_pocetno  
+387 S_pocetno 5
+BROJ 21 5
+388 S_pocetno ;
+TOCKAZAREZ 21 ;
+389 S_pocetno 
+
+390 S_pocetno  
+391 S_pocetno  
+392 S_pocetno  
+393 S_pocetno  
+394 S_pocetno a
+IDN 22 abc
+397 S_pocetno  
+398 S_pocetno =
+OP_PRIDRUZI 22 =
+399 S_pocetno  
+400 S_pocetno 0
+BROJ 22 0xaafff
+407 S_pocetno ;
+TOCKAZAREZ 22 ;
+408 S_pocetno 
+
+409 S_pocetno  
+410 S_pocetno  
+411 S_pocetno  
+412 S_pocetno  
+413 S_pocetno i
+IDN 23 i
+414 S_pocetno  
+415 S_pocetno =
+OP_PRIDRUZI 23 =
+416 S_pocetno  
+417 S_pocetno 3
+BROJ 23 3
+418 S_pocetno *
+OP_PUTA 23 *
+419 S_pocetno 2
+BROJ 23 2
+420 S_pocetno +
+PLUS 23 +
+421 S_pocetno 5
+BROJ 23 5
+422 S_pocetno -
+MINUS 23 -
+423 S_pocetno 3
+BROJ 23 3
+424 S_pocetno |
+OP_BIN_ILI 23 |
+425 S_pocetno 3
+BROJ 23 3
+426 S_pocetno &
+OP_BIN_I 23 &
+427 S_pocetno 3
+BROJ 23 3
+428 S_pocetno ^
+OP_BIN_XILI 23 ^
+429 S_pocetno 3
+BROJ 23 3
+430 S_pocetno ;
+TOCKAZAREZ 23 ;
+431 S_pocetno 
+
+432 S_pocetno  
+433 S_pocetno  
+434 S_pocetno  
+435 S_pocetno  
+436 S_pocetno 
+
+437 S_pocetno  
+438 S_pocetno  
+439 S_pocetno  
+440 S_pocetno  
+441 S_pocetno t
+IDN 25 tmp
+444 S_pocetno [
+L_UGL_ZAGRADA 25 [
+445 S_pocetno 1
+BROJ 25 1
+446 S_pocetno ]
+D_UGL_ZAGRADA 25 ]
+447 S_pocetno  
+448 S_pocetno =
+OP_PRIDRUZI 25 =
+449 S_pocetno  
+450 S_pocetno '
+ZNAK 25 'b'
+453 S_pocetno ;
+TOCKAZAREZ 25 ;
+454 S_pocetno 
+
+455 S_pocetno  
+456 S_pocetno  
+457 S_pocetno  
+458 S_pocetno  
+459 S_pocetno t
+IDN 26 tmp
+462 S_pocetno [
+L_UGL_ZAGRADA 26 [
+463 S_pocetno 2
+BROJ 26 2
+464 S_pocetno ]
+D_UGL_ZAGRADA 26 ]
+465 S_pocetno  
+466 S_pocetno =
+OP_PRIDRUZI 26 =
+467 S_pocetno  
+468 S_pocetno '
+ZNAK 26 '\n'
+472 S_pocetno ;
+TOCKAZAREZ 26 ;
+473 S_pocetno 
+
+474 S_pocetno  
+475 S_pocetno  
+476 S_pocetno  
+477 S_pocetno  
+478 S_pocetno t
+IDN 27 tmp
+481 S_pocetno [
+L_UGL_ZAGRADA 27 [
+482 S_pocetno 3
+BROJ 27 3
+483 S_pocetno ]
+D_UGL_ZAGRADA 27 ]
+484 S_pocetno  
+485 S_pocetno =
+OP_PRIDRUZI 27 =
+486 S_pocetno  
+487 S_pocetno '
+ZNAK 27 ''
+489 S_pocetno '
+490 S_pocetno ;
+491 S_pocetno  
+492 S_pocetno /
+493 S_pocetno /
+494 S_pocetno  
+495 S_pocetno l
+496 S_pocetno e
+497 S_pocetno k
+498 S_pocetno s
+499 S_pocetno i
+500 S_pocetno c
+501 S_pocetno k
+502 S_pocetno a
+503 S_pocetno  
+504 S_pocetno g
+505 S_pocetno r
+506 S_pocetno e
+507 S_pocetno s
+508 S_pocetno k
+509 S_pocetno a
+510 S_pocetno 
+
+511 S_pocetno  
+512 S_pocetno  
+513 S_pocetno  
+514 S_pocetno  
+515 S_pocetno t
+516 S_pocetno m
+517 S_pocetno p
+518 S_pocetno [
+519 S_pocetno 0
+520 S_pocetno ]
+521 S_pocetno  
+522 S_pocetno =
+523 S_pocetno  
+524 S_pocetno '
+525 S_pocetno \
+526 S_pocetno '
+527 S_pocetno '
+528 S_pocetno ;
+529 S_pocetno 
+
+530 S_pocetno  
+531 S_pocetno  
+532 S_pocetno  
+533 S_pocetno  
+534 S_pocetno f
+535 S_pocetno o
+536 S_pocetno r
+537 S_pocetno  
+538 S_pocetno (
+539 S_pocetno i
+540 S_pocetno =
+541 S_pocetno 0
+542 S_pocetno ;
+543 S_pocetno  
+544 S_pocetno i
+545 S_pocetno <
+546 S_pocetno 4
+547 S_pocetno ;
+548 S_pocetno  
+549 S_pocetno +
+550 S_pocetno +
+551 S_pocetno i
+552 S_pocetno )
+553 S_pocetno  
+554 S_pocetno {
+555 S_pocetno 
+
+556 S_pocetno  
+557 S_pocetno  
+558 S_pocetno  
+559 S_pocetno  
+560 S_pocetno  
+561 S_pocetno  
+562 S_pocetno  
+563 S_pocetno  
+564 S_pocetno t
+565 S_pocetno m
+566 S_pocetno p
+567 S_pocetno [
+568 S_pocetno i
+569 S_pocetno ]
+570 S_pocetno  
+571 S_pocetno =
+572 S_pocetno  
+573 S_pocetno (
+574 S_pocetno c
+575 S_pocetno h
+576 S_pocetno a
+577 S_pocetno r
+578 S_pocetno )
+579 S_pocetno a
+580 S_pocetno b
+581 S_pocetno c
+582 S_pocetno ;
+583 S_pocetno  
+584 S_pocetno /
+585 S_pocetno *
+586 S_pocetno  
+587 S_pocetno k
+588 S_pocetno o
+589 S_pocetno m
+590 S_pocetno e
+591 S_pocetno n
+592 S_pocetno t
+593 S_pocetno a
+594 S_pocetno r
+595 S_pocetno  
+596 S_pocetno *
+597 S_pocetno 
+
+598 S_pocetno  
+599 S_pocetno  
+600 S_pocetno  
+601 S_pocetno  
+602 S_pocetno  
+603 S_pocetno  
+604 S_pocetno  
+605 S_pocetno  
+606 S_pocetno  
+607 S_pocetno  
+608 S_pocetno  
+609 S_pocetno  
+610 S_pocetno  
+611 S_pocetno  
+612 S_pocetno  
+613 S_pocetno  
+614 S_pocetno  
+615 S_pocetno  
+616 S_pocetno  
+617 S_pocetno  
+618 S_pocetno  
+619 S_pocetno  
+620 S_pocetno  
+621 S_pocetno  
+622 S_pocetno  
+623 S_pocetno  
+624 S_pocetno  
+625 S_pocetno  
+626 S_pocetno  
+627 S_pocetno *
+628 S_pocetno  
+629 S_pocetno k
+630 S_pocetno o
+631 S_pocetno m
+632 S_pocetno e
+633 S_pocetno n
+634 S_pocetno t
+635 S_pocetno a
+636 S_pocetno r
+637 S_pocetno  
+638 S_pocetno *
+639 S_pocetno 
+
+640 S_pocetno  
+641 S_pocetno  
+642 S_pocetno  
+643 S_pocetno  
+644 S_pocetno  
+645 S_pocetno  
+646 S_pocetno  
+647 S_pocetno  
+648 S_pocetno  
+649 S_pocetno  
+650 S_pocetno  
+651 S_pocetno  
+652 S_pocetno  
+653 S_pocetno  
+654 S_pocetno  
+655 S_pocetno  
+656 S_pocetno  
+657 S_pocetno  
+658 S_pocetno  
+659 S_pocetno  
+660 S_pocetno  
+661 S_pocetno  
+662 S_pocetno  
+663 S_pocetno  
+664 S_pocetno  
+665 S_pocetno  
+666 S_pocetno  
+667 S_pocetno  
+668 S_pocetno  
+669 S_pocetno *
+670 S_pocetno  
+671 S_pocetno k
+672 S_pocetno o
+673 S_pocetno m
+674 S_pocetno e
+675 S_pocetno n
+676 S_pocetno t
+677 S_pocetno a
+678 S_pocetno r
+679 S_pocetno  
+680 S_pocetno *
+681 S_pocetno /
+682 S_pocetno 
+
+683 S_pocetno  
+684 S_pocetno  
+685 S_pocetno  
+686 S_pocetno  
+687 S_pocetno  
+688 S_pocetno  
+689 S_pocetno  
+690 S_pocetno  
+691 S_pocetno b
+692 S_pocetno r
+693 S_pocetno e
+694 S_pocetno a
+695 S_pocetno k
+696 S_pocetno ;
+697 S_pocetno 
+
+698 S_pocetno  
+699 S_pocetno  
+700 S_pocetno  
+701 S_pocetno  
+702 S_pocetno  
+703 S_pocetno  
+704 S_pocetno  
+705 S_pocetno  
+706 S_pocetno c
+707 S_pocetno o
+708 S_pocetno n
+709 S_pocetno t
+710 S_pocetno i
+711 S_pocetno n
+712 S_pocetno u
+713 S_pocetno e
+714 S_pocetno ;
+715 S_pocetno 
+
+716 S_pocetno  
+717 S_pocetno  
+718 S_pocetno  
+719 S_pocetno  
+720 S_pocetno  
+721 S_pocetno  
+722 S_pocetno  
+723 S_pocetno  
+724 S_pocetno r
+725 S_pocetno e
+726 S_pocetno t
+727 S_pocetno u
+728 S_pocetno r
+729 S_pocetno n
+730 S_pocetno  
+731 S_pocetno x
+732 S_pocetno Y
+733 S_pocetno z
+734 S_pocetno ;
+735 S_pocetno 
+
+736 S_pocetno  
+737 S_pocetno  
+738 S_pocetno  
+739 S_pocetno  
+740 S_pocetno }
+741 S_pocetno 
+
+742 S_pocetno  
+743 S_pocetno  
+744 S_pocetno  
+745 S_pocetno  
+746 S_pocetno 
+
+747 S_pocetno  
+748 S_pocetno  
+749 S_pocetno  
+750 S_pocetno  
+751 S_pocetno i
+752 S_pocetno f
+753 S_pocetno  
+754 S_pocetno (
+755 S_pocetno 1
+756 S_pocetno >
+757 S_pocetno =
+758 S_pocetno 3
+759 S_pocetno  
+760 S_pocetno &
+761 S_pocetno &
+762 S_pocetno  
+763 S_pocetno i
+764 S_pocetno >
+765 S_pocetno 2
+766 S_pocetno  
+767 S_pocetno |
+768 S_pocetno |
+769 S_pocetno  
+770 S_pocetno i
+771 S_pocetno <
+772 S_pocetno =
+773 S_pocetno 1
+774 S_pocetno 2
+775 S_pocetno )
+776 S_pocetno  
+777 S_pocetno {
+778 S_pocetno 
+
+779 S_pocetno  
+780 S_pocetno  
+781 S_pocetno  
+782 S_pocetno  
+783 S_pocetno  
+784 S_pocetno  
+785 S_pocetno  
+786 S_pocetno  
+787 S_pocetno f
+788 S_pocetno u
+789 S_pocetno n
+790 S_pocetno (
+791 S_pocetno 3
+792 S_pocetno )
+793 S_pocetno ;
+794 S_pocetno 
+
+795 S_pocetno  
+796 S_pocetno  
+797 S_pocetno  
+798 S_pocetno  
+799 S_pocetno }
+800 S_pocetno  
+801 S_pocetno e
+802 S_pocetno l
+803 S_pocetno s
+804 S_pocetno e
+805 S_pocetno  
+806 S_pocetno {
+807 S_pocetno 
+
+808 S_pocetno  
+809 S_pocetno  
+810 S_pocetno  
+811 S_pocetno  
+812 S_pocetno  
+813 S_pocetno  
+814 S_pocetno  
+815 S_pocetno  
+816 S_pocetno f
+817 S_pocetno u
+818 S_pocetno n
+819 S_pocetno (
+820 S_pocetno 5
+821 S_pocetno )
+822 S_pocetno ;
+823 S_pocetno 
+
+824 S_pocetno  
+825 S_pocetno  
+826 S_pocetno  
+827 S_pocetno  
+828 S_pocetno }
+829 S_pocetno 
+
+830 S_pocetno  
+831 S_pocetno  
+832 S_pocetno  
+833 S_pocetno  
+834 S_pocetno 
+
+835 S_pocetno  
+836 S_pocetno  
+837 S_pocetno  
+838 S_pocetno  
+839 S_pocetno w
+840 S_pocetno h
+841 S_pocetno i
+842 S_pocetno l
+843 S_pocetno e
+844 S_pocetno  
+845 S_pocetno (
+846 S_pocetno 1
+847 S_pocetno )
+848 S_pocetno  
+849 S_pocetno {
+850 S_pocetno 
+
+851 S_pocetno  
+852 S_pocetno  
+853 S_pocetno  
+854 S_pocetno  
+855 S_pocetno  
+856 S_pocetno  
+857 S_pocetno  
+858 S_pocetno  
+859 S_pocetno b
+860 S_pocetno r
+861 S_pocetno e
+862 S_pocetno a
+863 S_pocetno k
+864 S_pocetno ;
+865 S_pocetno 
+
+866 S_pocetno  
+867 S_pocetno  
+868 S_pocetno  
+869 S_pocetno  
+870 S_pocetno }
+871 S_pocetno 
+
+872 S_pocetno  
+873 S_pocetno  
+874 S_pocetno  
+875 S_pocetno  
+876 S_pocetno 
+
+877 S_pocetno  
+878 S_pocetno  
+879 S_pocetno  
+880 S_pocetno  
+881 S_pocetno r
+882 S_pocetno e
+883 S_pocetno t
+884 S_pocetno u
+885 S_pocetno r
+886 S_pocetno n
+887 S_pocetno  
+888 S_pocetno 0
+889 S_pocetno ;
+890 S_pocetno 
+
+891 S_pocetno }
+892 S_pocetno 
+

@@ -1,0 +1,8411 @@
+{znak} a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z
+znak
++++a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z
+{znamenka} 0|1|2|3|4|5|6|7|8|9
+znamenka
++++0|1|2|3|4|5|6|7|8|9
+{hexZnamenka} {znamenka}|a|b|c|d|e|f|A|B|C|D|E|F
+hexZnamenka
++++{znamenka}|a|b|c|d|e|f|A|B|C|D|E|F
+{bjelina} \t|\n|\_
+bjelina
++++\t|\n|\_
+{sviZnakovi} \(|\)|\{|\}|\||\*|\\|\$|\t|\n|\_|!|"|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~
+sviZnakovi
++++\(|\)|\{|\}|\||\*|\\|\$|\t|\n|\_|!|"|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~
+{sveOsimDvostrukogNavodnikaINovogReda} \(|\)|\{|\}|\||\*|\\|\$|\t|\_|!|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~
+sveOsimDvostrukogNavodnikaINovogReda
++++\(|\)|\{|\}|\||\*|\\|\$|\t|\_|!|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~
+{sveOsimJednostrukogNavodnikaNovogRedaITaba} \(|\)|\{|\}|\||\*|\\|\$|\_|!|"|#|%|&|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~
+sveOsimJednostrukogNavodnikaNovogRedaITaba
++++\(|\)|\{|\}|\||\*|\\|\$|\_|!|"|#|%|&|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~
+{sveOsimNovogRedaITaba} \(|\)|\{|\}|\||\*|\\|\$|\_|!|"|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~
+sveOsimNovogRedaITaba
++++\(|\)|\{|\}|\||\*|\\|\$|\_|!|"|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~
+Provjera: \t|\_
+(0,0)
+(1,0)
+(2,0)
+Operator 2 124
+(3,0)
+(4,0)
+Nasao
+\t, \_, 
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak 	 9
+\t
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak   32
+\_
+Provjera: \n
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak 
+ 10
+\n
+Provjera: //
+(0,0)
+(1,0)
+Usao
+ioi /
+Dodan prijelaz /
+//
+ioi /
+Dodan prijelaz /
+//
+Provjera: \n
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak 
+ 10
+\n
+Provjera: (\(|\)|\{|\}|\||\*|\\|\$|\t|\n|\_|!|"|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~)
+(0,0)
+(1,1)
+(2,1)
+(3,1)
+(4,1)
+(5,1)
+(6,1)
+(7,1)
+(8,1)
+(9,1)
+(10,1)
+(11,1)
+(12,1)
+(13,1)
+(14,1)
+(15,1)
+(16,1)
+(17,1)
+(18,1)
+(19,1)
+(20,1)
+(21,1)
+(22,1)
+(23,1)
+(24,1)
+(25,1)
+(26,1)
+(27,1)
+(28,1)
+(29,1)
+(30,1)
+(31,1)
+(32,1)
+(33,1)
+(34,1)
+(35,1)
+(36,1)
+(37,1)
+(38,1)
+(39,1)
+(40,1)
+(41,1)
+(42,1)
+(43,1)
+(44,1)
+(45,1)
+(46,1)
+(47,1)
+(48,1)
+(49,1)
+(50,1)
+(51,1)
+(52,1)
+(53,1)
+(54,1)
+(55,1)
+(56,1)
+(57,1)
+(58,1)
+(59,1)
+(60,1)
+(61,1)
+(62,1)
+(63,1)
+(64,1)
+(65,1)
+(66,1)
+(67,1)
+(68,1)
+(69,1)
+(70,1)
+(71,1)
+(72,1)
+(73,1)
+(74,1)
+(75,1)
+(76,1)
+(77,1)
+(78,1)
+(79,1)
+(80,1)
+(81,1)
+(82,1)
+(83,1)
+(84,1)
+(85,1)
+(86,1)
+(87,1)
+(88,1)
+(89,1)
+(90,1)
+(91,1)
+(92,1)
+(93,1)
+(94,1)
+(95,1)
+(96,1)
+(97,1)
+(98,1)
+(99,1)
+(100,1)
+(101,1)
+(102,1)
+(103,1)
+(104,1)
+(105,1)
+(106,1)
+(107,1)
+(108,1)
+(109,1)
+(110,1)
+(111,1)
+(112,1)
+(113,1)
+(114,1)
+(115,1)
+(116,1)
+(117,1)
+(118,1)
+(119,1)
+(120,1)
+(121,1)
+(122,1)
+(123,1)
+(124,1)
+(125,1)
+(126,1)
+(127,1)
+(128,1)
+(129,1)
+(130,1)
+(131,1)
+(132,1)
+(133,1)
+(134,1)
+(135,1)
+(136,1)
+(137,1)
+(138,1)
+(139,1)
+(140,1)
+(141,1)
+(142,1)
+(143,1)
+(144,1)
+(145,1)
+(146,1)
+(147,1)
+(148,1)
+(149,1)
+(150,1)
+(151,1)
+(152,1)
+(153,1)
+(154,1)
+(155,1)
+(156,1)
+(157,1)
+(158,1)
+(159,1)
+(160,1)
+(161,1)
+(162,1)
+(163,1)
+(164,1)
+(165,1)
+(166,1)
+(167,1)
+(168,1)
+(169,1)
+(170,1)
+(171,1)
+(172,1)
+(173,1)
+(174,1)
+(175,1)
+(176,1)
+(177,1)
+(178,1)
+(179,1)
+(180,1)
+(181,1)
+(182,1)
+(183,1)
+(184,1)
+(185,1)
+(186,1)
+(187,1)
+(188,1)
+(189,1)
+(190,1)
+(191,1)
+(192,1)
+(193,1)
+(194,1)
+(195,1)
+(196,1)
+(197,1)
+(198,1)
+(199,1)
+(200,1)
+(201,1)
+(202,1)
+(203,1)
+(204,1)
+(205,1)
+Usao
+ioi (
+Novi bolji \(|\)|\{|\}|\||\*|\\|\$|\t|\n|\_|!|"|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~
+(0,0)
+(1,0)
+(2,0)
+Operator 2 124
+(3,0)
+(4,0)
+(5,0)
+Operator 5 124
+(6,0)
+(7,0)
+(8,0)
+Operator 8 124
+(9,0)
+(10,0)
+(11,0)
+Operator 11 124
+(12,0)
+(13,0)
+(14,0)
+Operator 14 124
+(15,0)
+(16,0)
+(17,0)
+Operator 17 124
+(18,0)
+(19,0)
+(20,0)
+Operator 20 124
+(21,0)
+(22,0)
+(23,0)
+Operator 23 124
+(24,0)
+(25,0)
+(26,0)
+Operator 26 124
+(27,0)
+(28,0)
+(29,0)
+Operator 29 124
+(30,0)
+(31,0)
+(32,0)
+Operator 32 124
+(33,0)
+(34,0)
+Operator 34 124
+(35,0)
+(36,0)
+Operator 36 124
+(37,0)
+(38,0)
+Operator 38 124
+(39,0)
+(40,0)
+Operator 40 124
+(41,0)
+(42,0)
+Operator 42 124
+(43,0)
+(44,0)
+Operator 44 124
+(45,0)
+(46,0)
+Operator 46 124
+(47,0)
+(48,0)
+Operator 48 124
+(49,0)
+(50,0)
+Operator 50 124
+(51,0)
+(52,0)
+Operator 52 124
+(53,0)
+(54,0)
+Operator 54 124
+(55,0)
+(56,0)
+Operator 56 124
+(57,0)
+(58,0)
+Operator 58 124
+(59,0)
+(60,0)
+Operator 60 124
+(61,0)
+(62,0)
+Operator 62 124
+(63,0)
+(64,0)
+Operator 64 124
+(65,0)
+(66,0)
+Operator 66 124
+(67,0)
+(68,0)
+Operator 68 124
+(69,0)
+(70,0)
+Operator 70 124
+(71,0)
+(72,0)
+Operator 72 124
+(73,0)
+(74,0)
+Operator 74 124
+(75,0)
+(76,0)
+Operator 76 124
+(77,0)
+(78,0)
+Operator 78 124
+(79,0)
+(80,0)
+Operator 80 124
+(81,0)
+(82,0)
+Operator 82 124
+(83,0)
+(84,0)
+Operator 84 124
+(85,0)
+(86,0)
+Operator 86 124
+(87,0)
+(88,0)
+Operator 88 124
+(89,0)
+(90,0)
+Operator 90 124
+(91,0)
+(92,0)
+Operator 92 124
+(93,0)
+(94,0)
+Operator 94 124
+(95,0)
+(96,0)
+Operator 96 124
+(97,0)
+(98,0)
+Operator 98 124
+(99,0)
+(100,0)
+Operator 100 124
+(101,0)
+(102,0)
+Operator 102 124
+(103,0)
+(104,0)
+Operator 104 124
+(105,0)
+(106,0)
+Operator 106 124
+(107,0)
+(108,0)
+Operator 108 124
+(109,0)
+(110,0)
+Operator 110 124
+(111,0)
+(112,0)
+Operator 112 124
+(113,0)
+(114,0)
+Operator 114 124
+(115,0)
+(116,0)
+Operator 116 124
+(117,0)
+(118,0)
+Operator 118 124
+(119,0)
+(120,0)
+Operator 120 124
+(121,0)
+(122,0)
+Operator 122 124
+(123,0)
+(124,0)
+Operator 124 124
+(125,0)
+(126,0)
+Operator 126 124
+(127,0)
+(128,0)
+Operator 128 124
+(129,0)
+(130,0)
+Operator 130 124
+(131,0)
+(132,0)
+Operator 132 124
+(133,0)
+(134,0)
+Operator 134 124
+(135,0)
+(136,0)
+Operator 136 124
+(137,0)
+(138,0)
+Operator 138 124
+(139,0)
+(140,0)
+Operator 140 124
+(141,0)
+(142,0)
+Operator 142 124
+(143,0)
+(144,0)
+Operator 144 124
+(145,0)
+(146,0)
+Operator 146 124
+(147,0)
+(148,0)
+Operator 148 124
+(149,0)
+(150,0)
+Operator 150 124
+(151,0)
+(152,0)
+Operator 152 124
+(153,0)
+(154,0)
+Operator 154 124
+(155,0)
+(156,0)
+Operator 156 124
+(157,0)
+(158,0)
+Operator 158 124
+(159,0)
+(160,0)
+Operator 160 124
+(161,0)
+(162,0)
+Operator 162 124
+(163,0)
+(164,0)
+Operator 164 124
+(165,0)
+(166,0)
+Operator 166 124
+(167,0)
+(168,0)
+Operator 168 124
+(169,0)
+(170,0)
+Operator 170 124
+(171,0)
+(172,0)
+Operator 172 124
+(173,0)
+(174,0)
+Operator 174 124
+(175,0)
+(176,0)
+Operator 176 124
+(177,0)
+(178,0)
+Operator 178 124
+(179,0)
+(180,0)
+Operator 180 124
+(181,0)
+(182,0)
+Operator 182 124
+(183,0)
+(184,0)
+Operator 184 124
+(185,0)
+(186,0)
+Operator 186 124
+(187,0)
+(188,0)
+Operator 188 124
+(189,0)
+(190,0)
+Operator 190 124
+(191,0)
+(192,0)
+Operator 192 124
+(193,0)
+(194,0)
+Operator 194 124
+(195,0)
+(196,0)
+Operator 196 124
+(197,0)
+(198,0)
+Operator 198 124
+(199,0)
+(200,0)
+Operator 200 124
+(201,0)
+(202,0)
+Operator 202 124
+(203,0)
+Nasao
+\(, \), \{, \}, \|, \*, \\, \$, \t, \n, \_, !, ", #, %, &, ', +, ,, -, ., /, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, :, ;, <, =, >, ?, @, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, [, ], ^, _, `, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, ~, 
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak ( 40
+\(
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak ) 41
+\)
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak { 123
+\{
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak } 125
+\}
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak | 124
+\|
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak * 42
+\*
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak \ 92
+\\
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak $ 36
+\$
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak 	 9
+\t
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak 
+ 10
+\n
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak   32
+\_
+(0,0)
+Usao
+ioi !
+Dodan prijelaz !
+!
+(0,0)
+Usao
+ioi "
+Dodan prijelaz "
+"
+(0,0)
+Usao
+ioi #
+Dodan prijelaz #
+#
+(0,0)
+Usao
+ioi %
+Dodan prijelaz %
+%
+(0,0)
+Usao
+ioi &
+Dodan prijelaz &
+&
+(0,0)
+Usao
+ioi '
+Dodan prijelaz '
+'
+(0,0)
+Usao
+ioi +
+Dodan prijelaz +
++
+(0,0)
+Usao
+ioi ,
+Dodan prijelaz ,
+,
+(0,0)
+Usao
+ioi -
+Dodan prijelaz -
+-
+(0,0)
+Usao
+ioi .
+Dodan prijelaz .
+.
+(0,0)
+Usao
+ioi /
+Dodan prijelaz /
+/
+(0,0)
+Usao
+ioi 0
+Dodan prijelaz 0
+0
+(0,0)
+Usao
+ioi 1
+Dodan prijelaz 1
+1
+(0,0)
+Usao
+ioi 2
+Dodan prijelaz 2
+2
+(0,0)
+Usao
+ioi 3
+Dodan prijelaz 3
+3
+(0,0)
+Usao
+ioi 4
+Dodan prijelaz 4
+4
+(0,0)
+Usao
+ioi 5
+Dodan prijelaz 5
+5
+(0,0)
+Usao
+ioi 6
+Dodan prijelaz 6
+6
+(0,0)
+Usao
+ioi 7
+Dodan prijelaz 7
+7
+(0,0)
+Usao
+ioi 8
+Dodan prijelaz 8
+8
+(0,0)
+Usao
+ioi 9
+Dodan prijelaz 9
+9
+(0,0)
+Usao
+ioi :
+Dodan prijelaz :
+:
+(0,0)
+Usao
+ioi ;
+Dodan prijelaz ;
+;
+(0,0)
+Usao
+ioi <
+Dodan prijelaz <
+<
+(0,0)
+Usao
+ioi =
+Dodan prijelaz =
+=
+(0,0)
+Usao
+ioi >
+Dodan prijelaz >
+>
+(0,0)
+Usao
+ioi ?
+Dodan prijelaz ?
+?
+(0,0)
+Usao
+ioi @
+Dodan prijelaz @
+@
+(0,0)
+Usao
+ioi A
+Dodan prijelaz A
+A
+(0,0)
+Usao
+ioi B
+Dodan prijelaz B
+B
+(0,0)
+Usao
+ioi C
+Dodan prijelaz C
+C
+(0,0)
+Usao
+ioi D
+Dodan prijelaz D
+D
+(0,0)
+Usao
+ioi E
+Dodan prijelaz E
+E
+(0,0)
+Usao
+ioi F
+Dodan prijelaz F
+F
+(0,0)
+Usao
+ioi G
+Dodan prijelaz G
+G
+(0,0)
+Usao
+ioi H
+Dodan prijelaz H
+H
+(0,0)
+Usao
+ioi I
+Dodan prijelaz I
+I
+(0,0)
+Usao
+ioi J
+Dodan prijelaz J
+J
+(0,0)
+Usao
+ioi K
+Dodan prijelaz K
+K
+(0,0)
+Usao
+ioi L
+Dodan prijelaz L
+L
+(0,0)
+Usao
+ioi M
+Dodan prijelaz M
+M
+(0,0)
+Usao
+ioi N
+Dodan prijelaz N
+N
+(0,0)
+Usao
+ioi O
+Dodan prijelaz O
+O
+(0,0)
+Usao
+ioi P
+Dodan prijelaz P
+P
+(0,0)
+Usao
+ioi Q
+Dodan prijelaz Q
+Q
+(0,0)
+Usao
+ioi R
+Dodan prijelaz R
+R
+(0,0)
+Usao
+ioi S
+Dodan prijelaz S
+S
+(0,0)
+Usao
+ioi T
+Dodan prijelaz T
+T
+(0,0)
+Usao
+ioi U
+Dodan prijelaz U
+U
+(0,0)
+Usao
+ioi V
+Dodan prijelaz V
+V
+(0,0)
+Usao
+ioi W
+Dodan prijelaz W
+W
+(0,0)
+Usao
+ioi X
+Dodan prijelaz X
+X
+(0,0)
+Usao
+ioi Y
+Dodan prijelaz Y
+Y
+(0,0)
+Usao
+ioi Z
+Dodan prijelaz Z
+Z
+(0,0)
+Usao
+ioi [
+Dodan prijelaz [
+[
+(0,0)
+Usao
+ioi ]
+Dodan prijelaz ]
+]
+(0,0)
+Usao
+ioi ^
+Dodan prijelaz ^
+^
+(0,0)
+Usao
+ioi _
+Dodan prijelaz _
+_
+(0,0)
+Usao
+ioi `
+Dodan prijelaz `
+`
+(0,0)
+Usao
+ioi a
+Dodan prijelaz a
+a
+(0,0)
+Usao
+ioi b
+Dodan prijelaz b
+b
+(0,0)
+Usao
+ioi c
+Dodan prijelaz c
+c
+(0,0)
+Usao
+ioi d
+Dodan prijelaz d
+d
+(0,0)
+Usao
+ioi e
+Dodan prijelaz e
+e
+(0,0)
+Usao
+ioi f
+Dodan prijelaz f
+f
+(0,0)
+Usao
+ioi g
+Dodan prijelaz g
+g
+(0,0)
+Usao
+ioi h
+Dodan prijelaz h
+h
+(0,0)
+Usao
+ioi i
+Dodan prijelaz i
+i
+(0,0)
+Usao
+ioi j
+Dodan prijelaz j
+j
+(0,0)
+Usao
+ioi k
+Dodan prijelaz k
+k
+(0,0)
+Usao
+ioi l
+Dodan prijelaz l
+l
+(0,0)
+Usao
+ioi m
+Dodan prijelaz m
+m
+(0,0)
+Usao
+ioi n
+Dodan prijelaz n
+n
+(0,0)
+Usao
+ioi o
+Dodan prijelaz o
+o
+(0,0)
+Usao
+ioi p
+Dodan prijelaz p
+p
+(0,0)
+Usao
+ioi q
+Dodan prijelaz q
+q
+(0,0)
+Usao
+ioi r
+Dodan prijelaz r
+r
+(0,0)
+Usao
+ioi s
+Dodan prijelaz s
+s
+(0,0)
+Usao
+ioi t
+Dodan prijelaz t
+t
+(0,0)
+Usao
+ioi u
+Dodan prijelaz u
+u
+(0,0)
+Usao
+ioi v
+Dodan prijelaz v
+v
+(0,0)
+Usao
+ioi w
+Dodan prijelaz w
+w
+(0,0)
+Usao
+ioi x
+Dodan prijelaz x
+x
+(0,0)
+Usao
+ioi y
+Dodan prijelaz y
+y
+(0,0)
+Usao
+ioi z
+Dodan prijelaz z
+z
+(0,0)
+Usao
+ioi ~
+Dodan prijelaz ~
+~
+Provjera: /\*
+(0,0)
+(1,0)
+(2,0)
+Usao
+ioi /
+Dodan prijelaz /
+/\*
+ioi \
+Prilazni znak * 42
+/\*
+Provjera: \*/
+(0,0)
+(1,0)
+(2,0)
+Usao
+ioi \
+Prilazni znak * 42
+\*/
+ioi /
+Dodan prijelaz /
+\*/
+Provjera: \n
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak 
+ 10
+\n
+Provjera: (\(|\)|\{|\}|\||\*|\\|\$|\t|\n|\_|!|"|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~)
+(0,0)
+(1,1)
+(2,1)
+(3,1)
+(4,1)
+(5,1)
+(6,1)
+(7,1)
+(8,1)
+(9,1)
+(10,1)
+(11,1)
+(12,1)
+(13,1)
+(14,1)
+(15,1)
+(16,1)
+(17,1)
+(18,1)
+(19,1)
+(20,1)
+(21,1)
+(22,1)
+(23,1)
+(24,1)
+(25,1)
+(26,1)
+(27,1)
+(28,1)
+(29,1)
+(30,1)
+(31,1)
+(32,1)
+(33,1)
+(34,1)
+(35,1)
+(36,1)
+(37,1)
+(38,1)
+(39,1)
+(40,1)
+(41,1)
+(42,1)
+(43,1)
+(44,1)
+(45,1)
+(46,1)
+(47,1)
+(48,1)
+(49,1)
+(50,1)
+(51,1)
+(52,1)
+(53,1)
+(54,1)
+(55,1)
+(56,1)
+(57,1)
+(58,1)
+(59,1)
+(60,1)
+(61,1)
+(62,1)
+(63,1)
+(64,1)
+(65,1)
+(66,1)
+(67,1)
+(68,1)
+(69,1)
+(70,1)
+(71,1)
+(72,1)
+(73,1)
+(74,1)
+(75,1)
+(76,1)
+(77,1)
+(78,1)
+(79,1)
+(80,1)
+(81,1)
+(82,1)
+(83,1)
+(84,1)
+(85,1)
+(86,1)
+(87,1)
+(88,1)
+(89,1)
+(90,1)
+(91,1)
+(92,1)
+(93,1)
+(94,1)
+(95,1)
+(96,1)
+(97,1)
+(98,1)
+(99,1)
+(100,1)
+(101,1)
+(102,1)
+(103,1)
+(104,1)
+(105,1)
+(106,1)
+(107,1)
+(108,1)
+(109,1)
+(110,1)
+(111,1)
+(112,1)
+(113,1)
+(114,1)
+(115,1)
+(116,1)
+(117,1)
+(118,1)
+(119,1)
+(120,1)
+(121,1)
+(122,1)
+(123,1)
+(124,1)
+(125,1)
+(126,1)
+(127,1)
+(128,1)
+(129,1)
+(130,1)
+(131,1)
+(132,1)
+(133,1)
+(134,1)
+(135,1)
+(136,1)
+(137,1)
+(138,1)
+(139,1)
+(140,1)
+(141,1)
+(142,1)
+(143,1)
+(144,1)
+(145,1)
+(146,1)
+(147,1)
+(148,1)
+(149,1)
+(150,1)
+(151,1)
+(152,1)
+(153,1)
+(154,1)
+(155,1)
+(156,1)
+(157,1)
+(158,1)
+(159,1)
+(160,1)
+(161,1)
+(162,1)
+(163,1)
+(164,1)
+(165,1)
+(166,1)
+(167,1)
+(168,1)
+(169,1)
+(170,1)
+(171,1)
+(172,1)
+(173,1)
+(174,1)
+(175,1)
+(176,1)
+(177,1)
+(178,1)
+(179,1)
+(180,1)
+(181,1)
+(182,1)
+(183,1)
+(184,1)
+(185,1)
+(186,1)
+(187,1)
+(188,1)
+(189,1)
+(190,1)
+(191,1)
+(192,1)
+(193,1)
+(194,1)
+(195,1)
+(196,1)
+(197,1)
+(198,1)
+(199,1)
+(200,1)
+(201,1)
+(202,1)
+(203,1)
+(204,1)
+(205,1)
+Usao
+ioi (
+Novi bolji \(|\)|\{|\}|\||\*|\\|\$|\t|\n|\_|!|"|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~
+(0,0)
+(1,0)
+(2,0)
+Operator 2 124
+(3,0)
+(4,0)
+(5,0)
+Operator 5 124
+(6,0)
+(7,0)
+(8,0)
+Operator 8 124
+(9,0)
+(10,0)
+(11,0)
+Operator 11 124
+(12,0)
+(13,0)
+(14,0)
+Operator 14 124
+(15,0)
+(16,0)
+(17,0)
+Operator 17 124
+(18,0)
+(19,0)
+(20,0)
+Operator 20 124
+(21,0)
+(22,0)
+(23,0)
+Operator 23 124
+(24,0)
+(25,0)
+(26,0)
+Operator 26 124
+(27,0)
+(28,0)
+(29,0)
+Operator 29 124
+(30,0)
+(31,0)
+(32,0)
+Operator 32 124
+(33,0)
+(34,0)
+Operator 34 124
+(35,0)
+(36,0)
+Operator 36 124
+(37,0)
+(38,0)
+Operator 38 124
+(39,0)
+(40,0)
+Operator 40 124
+(41,0)
+(42,0)
+Operator 42 124
+(43,0)
+(44,0)
+Operator 44 124
+(45,0)
+(46,0)
+Operator 46 124
+(47,0)
+(48,0)
+Operator 48 124
+(49,0)
+(50,0)
+Operator 50 124
+(51,0)
+(52,0)
+Operator 52 124
+(53,0)
+(54,0)
+Operator 54 124
+(55,0)
+(56,0)
+Operator 56 124
+(57,0)
+(58,0)
+Operator 58 124
+(59,0)
+(60,0)
+Operator 60 124
+(61,0)
+(62,0)
+Operator 62 124
+(63,0)
+(64,0)
+Operator 64 124
+(65,0)
+(66,0)
+Operator 66 124
+(67,0)
+(68,0)
+Operator 68 124
+(69,0)
+(70,0)
+Operator 70 124
+(71,0)
+(72,0)
+Operator 72 124
+(73,0)
+(74,0)
+Operator 74 124
+(75,0)
+(76,0)
+Operator 76 124
+(77,0)
+(78,0)
+Operator 78 124
+(79,0)
+(80,0)
+Operator 80 124
+(81,0)
+(82,0)
+Operator 82 124
+(83,0)
+(84,0)
+Operator 84 124
+(85,0)
+(86,0)
+Operator 86 124
+(87,0)
+(88,0)
+Operator 88 124
+(89,0)
+(90,0)
+Operator 90 124
+(91,0)
+(92,0)
+Operator 92 124
+(93,0)
+(94,0)
+Operator 94 124
+(95,0)
+(96,0)
+Operator 96 124
+(97,0)
+(98,0)
+Operator 98 124
+(99,0)
+(100,0)
+Operator 100 124
+(101,0)
+(102,0)
+Operator 102 124
+(103,0)
+(104,0)
+Operator 104 124
+(105,0)
+(106,0)
+Operator 106 124
+(107,0)
+(108,0)
+Operator 108 124
+(109,0)
+(110,0)
+Operator 110 124
+(111,0)
+(112,0)
+Operator 112 124
+(113,0)
+(114,0)
+Operator 114 124
+(115,0)
+(116,0)
+Operator 116 124
+(117,0)
+(118,0)
+Operator 118 124
+(119,0)
+(120,0)
+Operator 120 124
+(121,0)
+(122,0)
+Operator 122 124
+(123,0)
+(124,0)
+Operator 124 124
+(125,0)
+(126,0)
+Operator 126 124
+(127,0)
+(128,0)
+Operator 128 124
+(129,0)
+(130,0)
+Operator 130 124
+(131,0)
+(132,0)
+Operator 132 124
+(133,0)
+(134,0)
+Operator 134 124
+(135,0)
+(136,0)
+Operator 136 124
+(137,0)
+(138,0)
+Operator 138 124
+(139,0)
+(140,0)
+Operator 140 124
+(141,0)
+(142,0)
+Operator 142 124
+(143,0)
+(144,0)
+Operator 144 124
+(145,0)
+(146,0)
+Operator 146 124
+(147,0)
+(148,0)
+Operator 148 124
+(149,0)
+(150,0)
+Operator 150 124
+(151,0)
+(152,0)
+Operator 152 124
+(153,0)
+(154,0)
+Operator 154 124
+(155,0)
+(156,0)
+Operator 156 124
+(157,0)
+(158,0)
+Operator 158 124
+(159,0)
+(160,0)
+Operator 160 124
+(161,0)
+(162,0)
+Operator 162 124
+(163,0)
+(164,0)
+Operator 164 124
+(165,0)
+(166,0)
+Operator 166 124
+(167,0)
+(168,0)
+Operator 168 124
+(169,0)
+(170,0)
+Operator 170 124
+(171,0)
+(172,0)
+Operator 172 124
+(173,0)
+(174,0)
+Operator 174 124
+(175,0)
+(176,0)
+Operator 176 124
+(177,0)
+(178,0)
+Operator 178 124
+(179,0)
+(180,0)
+Operator 180 124
+(181,0)
+(182,0)
+Operator 182 124
+(183,0)
+(184,0)
+Operator 184 124
+(185,0)
+(186,0)
+Operator 186 124
+(187,0)
+(188,0)
+Operator 188 124
+(189,0)
+(190,0)
+Operator 190 124
+(191,0)
+(192,0)
+Operator 192 124
+(193,0)
+(194,0)
+Operator 194 124
+(195,0)
+(196,0)
+Operator 196 124
+(197,0)
+(198,0)
+Operator 198 124
+(199,0)
+(200,0)
+Operator 200 124
+(201,0)
+(202,0)
+Operator 202 124
+(203,0)
+Nasao
+\(, \), \{, \}, \|, \*, \\, \$, \t, \n, \_, !, ", #, %, &, ', +, ,, -, ., /, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, :, ;, <, =, >, ?, @, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, [, ], ^, _, `, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, ~, 
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak ( 40
+\(
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak ) 41
+\)
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak { 123
+\{
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak } 125
+\}
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak | 124
+\|
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak * 42
+\*
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak \ 92
+\\
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak $ 36
+\$
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak 	 9
+\t
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak 
+ 10
+\n
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak   32
+\_
+(0,0)
+Usao
+ioi !
+Dodan prijelaz !
+!
+(0,0)
+Usao
+ioi "
+Dodan prijelaz "
+"
+(0,0)
+Usao
+ioi #
+Dodan prijelaz #
+#
+(0,0)
+Usao
+ioi %
+Dodan prijelaz %
+%
+(0,0)
+Usao
+ioi &
+Dodan prijelaz &
+&
+(0,0)
+Usao
+ioi '
+Dodan prijelaz '
+'
+(0,0)
+Usao
+ioi +
+Dodan prijelaz +
++
+(0,0)
+Usao
+ioi ,
+Dodan prijelaz ,
+,
+(0,0)
+Usao
+ioi -
+Dodan prijelaz -
+-
+(0,0)
+Usao
+ioi .
+Dodan prijelaz .
+.
+(0,0)
+Usao
+ioi /
+Dodan prijelaz /
+/
+(0,0)
+Usao
+ioi 0
+Dodan prijelaz 0
+0
+(0,0)
+Usao
+ioi 1
+Dodan prijelaz 1
+1
+(0,0)
+Usao
+ioi 2
+Dodan prijelaz 2
+2
+(0,0)
+Usao
+ioi 3
+Dodan prijelaz 3
+3
+(0,0)
+Usao
+ioi 4
+Dodan prijelaz 4
+4
+(0,0)
+Usao
+ioi 5
+Dodan prijelaz 5
+5
+(0,0)
+Usao
+ioi 6
+Dodan prijelaz 6
+6
+(0,0)
+Usao
+ioi 7
+Dodan prijelaz 7
+7
+(0,0)
+Usao
+ioi 8
+Dodan prijelaz 8
+8
+(0,0)
+Usao
+ioi 9
+Dodan prijelaz 9
+9
+(0,0)
+Usao
+ioi :
+Dodan prijelaz :
+:
+(0,0)
+Usao
+ioi ;
+Dodan prijelaz ;
+;
+(0,0)
+Usao
+ioi <
+Dodan prijelaz <
+<
+(0,0)
+Usao
+ioi =
+Dodan prijelaz =
+=
+(0,0)
+Usao
+ioi >
+Dodan prijelaz >
+>
+(0,0)
+Usao
+ioi ?
+Dodan prijelaz ?
+?
+(0,0)
+Usao
+ioi @
+Dodan prijelaz @
+@
+(0,0)
+Usao
+ioi A
+Dodan prijelaz A
+A
+(0,0)
+Usao
+ioi B
+Dodan prijelaz B
+B
+(0,0)
+Usao
+ioi C
+Dodan prijelaz C
+C
+(0,0)
+Usao
+ioi D
+Dodan prijelaz D
+D
+(0,0)
+Usao
+ioi E
+Dodan prijelaz E
+E
+(0,0)
+Usao
+ioi F
+Dodan prijelaz F
+F
+(0,0)
+Usao
+ioi G
+Dodan prijelaz G
+G
+(0,0)
+Usao
+ioi H
+Dodan prijelaz H
+H
+(0,0)
+Usao
+ioi I
+Dodan prijelaz I
+I
+(0,0)
+Usao
+ioi J
+Dodan prijelaz J
+J
+(0,0)
+Usao
+ioi K
+Dodan prijelaz K
+K
+(0,0)
+Usao
+ioi L
+Dodan prijelaz L
+L
+(0,0)
+Usao
+ioi M
+Dodan prijelaz M
+M
+(0,0)
+Usao
+ioi N
+Dodan prijelaz N
+N
+(0,0)
+Usao
+ioi O
+Dodan prijelaz O
+O
+(0,0)
+Usao
+ioi P
+Dodan prijelaz P
+P
+(0,0)
+Usao
+ioi Q
+Dodan prijelaz Q
+Q
+(0,0)
+Usao
+ioi R
+Dodan prijelaz R
+R
+(0,0)
+Usao
+ioi S
+Dodan prijelaz S
+S
+(0,0)
+Usao
+ioi T
+Dodan prijelaz T
+T
+(0,0)
+Usao
+ioi U
+Dodan prijelaz U
+U
+(0,0)
+Usao
+ioi V
+Dodan prijelaz V
+V
+(0,0)
+Usao
+ioi W
+Dodan prijelaz W
+W
+(0,0)
+Usao
+ioi X
+Dodan prijelaz X
+X
+(0,0)
+Usao
+ioi Y
+Dodan prijelaz Y
+Y
+(0,0)
+Usao
+ioi Z
+Dodan prijelaz Z
+Z
+(0,0)
+Usao
+ioi [
+Dodan prijelaz [
+[
+(0,0)
+Usao
+ioi ]
+Dodan prijelaz ]
+]
+(0,0)
+Usao
+ioi ^
+Dodan prijelaz ^
+^
+(0,0)
+Usao
+ioi _
+Dodan prijelaz _
+_
+(0,0)
+Usao
+ioi `
+Dodan prijelaz `
+`
+(0,0)
+Usao
+ioi a
+Dodan prijelaz a
+a
+(0,0)
+Usao
+ioi b
+Dodan prijelaz b
+b
+(0,0)
+Usao
+ioi c
+Dodan prijelaz c
+c
+(0,0)
+Usao
+ioi d
+Dodan prijelaz d
+d
+(0,0)
+Usao
+ioi e
+Dodan prijelaz e
+e
+(0,0)
+Usao
+ioi f
+Dodan prijelaz f
+f
+(0,0)
+Usao
+ioi g
+Dodan prijelaz g
+g
+(0,0)
+Usao
+ioi h
+Dodan prijelaz h
+h
+(0,0)
+Usao
+ioi i
+Dodan prijelaz i
+i
+(0,0)
+Usao
+ioi j
+Dodan prijelaz j
+j
+(0,0)
+Usao
+ioi k
+Dodan prijelaz k
+k
+(0,0)
+Usao
+ioi l
+Dodan prijelaz l
+l
+(0,0)
+Usao
+ioi m
+Dodan prijelaz m
+m
+(0,0)
+Usao
+ioi n
+Dodan prijelaz n
+n
+(0,0)
+Usao
+ioi o
+Dodan prijelaz o
+o
+(0,0)
+Usao
+ioi p
+Dodan prijelaz p
+p
+(0,0)
+Usao
+ioi q
+Dodan prijelaz q
+q
+(0,0)
+Usao
+ioi r
+Dodan prijelaz r
+r
+(0,0)
+Usao
+ioi s
+Dodan prijelaz s
+s
+(0,0)
+Usao
+ioi t
+Dodan prijelaz t
+t
+(0,0)
+Usao
+ioi u
+Dodan prijelaz u
+u
+(0,0)
+Usao
+ioi v
+Dodan prijelaz v
+v
+(0,0)
+Usao
+ioi w
+Dodan prijelaz w
+w
+(0,0)
+Usao
+ioi x
+Dodan prijelaz x
+x
+(0,0)
+Usao
+ioi y
+Dodan prijelaz y
+y
+(0,0)
+Usao
+ioi z
+Dodan prijelaz z
+z
+(0,0)
+Usao
+ioi ~
+Dodan prijelaz ~
+~
+Provjera: "
+(0,0)
+Usao
+ioi "
+Dodan prijelaz "
+"
+Provjera: "((\(|\)|\{|\}|\||\*|\\|\$|\t|\_|!|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~)|\\")*"
+(0,0)
+(1,0)
+(2,1)
+(3,2)
+(4,2)
+(5,2)
+(6,2)
+(7,2)
+(8,2)
+(9,2)
+(10,2)
+(11,2)
+(12,2)
+(13,2)
+(14,2)
+(15,2)
+(16,2)
+(17,2)
+(18,2)
+(19,2)
+(20,2)
+(21,2)
+(22,2)
+(23,2)
+(24,2)
+(25,2)
+(26,2)
+(27,2)
+(28,2)
+(29,2)
+(30,2)
+(31,2)
+(32,2)
+(33,2)
+(34,2)
+(35,2)
+(36,2)
+(37,2)
+(38,2)
+(39,2)
+(40,2)
+(41,2)
+(42,2)
+(43,2)
+(44,2)
+(45,2)
+(46,2)
+(47,2)
+(48,2)
+(49,2)
+(50,2)
+(51,2)
+(52,2)
+(53,2)
+(54,2)
+(55,2)
+(56,2)
+(57,2)
+(58,2)
+(59,2)
+(60,2)
+(61,2)
+(62,2)
+(63,2)
+(64,2)
+(65,2)
+(66,2)
+(67,2)
+(68,2)
+(69,2)
+(70,2)
+(71,2)
+(72,2)
+(73,2)
+(74,2)
+(75,2)
+(76,2)
+(77,2)
+(78,2)
+(79,2)
+(80,2)
+(81,2)
+(82,2)
+(83,2)
+(84,2)
+(85,2)
+(86,2)
+(87,2)
+(88,2)
+(89,2)
+(90,2)
+(91,2)
+(92,2)
+(93,2)
+(94,2)
+(95,2)
+(96,2)
+(97,2)
+(98,2)
+(99,2)
+(100,2)
+(101,2)
+(102,2)
+(103,2)
+(104,2)
+(105,2)
+(106,2)
+(107,2)
+(108,2)
+(109,2)
+(110,2)
+(111,2)
+(112,2)
+(113,2)
+(114,2)
+(115,2)
+(116,2)
+(117,2)
+(118,2)
+(119,2)
+(120,2)
+(121,2)
+(122,2)
+(123,2)
+(124,2)
+(125,2)
+(126,2)
+(127,2)
+(128,2)
+(129,2)
+(130,2)
+(131,2)
+(132,2)
+(133,2)
+(134,2)
+(135,2)
+(136,2)
+(137,2)
+(138,2)
+(139,2)
+(140,2)
+(141,2)
+(142,2)
+(143,2)
+(144,2)
+(145,2)
+(146,2)
+(147,2)
+(148,2)
+(149,2)
+(150,2)
+(151,2)
+(152,2)
+(153,2)
+(154,2)
+(155,2)
+(156,2)
+(157,2)
+(158,2)
+(159,2)
+(160,2)
+(161,2)
+(162,2)
+(163,2)
+(164,2)
+(165,2)
+(166,2)
+(167,2)
+(168,2)
+(169,2)
+(170,2)
+(171,2)
+(172,2)
+(173,2)
+(174,2)
+(175,2)
+(176,2)
+(177,2)
+(178,2)
+(179,2)
+(180,2)
+(181,2)
+(182,2)
+(183,2)
+(184,2)
+(185,2)
+(186,2)
+(187,2)
+(188,2)
+(189,2)
+(190,2)
+(191,2)
+(192,2)
+(193,2)
+(194,2)
+(195,2)
+(196,2)
+(197,2)
+(198,2)
+(199,2)
+(200,2)
+(201,2)
+(202,2)
+(203,1)
+(204,1)
+(205,1)
+(206,1)
+(207,1)
+(208,0)
+(209,0)
+Usao
+ioi "
+Dodan prijelaz "
+"((\(|\)|\{|\}|\||\*|\\|\$|\t|\_|!|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~)|\\")*"
+ioi (
+Novi bolji (\(|\)|\{|\}|\||\*|\\|\$|\t|\_|!|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~)|\\"
+(0,0)
+(1,1)
+(2,1)
+(3,1)
+(4,1)
+(5,1)
+(6,1)
+(7,1)
+(8,1)
+(9,1)
+(10,1)
+(11,1)
+(12,1)
+(13,1)
+(14,1)
+(15,1)
+(16,1)
+(17,1)
+(18,1)
+(19,1)
+(20,1)
+(21,1)
+(22,1)
+(23,1)
+(24,1)
+(25,1)
+(26,1)
+(27,1)
+(28,1)
+(29,1)
+(30,1)
+(31,1)
+(32,1)
+(33,1)
+(34,1)
+(35,1)
+(36,1)
+(37,1)
+(38,1)
+(39,1)
+(40,1)
+(41,1)
+(42,1)
+(43,1)
+(44,1)
+(45,1)
+(46,1)
+(47,1)
+(48,1)
+(49,1)
+(50,1)
+(51,1)
+(52,1)
+(53,1)
+(54,1)
+(55,1)
+(56,1)
+(57,1)
+(58,1)
+(59,1)
+(60,1)
+(61,1)
+(62,1)
+(63,1)
+(64,1)
+(65,1)
+(66,1)
+(67,1)
+(68,1)
+(69,1)
+(70,1)
+(71,1)
+(72,1)
+(73,1)
+(74,1)
+(75,1)
+(76,1)
+(77,1)
+(78,1)
+(79,1)
+(80,1)
+(81,1)
+(82,1)
+(83,1)
+(84,1)
+(85,1)
+(86,1)
+(87,1)
+(88,1)
+(89,1)
+(90,1)
+(91,1)
+(92,1)
+(93,1)
+(94,1)
+(95,1)
+(96,1)
+(97,1)
+(98,1)
+(99,1)
+(100,1)
+(101,1)
+(102,1)
+(103,1)
+(104,1)
+(105,1)
+(106,1)
+(107,1)
+(108,1)
+(109,1)
+(110,1)
+(111,1)
+(112,1)
+(113,1)
+(114,1)
+(115,1)
+(116,1)
+(117,1)
+(118,1)
+(119,1)
+(120,1)
+(121,1)
+(122,1)
+(123,1)
+(124,1)
+(125,1)
+(126,1)
+(127,1)
+(128,1)
+(129,1)
+(130,1)
+(131,1)
+(132,1)
+(133,1)
+(134,1)
+(135,1)
+(136,1)
+(137,1)
+(138,1)
+(139,1)
+(140,1)
+(141,1)
+(142,1)
+(143,1)
+(144,1)
+(145,1)
+(146,1)
+(147,1)
+(148,1)
+(149,1)
+(150,1)
+(151,1)
+(152,1)
+(153,1)
+(154,1)
+(155,1)
+(156,1)
+(157,1)
+(158,1)
+(159,1)
+(160,1)
+(161,1)
+(162,1)
+(163,1)
+(164,1)
+(165,1)
+(166,1)
+(167,1)
+(168,1)
+(169,1)
+(170,1)
+(171,1)
+(172,1)
+(173,1)
+(174,1)
+(175,1)
+(176,1)
+(177,1)
+(178,1)
+(179,1)
+(180,1)
+(181,1)
+(182,1)
+(183,1)
+(184,1)
+(185,1)
+(186,1)
+(187,1)
+(188,1)
+(189,1)
+(190,1)
+(191,1)
+(192,1)
+(193,1)
+(194,1)
+(195,1)
+(196,1)
+(197,1)
+(198,1)
+(199,1)
+(200,1)
+(201,0)
+Operator 201 124
+(202,0)
+(203,0)
+(204,0)
+Nasao
+(\(|\)|\{|\}|\||\*|\\|\$|\t|\_|!|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~), \\", 
+(0,0)
+(1,1)
+(2,1)
+(3,1)
+(4,1)
+(5,1)
+(6,1)
+(7,1)
+(8,1)
+(9,1)
+(10,1)
+(11,1)
+(12,1)
+(13,1)
+(14,1)
+(15,1)
+(16,1)
+(17,1)
+(18,1)
+(19,1)
+(20,1)
+(21,1)
+(22,1)
+(23,1)
+(24,1)
+(25,1)
+(26,1)
+(27,1)
+(28,1)
+(29,1)
+(30,1)
+(31,1)
+(32,1)
+(33,1)
+(34,1)
+(35,1)
+(36,1)
+(37,1)
+(38,1)
+(39,1)
+(40,1)
+(41,1)
+(42,1)
+(43,1)
+(44,1)
+(45,1)
+(46,1)
+(47,1)
+(48,1)
+(49,1)
+(50,1)
+(51,1)
+(52,1)
+(53,1)
+(54,1)
+(55,1)
+(56,1)
+(57,1)
+(58,1)
+(59,1)
+(60,1)
+(61,1)
+(62,1)
+(63,1)
+(64,1)
+(65,1)
+(66,1)
+(67,1)
+(68,1)
+(69,1)
+(70,1)
+(71,1)
+(72,1)
+(73,1)
+(74,1)
+(75,1)
+(76,1)
+(77,1)
+(78,1)
+(79,1)
+(80,1)
+(81,1)
+(82,1)
+(83,1)
+(84,1)
+(85,1)
+(86,1)
+(87,1)
+(88,1)
+(89,1)
+(90,1)
+(91,1)
+(92,1)
+(93,1)
+(94,1)
+(95,1)
+(96,1)
+(97,1)
+(98,1)
+(99,1)
+(100,1)
+(101,1)
+(102,1)
+(103,1)
+(104,1)
+(105,1)
+(106,1)
+(107,1)
+(108,1)
+(109,1)
+(110,1)
+(111,1)
+(112,1)
+(113,1)
+(114,1)
+(115,1)
+(116,1)
+(117,1)
+(118,1)
+(119,1)
+(120,1)
+(121,1)
+(122,1)
+(123,1)
+(124,1)
+(125,1)
+(126,1)
+(127,1)
+(128,1)
+(129,1)
+(130,1)
+(131,1)
+(132,1)
+(133,1)
+(134,1)
+(135,1)
+(136,1)
+(137,1)
+(138,1)
+(139,1)
+(140,1)
+(141,1)
+(142,1)
+(143,1)
+(144,1)
+(145,1)
+(146,1)
+(147,1)
+(148,1)
+(149,1)
+(150,1)
+(151,1)
+(152,1)
+(153,1)
+(154,1)
+(155,1)
+(156,1)
+(157,1)
+(158,1)
+(159,1)
+(160,1)
+(161,1)
+(162,1)
+(163,1)
+(164,1)
+(165,1)
+(166,1)
+(167,1)
+(168,1)
+(169,1)
+(170,1)
+(171,1)
+(172,1)
+(173,1)
+(174,1)
+(175,1)
+(176,1)
+(177,1)
+(178,1)
+(179,1)
+(180,1)
+(181,1)
+(182,1)
+(183,1)
+(184,1)
+(185,1)
+(186,1)
+(187,1)
+(188,1)
+(189,1)
+(190,1)
+(191,1)
+(192,1)
+(193,1)
+(194,1)
+(195,1)
+(196,1)
+(197,1)
+(198,1)
+(199,1)
+(200,1)
+Usao
+ioi (
+Novi bolji \(|\)|\{|\}|\||\*|\\|\$|\t|\_|!|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~
+(0,0)
+(1,0)
+(2,0)
+Operator 2 124
+(3,0)
+(4,0)
+(5,0)
+Operator 5 124
+(6,0)
+(7,0)
+(8,0)
+Operator 8 124
+(9,0)
+(10,0)
+(11,0)
+Operator 11 124
+(12,0)
+(13,0)
+(14,0)
+Operator 14 124
+(15,0)
+(16,0)
+(17,0)
+Operator 17 124
+(18,0)
+(19,0)
+(20,0)
+Operator 20 124
+(21,0)
+(22,0)
+(23,0)
+Operator 23 124
+(24,0)
+(25,0)
+(26,0)
+Operator 26 124
+(27,0)
+(28,0)
+(29,0)
+Operator 29 124
+(30,0)
+(31,0)
+Operator 31 124
+(32,0)
+(33,0)
+Operator 33 124
+(34,0)
+(35,0)
+Operator 35 124
+(36,0)
+(37,0)
+Operator 37 124
+(38,0)
+(39,0)
+Operator 39 124
+(40,0)
+(41,0)
+Operator 41 124
+(42,0)
+(43,0)
+Operator 43 124
+(44,0)
+(45,0)
+Operator 45 124
+(46,0)
+(47,0)
+Operator 47 124
+(48,0)
+(49,0)
+Operator 49 124
+(50,0)
+(51,0)
+Operator 51 124
+(52,0)
+(53,0)
+Operator 53 124
+(54,0)
+(55,0)
+Operator 55 124
+(56,0)
+(57,0)
+Operator 57 124
+(58,0)
+(59,0)
+Operator 59 124
+(60,0)
+(61,0)
+Operator 61 124
+(62,0)
+(63,0)
+Operator 63 124
+(64,0)
+(65,0)
+Operator 65 124
+(66,0)
+(67,0)
+Operator 67 124
+(68,0)
+(69,0)
+Operator 69 124
+(70,0)
+(71,0)
+Operator 71 124
+(72,0)
+(73,0)
+Operator 73 124
+(74,0)
+(75,0)
+Operator 75 124
+(76,0)
+(77,0)
+Operator 77 124
+(78,0)
+(79,0)
+Operator 79 124
+(80,0)
+(81,0)
+Operator 81 124
+(82,0)
+(83,0)
+Operator 83 124
+(84,0)
+(85,0)
+Operator 85 124
+(86,0)
+(87,0)
+Operator 87 124
+(88,0)
+(89,0)
+Operator 89 124
+(90,0)
+(91,0)
+Operator 91 124
+(92,0)
+(93,0)
+Operator 93 124
+(94,0)
+(95,0)
+Operator 95 124
+(96,0)
+(97,0)
+Operator 97 124
+(98,0)
+(99,0)
+Operator 99 124
+(100,0)
+(101,0)
+Operator 101 124
+(102,0)
+(103,0)
+Operator 103 124
+(104,0)
+(105,0)
+Operator 105 124
+(106,0)
+(107,0)
+Operator 107 124
+(108,0)
+(109,0)
+Operator 109 124
+(110,0)
+(111,0)
+Operator 111 124
+(112,0)
+(113,0)
+Operator 113 124
+(114,0)
+(115,0)
+Operator 115 124
+(116,0)
+(117,0)
+Operator 117 124
+(118,0)
+(119,0)
+Operator 119 124
+(120,0)
+(121,0)
+Operator 121 124
+(122,0)
+(123,0)
+Operator 123 124
+(124,0)
+(125,0)
+Operator 125 124
+(126,0)
+(127,0)
+Operator 127 124
+(128,0)
+(129,0)
+Operator 129 124
+(130,0)
+(131,0)
+Operator 131 124
+(132,0)
+(133,0)
+Operator 133 124
+(134,0)
+(135,0)
+Operator 135 124
+(136,0)
+(137,0)
+Operator 137 124
+(138,0)
+(139,0)
+Operator 139 124
+(140,0)
+(141,0)
+Operator 141 124
+(142,0)
+(143,0)
+Operator 143 124
+(144,0)
+(145,0)
+Operator 145 124
+(146,0)
+(147,0)
+Operator 147 124
+(148,0)
+(149,0)
+Operator 149 124
+(150,0)
+(151,0)
+Operator 151 124
+(152,0)
+(153,0)
+Operator 153 124
+(154,0)
+(155,0)
+Operator 155 124
+(156,0)
+(157,0)
+Operator 157 124
+(158,0)
+(159,0)
+Operator 159 124
+(160,0)
+(161,0)
+Operator 161 124
+(162,0)
+(163,0)
+Operator 163 124
+(164,0)
+(165,0)
+Operator 165 124
+(166,0)
+(167,0)
+Operator 167 124
+(168,0)
+(169,0)
+Operator 169 124
+(170,0)
+(171,0)
+Operator 171 124
+(172,0)
+(173,0)
+Operator 173 124
+(174,0)
+(175,0)
+Operator 175 124
+(176,0)
+(177,0)
+Operator 177 124
+(178,0)
+(179,0)
+Operator 179 124
+(180,0)
+(181,0)
+Operator 181 124
+(182,0)
+(183,0)
+Operator 183 124
+(184,0)
+(185,0)
+Operator 185 124
+(186,0)
+(187,0)
+Operator 187 124
+(188,0)
+(189,0)
+Operator 189 124
+(190,0)
+(191,0)
+Operator 191 124
+(192,0)
+(193,0)
+Operator 193 124
+(194,0)
+(195,0)
+Operator 195 124
+(196,0)
+(197,0)
+Operator 197 124
+(198,0)
+Nasao
+\(, \), \{, \}, \|, \*, \\, \$, \t, \_, !, #, %, &, ', +, ,, -, ., /, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, :, ;, <, =, >, ?, @, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, [, ], ^, _, `, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, ~, 
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak ( 40
+\(
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak ) 41
+\)
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak { 123
+\{
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak } 125
+\}
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak | 124
+\|
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak * 42
+\*
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak \ 92
+\\
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak $ 36
+\$
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak 	 9
+\t
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak   32
+\_
+(0,0)
+Usao
+ioi !
+Dodan prijelaz !
+!
+(0,0)
+Usao
+ioi #
+Dodan prijelaz #
+#
+(0,0)
+Usao
+ioi %
+Dodan prijelaz %
+%
+(0,0)
+Usao
+ioi &
+Dodan prijelaz &
+&
+(0,0)
+Usao
+ioi '
+Dodan prijelaz '
+'
+(0,0)
+Usao
+ioi +
+Dodan prijelaz +
++
+(0,0)
+Usao
+ioi ,
+Dodan prijelaz ,
+,
+(0,0)
+Usao
+ioi -
+Dodan prijelaz -
+-
+(0,0)
+Usao
+ioi .
+Dodan prijelaz .
+.
+(0,0)
+Usao
+ioi /
+Dodan prijelaz /
+/
+(0,0)
+Usao
+ioi 0
+Dodan prijelaz 0
+0
+(0,0)
+Usao
+ioi 1
+Dodan prijelaz 1
+1
+(0,0)
+Usao
+ioi 2
+Dodan prijelaz 2
+2
+(0,0)
+Usao
+ioi 3
+Dodan prijelaz 3
+3
+(0,0)
+Usao
+ioi 4
+Dodan prijelaz 4
+4
+(0,0)
+Usao
+ioi 5
+Dodan prijelaz 5
+5
+(0,0)
+Usao
+ioi 6
+Dodan prijelaz 6
+6
+(0,0)
+Usao
+ioi 7
+Dodan prijelaz 7
+7
+(0,0)
+Usao
+ioi 8
+Dodan prijelaz 8
+8
+(0,0)
+Usao
+ioi 9
+Dodan prijelaz 9
+9
+(0,0)
+Usao
+ioi :
+Dodan prijelaz :
+:
+(0,0)
+Usao
+ioi ;
+Dodan prijelaz ;
+;
+(0,0)
+Usao
+ioi <
+Dodan prijelaz <
+<
+(0,0)
+Usao
+ioi =
+Dodan prijelaz =
+=
+(0,0)
+Usao
+ioi >
+Dodan prijelaz >
+>
+(0,0)
+Usao
+ioi ?
+Dodan prijelaz ?
+?
+(0,0)
+Usao
+ioi @
+Dodan prijelaz @
+@
+(0,0)
+Usao
+ioi A
+Dodan prijelaz A
+A
+(0,0)
+Usao
+ioi B
+Dodan prijelaz B
+B
+(0,0)
+Usao
+ioi C
+Dodan prijelaz C
+C
+(0,0)
+Usao
+ioi D
+Dodan prijelaz D
+D
+(0,0)
+Usao
+ioi E
+Dodan prijelaz E
+E
+(0,0)
+Usao
+ioi F
+Dodan prijelaz F
+F
+(0,0)
+Usao
+ioi G
+Dodan prijelaz G
+G
+(0,0)
+Usao
+ioi H
+Dodan prijelaz H
+H
+(0,0)
+Usao
+ioi I
+Dodan prijelaz I
+I
+(0,0)
+Usao
+ioi J
+Dodan prijelaz J
+J
+(0,0)
+Usao
+ioi K
+Dodan prijelaz K
+K
+(0,0)
+Usao
+ioi L
+Dodan prijelaz L
+L
+(0,0)
+Usao
+ioi M
+Dodan prijelaz M
+M
+(0,0)
+Usao
+ioi N
+Dodan prijelaz N
+N
+(0,0)
+Usao
+ioi O
+Dodan prijelaz O
+O
+(0,0)
+Usao
+ioi P
+Dodan prijelaz P
+P
+(0,0)
+Usao
+ioi Q
+Dodan prijelaz Q
+Q
+(0,0)
+Usao
+ioi R
+Dodan prijelaz R
+R
+(0,0)
+Usao
+ioi S
+Dodan prijelaz S
+S
+(0,0)
+Usao
+ioi T
+Dodan prijelaz T
+T
+(0,0)
+Usao
+ioi U
+Dodan prijelaz U
+U
+(0,0)
+Usao
+ioi V
+Dodan prijelaz V
+V
+(0,0)
+Usao
+ioi W
+Dodan prijelaz W
+W
+(0,0)
+Usao
+ioi X
+Dodan prijelaz X
+X
+(0,0)
+Usao
+ioi Y
+Dodan prijelaz Y
+Y
+(0,0)
+Usao
+ioi Z
+Dodan prijelaz Z
+Z
+(0,0)
+Usao
+ioi [
+Dodan prijelaz [
+[
+(0,0)
+Usao
+ioi ]
+Dodan prijelaz ]
+]
+(0,0)
+Usao
+ioi ^
+Dodan prijelaz ^
+^
+(0,0)
+Usao
+ioi _
+Dodan prijelaz _
+_
+(0,0)
+Usao
+ioi `
+Dodan prijelaz `
+`
+(0,0)
+Usao
+ioi a
+Dodan prijelaz a
+a
+(0,0)
+Usao
+ioi b
+Dodan prijelaz b
+b
+(0,0)
+Usao
+ioi c
+Dodan prijelaz c
+c
+(0,0)
+Usao
+ioi d
+Dodan prijelaz d
+d
+(0,0)
+Usao
+ioi e
+Dodan prijelaz e
+e
+(0,0)
+Usao
+ioi f
+Dodan prijelaz f
+f
+(0,0)
+Usao
+ioi g
+Dodan prijelaz g
+g
+(0,0)
+Usao
+ioi h
+Dodan prijelaz h
+h
+(0,0)
+Usao
+ioi i
+Dodan prijelaz i
+i
+(0,0)
+Usao
+ioi j
+Dodan prijelaz j
+j
+(0,0)
+Usao
+ioi k
+Dodan prijelaz k
+k
+(0,0)
+Usao
+ioi l
+Dodan prijelaz l
+l
+(0,0)
+Usao
+ioi m
+Dodan prijelaz m
+m
+(0,0)
+Usao
+ioi n
+Dodan prijelaz n
+n
+(0,0)
+Usao
+ioi o
+Dodan prijelaz o
+o
+(0,0)
+Usao
+ioi p
+Dodan prijelaz p
+p
+(0,0)
+Usao
+ioi q
+Dodan prijelaz q
+q
+(0,0)
+Usao
+ioi r
+Dodan prijelaz r
+r
+(0,0)
+Usao
+ioi s
+Dodan prijelaz s
+s
+(0,0)
+Usao
+ioi t
+Dodan prijelaz t
+t
+(0,0)
+Usao
+ioi u
+Dodan prijelaz u
+u
+(0,0)
+Usao
+ioi v
+Dodan prijelaz v
+v
+(0,0)
+Usao
+ioi w
+Dodan prijelaz w
+w
+(0,0)
+Usao
+ioi x
+Dodan prijelaz x
+x
+(0,0)
+Usao
+ioi y
+Dodan prijelaz y
+y
+(0,0)
+Usao
+ioi z
+Dodan prijelaz z
+z
+(0,0)
+Usao
+ioi ~
+Dodan prijelaz ~
+~
+(0,0)
+(1,0)
+(2,0)
+Usao
+ioi \
+Prilazni znak \ 92
+\\"
+ioi "
+Dodan prijelaz "
+\\"
+ioi "
+Dodan prijelaz "
+"((\(|\)|\{|\}|\||\*|\\|\$|\t|\_|!|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~)|\\")*"
+Provjera: break
+(0,0)
+(1,0)
+(2,0)
+(3,0)
+(4,0)
+Usao
+ioi b
+Dodan prijelaz b
+break
+ioi r
+Dodan prijelaz r
+break
+ioi e
+Dodan prijelaz e
+break
+ioi a
+Dodan prijelaz a
+break
+ioi k
+Dodan prijelaz k
+break
+Provjera: char
+(0,0)
+(1,0)
+(2,0)
+(3,0)
+Usao
+ioi c
+Dodan prijelaz c
+char
+ioi h
+Dodan prijelaz h
+char
+ioi a
+Dodan prijelaz a
+char
+ioi r
+Dodan prijelaz r
+char
+Provjera: const
+(0,0)
+(1,0)
+(2,0)
+(3,0)
+(4,0)
+Usao
+ioi c
+Dodan prijelaz c
+const
+ioi o
+Dodan prijelaz o
+const
+ioi n
+Dodan prijelaz n
+const
+ioi s
+Dodan prijelaz s
+const
+ioi t
+Dodan prijelaz t
+const
+Provjera: continue
+(0,0)
+(1,0)
+(2,0)
+(3,0)
+(4,0)
+(5,0)
+(6,0)
+(7,0)
+Usao
+ioi c
+Dodan prijelaz c
+continue
+ioi o
+Dodan prijelaz o
+continue
+ioi n
+Dodan prijelaz n
+continue
+ioi t
+Dodan prijelaz t
+continue
+ioi i
+Dodan prijelaz i
+continue
+ioi n
+Dodan prijelaz n
+continue
+ioi u
+Dodan prijelaz u
+continue
+ioi e
+Dodan prijelaz e
+continue
+Provjera: else
+(0,0)
+(1,0)
+(2,0)
+(3,0)
+Usao
+ioi e
+Dodan prijelaz e
+else
+ioi l
+Dodan prijelaz l
+else
+ioi s
+Dodan prijelaz s
+else
+ioi e
+Dodan prijelaz e
+else
+Provjera: float
+(0,0)
+(1,0)
+(2,0)
+(3,0)
+(4,0)
+Usao
+ioi f
+Dodan prijelaz f
+float
+ioi l
+Dodan prijelaz l
+float
+ioi o
+Dodan prijelaz o
+float
+ioi a
+Dodan prijelaz a
+float
+ioi t
+Dodan prijelaz t
+float
+Provjera: for
+(0,0)
+(1,0)
+(2,0)
+Usao
+ioi f
+Dodan prijelaz f
+for
+ioi o
+Dodan prijelaz o
+for
+ioi r
+Dodan prijelaz r
+for
+Provjera: if
+(0,0)
+(1,0)
+Usao
+ioi i
+Dodan prijelaz i
+if
+ioi f
+Dodan prijelaz f
+if
+Provjera: int
+(0,0)
+(1,0)
+(2,0)
+Usao
+ioi i
+Dodan prijelaz i
+int
+ioi n
+Dodan prijelaz n
+int
+ioi t
+Dodan prijelaz t
+int
+Provjera: return
+(0,0)
+(1,0)
+(2,0)
+(3,0)
+(4,0)
+(5,0)
+Usao
+ioi r
+Dodan prijelaz r
+return
+ioi e
+Dodan prijelaz e
+return
+ioi t
+Dodan prijelaz t
+return
+ioi u
+Dodan prijelaz u
+return
+ioi r
+Dodan prijelaz r
+return
+ioi n
+Dodan prijelaz n
+return
+Provjera: void
+(0,0)
+(1,0)
+(2,0)
+(3,0)
+Usao
+ioi v
+Dodan prijelaz v
+void
+ioi o
+Dodan prijelaz o
+void
+ioi i
+Dodan prijelaz i
+void
+ioi d
+Dodan prijelaz d
+void
+Provjera: while
+(0,0)
+(1,0)
+(2,0)
+(3,0)
+(4,0)
+Usao
+ioi w
+Dodan prijelaz w
+while
+ioi h
+Dodan prijelaz h
+while
+ioi i
+Dodan prijelaz i
+while
+ioi l
+Dodan prijelaz l
+while
+ioi e
+Dodan prijelaz e
+while
+Provjera: (_|(a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z))(_|(a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z)|(0|1|2|3|4|5|6|7|8|9))*
+(0,0)
+(1,1)
+(2,1)
+(3,1)
+(4,2)
+(5,2)
+(6,2)
+(7,2)
+(8,2)
+(9,2)
+(10,2)
+(11,2)
+(12,2)
+(13,2)
+(14,2)
+(15,2)
+(16,2)
+(17,2)
+(18,2)
+(19,2)
+(20,2)
+(21,2)
+(22,2)
+(23,2)
+(24,2)
+(25,2)
+(26,2)
+(27,2)
+(28,2)
+(29,2)
+(30,2)
+(31,2)
+(32,2)
+(33,2)
+(34,2)
+(35,2)
+(36,2)
+(37,2)
+(38,2)
+(39,2)
+(40,2)
+(41,2)
+(42,2)
+(43,2)
+(44,2)
+(45,2)
+(46,2)
+(47,2)
+(48,2)
+(49,2)
+(50,2)
+(51,2)
+(52,2)
+(53,2)
+(54,2)
+(55,2)
+(56,2)
+(57,2)
+(58,2)
+(59,2)
+(60,2)
+(61,2)
+(62,2)
+(63,2)
+(64,2)
+(65,2)
+(66,2)
+(67,2)
+(68,2)
+(69,2)
+(70,2)
+(71,2)
+(72,2)
+(73,2)
+(74,2)
+(75,2)
+(76,2)
+(77,2)
+(78,2)
+(79,2)
+(80,2)
+(81,2)
+(82,2)
+(83,2)
+(84,2)
+(85,2)
+(86,2)
+(87,2)
+(88,2)
+(89,2)
+(90,2)
+(91,2)
+(92,2)
+(93,2)
+(94,2)
+(95,2)
+(96,2)
+(97,2)
+(98,2)
+(99,2)
+(100,2)
+(101,2)
+(102,2)
+(103,2)
+(104,2)
+(105,2)
+(106,2)
+(107,2)
+(108,1)
+(109,0)
+(110,1)
+(111,1)
+(112,1)
+(113,2)
+(114,2)
+(115,2)
+(116,2)
+(117,2)
+(118,2)
+(119,2)
+(120,2)
+(121,2)
+(122,2)
+(123,2)
+(124,2)
+(125,2)
+(126,2)
+(127,2)
+(128,2)
+(129,2)
+(130,2)
+(131,2)
+(132,2)
+(133,2)
+(134,2)
+(135,2)
+(136,2)
+(137,2)
+(138,2)
+(139,2)
+(140,2)
+(141,2)
+(142,2)
+(143,2)
+(144,2)
+(145,2)
+(146,2)
+(147,2)
+(148,2)
+(149,2)
+(150,2)
+(151,2)
+(152,2)
+(153,2)
+(154,2)
+(155,2)
+(156,2)
+(157,2)
+(158,2)
+(159,2)
+(160,2)
+(161,2)
+(162,2)
+(163,2)
+(164,2)
+(165,2)
+(166,2)
+(167,2)
+(168,2)
+(169,2)
+(170,2)
+(171,2)
+(172,2)
+(173,2)
+(174,2)
+(175,2)
+(176,2)
+(177,2)
+(178,2)
+(179,2)
+(180,2)
+(181,2)
+(182,2)
+(183,2)
+(184,2)
+(185,2)
+(186,2)
+(187,2)
+(188,2)
+(189,2)
+(190,2)
+(191,2)
+(192,2)
+(193,2)
+(194,2)
+(195,2)
+(196,2)
+(197,2)
+(198,2)
+(199,2)
+(200,2)
+(201,2)
+(202,2)
+(203,2)
+(204,2)
+(205,2)
+(206,2)
+(207,2)
+(208,2)
+(209,2)
+(210,2)
+(211,2)
+(212,2)
+(213,2)
+(214,2)
+(215,2)
+(216,2)
+(217,1)
+(218,1)
+(219,2)
+(220,2)
+(221,2)
+(222,2)
+(223,2)
+(224,2)
+(225,2)
+(226,2)
+(227,2)
+(228,2)
+(229,2)
+(230,2)
+(231,2)
+(232,2)
+(233,2)
+(234,2)
+(235,2)
+(236,2)
+(237,2)
+(238,2)
+(239,1)
+(240,0)
+Usao
+ioi (
+Novi bolji _|(a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z)
+(0,0)
+(1,0)
+Operator 1 124
+(2,0)
+(3,1)
+(4,1)
+(5,1)
+(6,1)
+(7,1)
+(8,1)
+(9,1)
+(10,1)
+(11,1)
+(12,1)
+(13,1)
+(14,1)
+(15,1)
+(16,1)
+(17,1)
+(18,1)
+(19,1)
+(20,1)
+(21,1)
+(22,1)
+(23,1)
+(24,1)
+(25,1)
+(26,1)
+(27,1)
+(28,1)
+(29,1)
+(30,1)
+(31,1)
+(32,1)
+(33,1)
+(34,1)
+(35,1)
+(36,1)
+(37,1)
+(38,1)
+(39,1)
+(40,1)
+(41,1)
+(42,1)
+(43,1)
+(44,1)
+(45,1)
+(46,1)
+(47,1)
+(48,1)
+(49,1)
+(50,1)
+(51,1)
+(52,1)
+(53,1)
+(54,1)
+(55,1)
+(56,1)
+(57,1)
+(58,1)
+(59,1)
+(60,1)
+(61,1)
+(62,1)
+(63,1)
+(64,1)
+(65,1)
+(66,1)
+(67,1)
+(68,1)
+(69,1)
+(70,1)
+(71,1)
+(72,1)
+(73,1)
+(74,1)
+(75,1)
+(76,1)
+(77,1)
+(78,1)
+(79,1)
+(80,1)
+(81,1)
+(82,1)
+(83,1)
+(84,1)
+(85,1)
+(86,1)
+(87,1)
+(88,1)
+(89,1)
+(90,1)
+(91,1)
+(92,1)
+(93,1)
+(94,1)
+(95,1)
+(96,1)
+(97,1)
+(98,1)
+(99,1)
+(100,1)
+(101,1)
+(102,1)
+(103,1)
+(104,1)
+(105,1)
+(106,1)
+Nasao
+_, (a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z), 
+(0,0)
+Usao
+ioi _
+Dodan prijelaz _
+_
+(0,0)
+(1,1)
+(2,1)
+(3,1)
+(4,1)
+(5,1)
+(6,1)
+(7,1)
+(8,1)
+(9,1)
+(10,1)
+(11,1)
+(12,1)
+(13,1)
+(14,1)
+(15,1)
+(16,1)
+(17,1)
+(18,1)
+(19,1)
+(20,1)
+(21,1)
+(22,1)
+(23,1)
+(24,1)
+(25,1)
+(26,1)
+(27,1)
+(28,1)
+(29,1)
+(30,1)
+(31,1)
+(32,1)
+(33,1)
+(34,1)
+(35,1)
+(36,1)
+(37,1)
+(38,1)
+(39,1)
+(40,1)
+(41,1)
+(42,1)
+(43,1)
+(44,1)
+(45,1)
+(46,1)
+(47,1)
+(48,1)
+(49,1)
+(50,1)
+(51,1)
+(52,1)
+(53,1)
+(54,1)
+(55,1)
+(56,1)
+(57,1)
+(58,1)
+(59,1)
+(60,1)
+(61,1)
+(62,1)
+(63,1)
+(64,1)
+(65,1)
+(66,1)
+(67,1)
+(68,1)
+(69,1)
+(70,1)
+(71,1)
+(72,1)
+(73,1)
+(74,1)
+(75,1)
+(76,1)
+(77,1)
+(78,1)
+(79,1)
+(80,1)
+(81,1)
+(82,1)
+(83,1)
+(84,1)
+(85,1)
+(86,1)
+(87,1)
+(88,1)
+(89,1)
+(90,1)
+(91,1)
+(92,1)
+(93,1)
+(94,1)
+(95,1)
+(96,1)
+(97,1)
+(98,1)
+(99,1)
+(100,1)
+(101,1)
+(102,1)
+(103,1)
+(104,1)
+Usao
+ioi (
+Novi bolji a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z
+(0,0)
+(1,0)
+Operator 1 124
+(2,0)
+(3,0)
+Operator 3 124
+(4,0)
+(5,0)
+Operator 5 124
+(6,0)
+(7,0)
+Operator 7 124
+(8,0)
+(9,0)
+Operator 9 124
+(10,0)
+(11,0)
+Operator 11 124
+(12,0)
+(13,0)
+Operator 13 124
+(14,0)
+(15,0)
+Operator 15 124
+(16,0)
+(17,0)
+Operator 17 124
+(18,0)
+(19,0)
+Operator 19 124
+(20,0)
+(21,0)
+Operator 21 124
+(22,0)
+(23,0)
+Operator 23 124
+(24,0)
+(25,0)
+Operator 25 124
+(26,0)
+(27,0)
+Operator 27 124
+(28,0)
+(29,0)
+Operator 29 124
+(30,0)
+(31,0)
+Operator 31 124
+(32,0)
+(33,0)
+Operator 33 124
+(34,0)
+(35,0)
+Operator 35 124
+(36,0)
+(37,0)
+Operator 37 124
+(38,0)
+(39,0)
+Operator 39 124
+(40,0)
+(41,0)
+Operator 41 124
+(42,0)
+(43,0)
+Operator 43 124
+(44,0)
+(45,0)
+Operator 45 124
+(46,0)
+(47,0)
+Operator 47 124
+(48,0)
+(49,0)
+Operator 49 124
+(50,0)
+(51,0)
+Operator 51 124
+(52,0)
+(53,0)
+Operator 53 124
+(54,0)
+(55,0)
+Operator 55 124
+(56,0)
+(57,0)
+Operator 57 124
+(58,0)
+(59,0)
+Operator 59 124
+(60,0)
+(61,0)
+Operator 61 124
+(62,0)
+(63,0)
+Operator 63 124
+(64,0)
+(65,0)
+Operator 65 124
+(66,0)
+(67,0)
+Operator 67 124
+(68,0)
+(69,0)
+Operator 69 124
+(70,0)
+(71,0)
+Operator 71 124
+(72,0)
+(73,0)
+Operator 73 124
+(74,0)
+(75,0)
+Operator 75 124
+(76,0)
+(77,0)
+Operator 77 124
+(78,0)
+(79,0)
+Operator 79 124
+(80,0)
+(81,0)
+Operator 81 124
+(82,0)
+(83,0)
+Operator 83 124
+(84,0)
+(85,0)
+Operator 85 124
+(86,0)
+(87,0)
+Operator 87 124
+(88,0)
+(89,0)
+Operator 89 124
+(90,0)
+(91,0)
+Operator 91 124
+(92,0)
+(93,0)
+Operator 93 124
+(94,0)
+(95,0)
+Operator 95 124
+(96,0)
+(97,0)
+Operator 97 124
+(98,0)
+(99,0)
+Operator 99 124
+(100,0)
+(101,0)
+Operator 101 124
+(102,0)
+Nasao
+a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, 
+(0,0)
+Usao
+ioi a
+Dodan prijelaz a
+a
+(0,0)
+Usao
+ioi b
+Dodan prijelaz b
+b
+(0,0)
+Usao
+ioi c
+Dodan prijelaz c
+c
+(0,0)
+Usao
+ioi d
+Dodan prijelaz d
+d
+(0,0)
+Usao
+ioi e
+Dodan prijelaz e
+e
+(0,0)
+Usao
+ioi f
+Dodan prijelaz f
+f
+(0,0)
+Usao
+ioi g
+Dodan prijelaz g
+g
+(0,0)
+Usao
+ioi h
+Dodan prijelaz h
+h
+(0,0)
+Usao
+ioi i
+Dodan prijelaz i
+i
+(0,0)
+Usao
+ioi j
+Dodan prijelaz j
+j
+(0,0)
+Usao
+ioi k
+Dodan prijelaz k
+k
+(0,0)
+Usao
+ioi l
+Dodan prijelaz l
+l
+(0,0)
+Usao
+ioi m
+Dodan prijelaz m
+m
+(0,0)
+Usao
+ioi n
+Dodan prijelaz n
+n
+(0,0)
+Usao
+ioi o
+Dodan prijelaz o
+o
+(0,0)
+Usao
+ioi p
+Dodan prijelaz p
+p
+(0,0)
+Usao
+ioi q
+Dodan prijelaz q
+q
+(0,0)
+Usao
+ioi r
+Dodan prijelaz r
+r
+(0,0)
+Usao
+ioi s
+Dodan prijelaz s
+s
+(0,0)
+Usao
+ioi t
+Dodan prijelaz t
+t
+(0,0)
+Usao
+ioi u
+Dodan prijelaz u
+u
+(0,0)
+Usao
+ioi v
+Dodan prijelaz v
+v
+(0,0)
+Usao
+ioi w
+Dodan prijelaz w
+w
+(0,0)
+Usao
+ioi x
+Dodan prijelaz x
+x
+(0,0)
+Usao
+ioi y
+Dodan prijelaz y
+y
+(0,0)
+Usao
+ioi z
+Dodan prijelaz z
+z
+(0,0)
+Usao
+ioi A
+Dodan prijelaz A
+A
+(0,0)
+Usao
+ioi B
+Dodan prijelaz B
+B
+(0,0)
+Usao
+ioi C
+Dodan prijelaz C
+C
+(0,0)
+Usao
+ioi D
+Dodan prijelaz D
+D
+(0,0)
+Usao
+ioi E
+Dodan prijelaz E
+E
+(0,0)
+Usao
+ioi F
+Dodan prijelaz F
+F
+(0,0)
+Usao
+ioi G
+Dodan prijelaz G
+G
+(0,0)
+Usao
+ioi H
+Dodan prijelaz H
+H
+(0,0)
+Usao
+ioi I
+Dodan prijelaz I
+I
+(0,0)
+Usao
+ioi J
+Dodan prijelaz J
+J
+(0,0)
+Usao
+ioi K
+Dodan prijelaz K
+K
+(0,0)
+Usao
+ioi L
+Dodan prijelaz L
+L
+(0,0)
+Usao
+ioi M
+Dodan prijelaz M
+M
+(0,0)
+Usao
+ioi N
+Dodan prijelaz N
+N
+(0,0)
+Usao
+ioi O
+Dodan prijelaz O
+O
+(0,0)
+Usao
+ioi P
+Dodan prijelaz P
+P
+(0,0)
+Usao
+ioi Q
+Dodan prijelaz Q
+Q
+(0,0)
+Usao
+ioi R
+Dodan prijelaz R
+R
+(0,0)
+Usao
+ioi S
+Dodan prijelaz S
+S
+(0,0)
+Usao
+ioi T
+Dodan prijelaz T
+T
+(0,0)
+Usao
+ioi U
+Dodan prijelaz U
+U
+(0,0)
+Usao
+ioi V
+Dodan prijelaz V
+V
+(0,0)
+Usao
+ioi W
+Dodan prijelaz W
+W
+(0,0)
+Usao
+ioi X
+Dodan prijelaz X
+X
+(0,0)
+Usao
+ioi Y
+Dodan prijelaz Y
+Y
+(0,0)
+Usao
+ioi Z
+Dodan prijelaz Z
+Z
+ioi (
+Novi bolji _|(a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z)|(0|1|2|3|4|5|6|7|8|9)
+(0,0)
+(1,0)
+Operator 1 124
+(2,0)
+(3,1)
+(4,1)
+(5,1)
+(6,1)
+(7,1)
+(8,1)
+(9,1)
+(10,1)
+(11,1)
+(12,1)
+(13,1)
+(14,1)
+(15,1)
+(16,1)
+(17,1)
+(18,1)
+(19,1)
+(20,1)
+(21,1)
+(22,1)
+(23,1)
+(24,1)
+(25,1)
+(26,1)
+(27,1)
+(28,1)
+(29,1)
+(30,1)
+(31,1)
+(32,1)
+(33,1)
+(34,1)
+(35,1)
+(36,1)
+(37,1)
+(38,1)
+(39,1)
+(40,1)
+(41,1)
+(42,1)
+(43,1)
+(44,1)
+(45,1)
+(46,1)
+(47,1)
+(48,1)
+(49,1)
+(50,1)
+(51,1)
+(52,1)
+(53,1)
+(54,1)
+(55,1)
+(56,1)
+(57,1)
+(58,1)
+(59,1)
+(60,1)
+(61,1)
+(62,1)
+(63,1)
+(64,1)
+(65,1)
+(66,1)
+(67,1)
+(68,1)
+(69,1)
+(70,1)
+(71,1)
+(72,1)
+(73,1)
+(74,1)
+(75,1)
+(76,1)
+(77,1)
+(78,1)
+(79,1)
+(80,1)
+(81,1)
+(82,1)
+(83,1)
+(84,1)
+(85,1)
+(86,1)
+(87,1)
+(88,1)
+(89,1)
+(90,1)
+(91,1)
+(92,1)
+(93,1)
+(94,1)
+(95,1)
+(96,1)
+(97,1)
+(98,1)
+(99,1)
+(100,1)
+(101,1)
+(102,1)
+(103,1)
+(104,1)
+(105,1)
+(106,1)
+(107,0)
+Operator 107 124
+(108,0)
+(109,1)
+(110,1)
+(111,1)
+(112,1)
+(113,1)
+(114,1)
+(115,1)
+(116,1)
+(117,1)
+(118,1)
+(119,1)
+(120,1)
+(121,1)
+(122,1)
+(123,1)
+(124,1)
+(125,1)
+(126,1)
+(127,1)
+(128,1)
+Nasao
+_, (a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z), (0|1|2|3|4|5|6|7|8|9), 
+(0,0)
+Usao
+ioi _
+Dodan prijelaz _
+_
+(0,0)
+(1,1)
+(2,1)
+(3,1)
+(4,1)
+(5,1)
+(6,1)
+(7,1)
+(8,1)
+(9,1)
+(10,1)
+(11,1)
+(12,1)
+(13,1)
+(14,1)
+(15,1)
+(16,1)
+(17,1)
+(18,1)
+(19,1)
+(20,1)
+(21,1)
+(22,1)
+(23,1)
+(24,1)
+(25,1)
+(26,1)
+(27,1)
+(28,1)
+(29,1)
+(30,1)
+(31,1)
+(32,1)
+(33,1)
+(34,1)
+(35,1)
+(36,1)
+(37,1)
+(38,1)
+(39,1)
+(40,1)
+(41,1)
+(42,1)
+(43,1)
+(44,1)
+(45,1)
+(46,1)
+(47,1)
+(48,1)
+(49,1)
+(50,1)
+(51,1)
+(52,1)
+(53,1)
+(54,1)
+(55,1)
+(56,1)
+(57,1)
+(58,1)
+(59,1)
+(60,1)
+(61,1)
+(62,1)
+(63,1)
+(64,1)
+(65,1)
+(66,1)
+(67,1)
+(68,1)
+(69,1)
+(70,1)
+(71,1)
+(72,1)
+(73,1)
+(74,1)
+(75,1)
+(76,1)
+(77,1)
+(78,1)
+(79,1)
+(80,1)
+(81,1)
+(82,1)
+(83,1)
+(84,1)
+(85,1)
+(86,1)
+(87,1)
+(88,1)
+(89,1)
+(90,1)
+(91,1)
+(92,1)
+(93,1)
+(94,1)
+(95,1)
+(96,1)
+(97,1)
+(98,1)
+(99,1)
+(100,1)
+(101,1)
+(102,1)
+(103,1)
+(104,1)
+Usao
+ioi (
+Novi bolji a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z
+(0,0)
+(1,0)
+Operator 1 124
+(2,0)
+(3,0)
+Operator 3 124
+(4,0)
+(5,0)
+Operator 5 124
+(6,0)
+(7,0)
+Operator 7 124
+(8,0)
+(9,0)
+Operator 9 124
+(10,0)
+(11,0)
+Operator 11 124
+(12,0)
+(13,0)
+Operator 13 124
+(14,0)
+(15,0)
+Operator 15 124
+(16,0)
+(17,0)
+Operator 17 124
+(18,0)
+(19,0)
+Operator 19 124
+(20,0)
+(21,0)
+Operator 21 124
+(22,0)
+(23,0)
+Operator 23 124
+(24,0)
+(25,0)
+Operator 25 124
+(26,0)
+(27,0)
+Operator 27 124
+(28,0)
+(29,0)
+Operator 29 124
+(30,0)
+(31,0)
+Operator 31 124
+(32,0)
+(33,0)
+Operator 33 124
+(34,0)
+(35,0)
+Operator 35 124
+(36,0)
+(37,0)
+Operator 37 124
+(38,0)
+(39,0)
+Operator 39 124
+(40,0)
+(41,0)
+Operator 41 124
+(42,0)
+(43,0)
+Operator 43 124
+(44,0)
+(45,0)
+Operator 45 124
+(46,0)
+(47,0)
+Operator 47 124
+(48,0)
+(49,0)
+Operator 49 124
+(50,0)
+(51,0)
+Operator 51 124
+(52,0)
+(53,0)
+Operator 53 124
+(54,0)
+(55,0)
+Operator 55 124
+(56,0)
+(57,0)
+Operator 57 124
+(58,0)
+(59,0)
+Operator 59 124
+(60,0)
+(61,0)
+Operator 61 124
+(62,0)
+(63,0)
+Operator 63 124
+(64,0)
+(65,0)
+Operator 65 124
+(66,0)
+(67,0)
+Operator 67 124
+(68,0)
+(69,0)
+Operator 69 124
+(70,0)
+(71,0)
+Operator 71 124
+(72,0)
+(73,0)
+Operator 73 124
+(74,0)
+(75,0)
+Operator 75 124
+(76,0)
+(77,0)
+Operator 77 124
+(78,0)
+(79,0)
+Operator 79 124
+(80,0)
+(81,0)
+Operator 81 124
+(82,0)
+(83,0)
+Operator 83 124
+(84,0)
+(85,0)
+Operator 85 124
+(86,0)
+(87,0)
+Operator 87 124
+(88,0)
+(89,0)
+Operator 89 124
+(90,0)
+(91,0)
+Operator 91 124
+(92,0)
+(93,0)
+Operator 93 124
+(94,0)
+(95,0)
+Operator 95 124
+(96,0)
+(97,0)
+Operator 97 124
+(98,0)
+(99,0)
+Operator 99 124
+(100,0)
+(101,0)
+Operator 101 124
+(102,0)
+Nasao
+a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, 
+(0,0)
+Usao
+ioi a
+Dodan prijelaz a
+a
+(0,0)
+Usao
+ioi b
+Dodan prijelaz b
+b
+(0,0)
+Usao
+ioi c
+Dodan prijelaz c
+c
+(0,0)
+Usao
+ioi d
+Dodan prijelaz d
+d
+(0,0)
+Usao
+ioi e
+Dodan prijelaz e
+e
+(0,0)
+Usao
+ioi f
+Dodan prijelaz f
+f
+(0,0)
+Usao
+ioi g
+Dodan prijelaz g
+g
+(0,0)
+Usao
+ioi h
+Dodan prijelaz h
+h
+(0,0)
+Usao
+ioi i
+Dodan prijelaz i
+i
+(0,0)
+Usao
+ioi j
+Dodan prijelaz j
+j
+(0,0)
+Usao
+ioi k
+Dodan prijelaz k
+k
+(0,0)
+Usao
+ioi l
+Dodan prijelaz l
+l
+(0,0)
+Usao
+ioi m
+Dodan prijelaz m
+m
+(0,0)
+Usao
+ioi n
+Dodan prijelaz n
+n
+(0,0)
+Usao
+ioi o
+Dodan prijelaz o
+o
+(0,0)
+Usao
+ioi p
+Dodan prijelaz p
+p
+(0,0)
+Usao
+ioi q
+Dodan prijelaz q
+q
+(0,0)
+Usao
+ioi r
+Dodan prijelaz r
+r
+(0,0)
+Usao
+ioi s
+Dodan prijelaz s
+s
+(0,0)
+Usao
+ioi t
+Dodan prijelaz t
+t
+(0,0)
+Usao
+ioi u
+Dodan prijelaz u
+u
+(0,0)
+Usao
+ioi v
+Dodan prijelaz v
+v
+(0,0)
+Usao
+ioi w
+Dodan prijelaz w
+w
+(0,0)
+Usao
+ioi x
+Dodan prijelaz x
+x
+(0,0)
+Usao
+ioi y
+Dodan prijelaz y
+y
+(0,0)
+Usao
+ioi z
+Dodan prijelaz z
+z
+(0,0)
+Usao
+ioi A
+Dodan prijelaz A
+A
+(0,0)
+Usao
+ioi B
+Dodan prijelaz B
+B
+(0,0)
+Usao
+ioi C
+Dodan prijelaz C
+C
+(0,0)
+Usao
+ioi D
+Dodan prijelaz D
+D
+(0,0)
+Usao
+ioi E
+Dodan prijelaz E
+E
+(0,0)
+Usao
+ioi F
+Dodan prijelaz F
+F
+(0,0)
+Usao
+ioi G
+Dodan prijelaz G
+G
+(0,0)
+Usao
+ioi H
+Dodan prijelaz H
+H
+(0,0)
+Usao
+ioi I
+Dodan prijelaz I
+I
+(0,0)
+Usao
+ioi J
+Dodan prijelaz J
+J
+(0,0)
+Usao
+ioi K
+Dodan prijelaz K
+K
+(0,0)
+Usao
+ioi L
+Dodan prijelaz L
+L
+(0,0)
+Usao
+ioi M
+Dodan prijelaz M
+M
+(0,0)
+Usao
+ioi N
+Dodan prijelaz N
+N
+(0,0)
+Usao
+ioi O
+Dodan prijelaz O
+O
+(0,0)
+Usao
+ioi P
+Dodan prijelaz P
+P
+(0,0)
+Usao
+ioi Q
+Dodan prijelaz Q
+Q
+(0,0)
+Usao
+ioi R
+Dodan prijelaz R
+R
+(0,0)
+Usao
+ioi S
+Dodan prijelaz S
+S
+(0,0)
+Usao
+ioi T
+Dodan prijelaz T
+T
+(0,0)
+Usao
+ioi U
+Dodan prijelaz U
+U
+(0,0)
+Usao
+ioi V
+Dodan prijelaz V
+V
+(0,0)
+Usao
+ioi W
+Dodan prijelaz W
+W
+(0,0)
+Usao
+ioi X
+Dodan prijelaz X
+X
+(0,0)
+Usao
+ioi Y
+Dodan prijelaz Y
+Y
+(0,0)
+Usao
+ioi Z
+Dodan prijelaz Z
+Z
+(0,0)
+(1,1)
+(2,1)
+(3,1)
+(4,1)
+(5,1)
+(6,1)
+(7,1)
+(8,1)
+(9,1)
+(10,1)
+(11,1)
+(12,1)
+(13,1)
+(14,1)
+(15,1)
+(16,1)
+(17,1)
+(18,1)
+(19,1)
+(20,1)
+Usao
+ioi (
+Novi bolji 0|1|2|3|4|5|6|7|8|9
+(0,0)
+(1,0)
+Operator 1 124
+(2,0)
+(3,0)
+Operator 3 124
+(4,0)
+(5,0)
+Operator 5 124
+(6,0)
+(7,0)
+Operator 7 124
+(8,0)
+(9,0)
+Operator 9 124
+(10,0)
+(11,0)
+Operator 11 124
+(12,0)
+(13,0)
+Operator 13 124
+(14,0)
+(15,0)
+Operator 15 124
+(16,0)
+(17,0)
+Operator 17 124
+(18,0)
+Nasao
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+(0,0)
+Usao
+ioi 0
+Dodan prijelaz 0
+0
+(0,0)
+Usao
+ioi 1
+Dodan prijelaz 1
+1
+(0,0)
+Usao
+ioi 2
+Dodan prijelaz 2
+2
+(0,0)
+Usao
+ioi 3
+Dodan prijelaz 3
+3
+(0,0)
+Usao
+ioi 4
+Dodan prijelaz 4
+4
+(0,0)
+Usao
+ioi 5
+Dodan prijelaz 5
+5
+(0,0)
+Usao
+ioi 6
+Dodan prijelaz 6
+6
+(0,0)
+Usao
+ioi 7
+Dodan prijelaz 7
+7
+(0,0)
+Usao
+ioi 8
+Dodan prijelaz 8
+8
+(0,0)
+Usao
+ioi 9
+Dodan prijelaz 9
+9
+Provjera: (0|1|2|3|4|5|6|7|8|9)(0|1|2|3|4|5|6|7|8|9)*
+(0,0)
+(1,1)
+(2,1)
+(3,1)
+(4,1)
+(5,1)
+(6,1)
+(7,1)
+(8,1)
+(9,1)
+(10,1)
+(11,1)
+(12,1)
+(13,1)
+(14,1)
+(15,1)
+(16,1)
+(17,1)
+(18,1)
+(19,1)
+(20,1)
+(21,0)
+(22,1)
+(23,1)
+(24,1)
+(25,1)
+(26,1)
+(27,1)
+(28,1)
+(29,1)
+(30,1)
+(31,1)
+(32,1)
+(33,1)
+(34,1)
+(35,1)
+(36,1)
+(37,1)
+(38,1)
+(39,1)
+(40,1)
+(41,1)
+(42,0)
+Usao
+ioi (
+Novi bolji 0|1|2|3|4|5|6|7|8|9
+(0,0)
+(1,0)
+Operator 1 124
+(2,0)
+(3,0)
+Operator 3 124
+(4,0)
+(5,0)
+Operator 5 124
+(6,0)
+(7,0)
+Operator 7 124
+(8,0)
+(9,0)
+Operator 9 124
+(10,0)
+(11,0)
+Operator 11 124
+(12,0)
+(13,0)
+Operator 13 124
+(14,0)
+(15,0)
+Operator 15 124
+(16,0)
+(17,0)
+Operator 17 124
+(18,0)
+Nasao
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+(0,0)
+Usao
+ioi 0
+Dodan prijelaz 0
+0
+(0,0)
+Usao
+ioi 1
+Dodan prijelaz 1
+1
+(0,0)
+Usao
+ioi 2
+Dodan prijelaz 2
+2
+(0,0)
+Usao
+ioi 3
+Dodan prijelaz 3
+3
+(0,0)
+Usao
+ioi 4
+Dodan prijelaz 4
+4
+(0,0)
+Usao
+ioi 5
+Dodan prijelaz 5
+5
+(0,0)
+Usao
+ioi 6
+Dodan prijelaz 6
+6
+(0,0)
+Usao
+ioi 7
+Dodan prijelaz 7
+7
+(0,0)
+Usao
+ioi 8
+Dodan prijelaz 8
+8
+(0,0)
+Usao
+ioi 9
+Dodan prijelaz 9
+9
+ioi (
+Novi bolji 0|1|2|3|4|5|6|7|8|9
+(0,0)
+(1,0)
+Operator 1 124
+(2,0)
+(3,0)
+Operator 3 124
+(4,0)
+(5,0)
+Operator 5 124
+(6,0)
+(7,0)
+Operator 7 124
+(8,0)
+(9,0)
+Operator 9 124
+(10,0)
+(11,0)
+Operator 11 124
+(12,0)
+(13,0)
+Operator 13 124
+(14,0)
+(15,0)
+Operator 15 124
+(16,0)
+(17,0)
+Operator 17 124
+(18,0)
+Nasao
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+(0,0)
+Usao
+ioi 0
+Dodan prijelaz 0
+0
+(0,0)
+Usao
+ioi 1
+Dodan prijelaz 1
+1
+(0,0)
+Usao
+ioi 2
+Dodan prijelaz 2
+2
+(0,0)
+Usao
+ioi 3
+Dodan prijelaz 3
+3
+(0,0)
+Usao
+ioi 4
+Dodan prijelaz 4
+4
+(0,0)
+Usao
+ioi 5
+Dodan prijelaz 5
+5
+(0,0)
+Usao
+ioi 6
+Dodan prijelaz 6
+6
+(0,0)
+Usao
+ioi 7
+Dodan prijelaz 7
+7
+(0,0)
+Usao
+ioi 8
+Dodan prijelaz 8
+8
+(0,0)
+Usao
+ioi 9
+Dodan prijelaz 9
+9
+Provjera: 0(X|x)((0|1|2|3|4|5|6|7|8|9)|a|b|c|d|e|f|A|B|C|D|E|F)((0|1|2|3|4|5|6|7|8|9)|a|b|c|d|e|f|A|B|C|D|E|F)*
+(0,0)
+(1,0)
+(2,1)
+(3,1)
+(4,1)
+(5,1)
+(6,0)
+(7,1)
+(8,2)
+(9,2)
+(10,2)
+(11,2)
+(12,2)
+(13,2)
+(14,2)
+(15,2)
+(16,2)
+(17,2)
+(18,2)
+(19,2)
+(20,2)
+(21,2)
+(22,2)
+(23,2)
+(24,2)
+(25,2)
+(26,2)
+(27,2)
+(28,1)
+(29,1)
+(30,1)
+(31,1)
+(32,1)
+(33,1)
+(34,1)
+(35,1)
+(36,1)
+(37,1)
+(38,1)
+(39,1)
+(40,1)
+(41,1)
+(42,1)
+(43,1)
+(44,1)
+(45,1)
+(46,1)
+(47,1)
+(48,1)
+(49,1)
+(50,1)
+(51,1)
+(52,1)
+(53,0)
+(54,1)
+(55,2)
+(56,2)
+(57,2)
+(58,2)
+(59,2)
+(60,2)
+(61,2)
+(62,2)
+(63,2)
+(64,2)
+(65,2)
+(66,2)
+(67,2)
+(68,2)
+(69,2)
+(70,2)
+(71,2)
+(72,2)
+(73,2)
+(74,2)
+(75,1)
+(76,1)
+(77,1)
+(78,1)
+(79,1)
+(80,1)
+(81,1)
+(82,1)
+(83,1)
+(84,1)
+(85,1)
+(86,1)
+(87,1)
+(88,1)
+(89,1)
+(90,1)
+(91,1)
+(92,1)
+(93,1)
+(94,1)
+(95,1)
+(96,1)
+(97,1)
+(98,1)
+(99,1)
+(100,0)
+Usao
+ioi 0
+Dodan prijelaz 0
+0(X|x)((0|1|2|3|4|5|6|7|8|9)|a|b|c|d|e|f|A|B|C|D|E|F)((0|1|2|3|4|5|6|7|8|9)|a|b|c|d|e|f|A|B|C|D|E|F)*
+ioi (
+Novi bolji X|x
+(0,0)
+(1,0)
+Operator 1 124
+(2,0)
+Nasao
+X, x, 
+(0,0)
+Usao
+ioi X
+Dodan prijelaz X
+X
+(0,0)
+Usao
+ioi x
+Dodan prijelaz x
+x
+ioi (
+Novi bolji (0|1|2|3|4|5|6|7|8|9)|a|b|c|d|e|f|A|B|C|D|E|F
+(0,0)
+(1,1)
+(2,1)
+(3,1)
+(4,1)
+(5,1)
+(6,1)
+(7,1)
+(8,1)
+(9,1)
+(10,1)
+(11,1)
+(12,1)
+(13,1)
+(14,1)
+(15,1)
+(16,1)
+(17,1)
+(18,1)
+(19,1)
+(20,1)
+(21,0)
+Operator 21 124
+(22,0)
+(23,0)
+Operator 23 124
+(24,0)
+(25,0)
+Operator 25 124
+(26,0)
+(27,0)
+Operator 27 124
+(28,0)
+(29,0)
+Operator 29 124
+(30,0)
+(31,0)
+Operator 31 124
+(32,0)
+(33,0)
+Operator 33 124
+(34,0)
+(35,0)
+Operator 35 124
+(36,0)
+(37,0)
+Operator 37 124
+(38,0)
+(39,0)
+Operator 39 124
+(40,0)
+(41,0)
+Operator 41 124
+(42,0)
+(43,0)
+Operator 43 124
+(44,0)
+Nasao
+(0|1|2|3|4|5|6|7|8|9), a, b, c, d, e, f, A, B, C, D, E, F, 
+(0,0)
+(1,1)
+(2,1)
+(3,1)
+(4,1)
+(5,1)
+(6,1)
+(7,1)
+(8,1)
+(9,1)
+(10,1)
+(11,1)
+(12,1)
+(13,1)
+(14,1)
+(15,1)
+(16,1)
+(17,1)
+(18,1)
+(19,1)
+(20,1)
+Usao
+ioi (
+Novi bolji 0|1|2|3|4|5|6|7|8|9
+(0,0)
+(1,0)
+Operator 1 124
+(2,0)
+(3,0)
+Operator 3 124
+(4,0)
+(5,0)
+Operator 5 124
+(6,0)
+(7,0)
+Operator 7 124
+(8,0)
+(9,0)
+Operator 9 124
+(10,0)
+(11,0)
+Operator 11 124
+(12,0)
+(13,0)
+Operator 13 124
+(14,0)
+(15,0)
+Operator 15 124
+(16,0)
+(17,0)
+Operator 17 124
+(18,0)
+Nasao
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+(0,0)
+Usao
+ioi 0
+Dodan prijelaz 0
+0
+(0,0)
+Usao
+ioi 1
+Dodan prijelaz 1
+1
+(0,0)
+Usao
+ioi 2
+Dodan prijelaz 2
+2
+(0,0)
+Usao
+ioi 3
+Dodan prijelaz 3
+3
+(0,0)
+Usao
+ioi 4
+Dodan prijelaz 4
+4
+(0,0)
+Usao
+ioi 5
+Dodan prijelaz 5
+5
+(0,0)
+Usao
+ioi 6
+Dodan prijelaz 6
+6
+(0,0)
+Usao
+ioi 7
+Dodan prijelaz 7
+7
+(0,0)
+Usao
+ioi 8
+Dodan prijelaz 8
+8
+(0,0)
+Usao
+ioi 9
+Dodan prijelaz 9
+9
+(0,0)
+Usao
+ioi a
+Dodan prijelaz a
+a
+(0,0)
+Usao
+ioi b
+Dodan prijelaz b
+b
+(0,0)
+Usao
+ioi c
+Dodan prijelaz c
+c
+(0,0)
+Usao
+ioi d
+Dodan prijelaz d
+d
+(0,0)
+Usao
+ioi e
+Dodan prijelaz e
+e
+(0,0)
+Usao
+ioi f
+Dodan prijelaz f
+f
+(0,0)
+Usao
+ioi A
+Dodan prijelaz A
+A
+(0,0)
+Usao
+ioi B
+Dodan prijelaz B
+B
+(0,0)
+Usao
+ioi C
+Dodan prijelaz C
+C
+(0,0)
+Usao
+ioi D
+Dodan prijelaz D
+D
+(0,0)
+Usao
+ioi E
+Dodan prijelaz E
+E
+(0,0)
+Usao
+ioi F
+Dodan prijelaz F
+F
+ioi (
+Novi bolji (0|1|2|3|4|5|6|7|8|9)|a|b|c|d|e|f|A|B|C|D|E|F
+(0,0)
+(1,1)
+(2,1)
+(3,1)
+(4,1)
+(5,1)
+(6,1)
+(7,1)
+(8,1)
+(9,1)
+(10,1)
+(11,1)
+(12,1)
+(13,1)
+(14,1)
+(15,1)
+(16,1)
+(17,1)
+(18,1)
+(19,1)
+(20,1)
+(21,0)
+Operator 21 124
+(22,0)
+(23,0)
+Operator 23 124
+(24,0)
+(25,0)
+Operator 25 124
+(26,0)
+(27,0)
+Operator 27 124
+(28,0)
+(29,0)
+Operator 29 124
+(30,0)
+(31,0)
+Operator 31 124
+(32,0)
+(33,0)
+Operator 33 124
+(34,0)
+(35,0)
+Operator 35 124
+(36,0)
+(37,0)
+Operator 37 124
+(38,0)
+(39,0)
+Operator 39 124
+(40,0)
+(41,0)
+Operator 41 124
+(42,0)
+(43,0)
+Operator 43 124
+(44,0)
+Nasao
+(0|1|2|3|4|5|6|7|8|9), a, b, c, d, e, f, A, B, C, D, E, F, 
+(0,0)
+(1,1)
+(2,1)
+(3,1)
+(4,1)
+(5,1)
+(6,1)
+(7,1)
+(8,1)
+(9,1)
+(10,1)
+(11,1)
+(12,1)
+(13,1)
+(14,1)
+(15,1)
+(16,1)
+(17,1)
+(18,1)
+(19,1)
+(20,1)
+Usao
+ioi (
+Novi bolji 0|1|2|3|4|5|6|7|8|9
+(0,0)
+(1,0)
+Operator 1 124
+(2,0)
+(3,0)
+Operator 3 124
+(4,0)
+(5,0)
+Operator 5 124
+(6,0)
+(7,0)
+Operator 7 124
+(8,0)
+(9,0)
+Operator 9 124
+(10,0)
+(11,0)
+Operator 11 124
+(12,0)
+(13,0)
+Operator 13 124
+(14,0)
+(15,0)
+Operator 15 124
+(16,0)
+(17,0)
+Operator 17 124
+(18,0)
+Nasao
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+(0,0)
+Usao
+ioi 0
+Dodan prijelaz 0
+0
+(0,0)
+Usao
+ioi 1
+Dodan prijelaz 1
+1
+(0,0)
+Usao
+ioi 2
+Dodan prijelaz 2
+2
+(0,0)
+Usao
+ioi 3
+Dodan prijelaz 3
+3
+(0,0)
+Usao
+ioi 4
+Dodan prijelaz 4
+4
+(0,0)
+Usao
+ioi 5
+Dodan prijelaz 5
+5
+(0,0)
+Usao
+ioi 6
+Dodan prijelaz 6
+6
+(0,0)
+Usao
+ioi 7
+Dodan prijelaz 7
+7
+(0,0)
+Usao
+ioi 8
+Dodan prijelaz 8
+8
+(0,0)
+Usao
+ioi 9
+Dodan prijelaz 9
+9
+(0,0)
+Usao
+ioi a
+Dodan prijelaz a
+a
+(0,0)
+Usao
+ioi b
+Dodan prijelaz b
+b
+(0,0)
+Usao
+ioi c
+Dodan prijelaz c
+c
+(0,0)
+Usao
+ioi d
+Dodan prijelaz d
+d
+(0,0)
+Usao
+ioi e
+Dodan prijelaz e
+e
+(0,0)
+Usao
+ioi f
+Dodan prijelaz f
+f
+(0,0)
+Usao
+ioi A
+Dodan prijelaz A
+A
+(0,0)
+Usao
+ioi B
+Dodan prijelaz B
+B
+(0,0)
+Usao
+ioi C
+Dodan prijelaz C
+C
+(0,0)
+Usao
+ioi D
+Dodan prijelaz D
+D
+(0,0)
+Usao
+ioi E
+Dodan prijelaz E
+E
+(0,0)
+Usao
+ioi F
+Dodan prijelaz F
+F
+Provjera: '(\(|\)|\{|\}|\||\*|\\|\$|\_|!|"|#|%|&|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~)'
+(0,0)
+(1,0)
+(2,1)
+(3,1)
+(4,1)
+(5,1)
+(6,1)
+(7,1)
+(8,1)
+(9,1)
+(10,1)
+(11,1)
+(12,1)
+(13,1)
+(14,1)
+(15,1)
+(16,1)
+(17,1)
+(18,1)
+(19,1)
+(20,1)
+(21,1)
+(22,1)
+(23,1)
+(24,1)
+(25,1)
+(26,1)
+(27,1)
+(28,1)
+(29,1)
+(30,1)
+(31,1)
+(32,1)
+(33,1)
+(34,1)
+(35,1)
+(36,1)
+(37,1)
+(38,1)
+(39,1)
+(40,1)
+(41,1)
+(42,1)
+(43,1)
+(44,1)
+(45,1)
+(46,1)
+(47,1)
+(48,1)
+(49,1)
+(50,1)
+(51,1)
+(52,1)
+(53,1)
+(54,1)
+(55,1)
+(56,1)
+(57,1)
+(58,1)
+(59,1)
+(60,1)
+(61,1)
+(62,1)
+(63,1)
+(64,1)
+(65,1)
+(66,1)
+(67,1)
+(68,1)
+(69,1)
+(70,1)
+(71,1)
+(72,1)
+(73,1)
+(74,1)
+(75,1)
+(76,1)
+(77,1)
+(78,1)
+(79,1)
+(80,1)
+(81,1)
+(82,1)
+(83,1)
+(84,1)
+(85,1)
+(86,1)
+(87,1)
+(88,1)
+(89,1)
+(90,1)
+(91,1)
+(92,1)
+(93,1)
+(94,1)
+(95,1)
+(96,1)
+(97,1)
+(98,1)
+(99,1)
+(100,1)
+(101,1)
+(102,1)
+(103,1)
+(104,1)
+(105,1)
+(106,1)
+(107,1)
+(108,1)
+(109,1)
+(110,1)
+(111,1)
+(112,1)
+(113,1)
+(114,1)
+(115,1)
+(116,1)
+(117,1)
+(118,1)
+(119,1)
+(120,1)
+(121,1)
+(122,1)
+(123,1)
+(124,1)
+(125,1)
+(126,1)
+(127,1)
+(128,1)
+(129,1)
+(130,1)
+(131,1)
+(132,1)
+(133,1)
+(134,1)
+(135,1)
+(136,1)
+(137,1)
+(138,1)
+(139,1)
+(140,1)
+(141,1)
+(142,1)
+(143,1)
+(144,1)
+(145,1)
+(146,1)
+(147,1)
+(148,1)
+(149,1)
+(150,1)
+(151,1)
+(152,1)
+(153,1)
+(154,1)
+(155,1)
+(156,1)
+(157,1)
+(158,1)
+(159,1)
+(160,1)
+(161,1)
+(162,1)
+(163,1)
+(164,1)
+(165,1)
+(166,1)
+(167,1)
+(168,1)
+(169,1)
+(170,1)
+(171,1)
+(172,1)
+(173,1)
+(174,1)
+(175,1)
+(176,1)
+(177,1)
+(178,1)
+(179,1)
+(180,1)
+(181,1)
+(182,1)
+(183,1)
+(184,1)
+(185,1)
+(186,1)
+(187,1)
+(188,1)
+(189,1)
+(190,1)
+(191,1)
+(192,1)
+(193,1)
+(194,1)
+(195,1)
+(196,1)
+(197,1)
+(198,1)
+(199,0)
+Usao
+ioi '
+Dodan prijelaz '
+'(\(|\)|\{|\}|\||\*|\\|\$|\_|!|"|#|%|&|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~)'
+ioi (
+Novi bolji \(|\)|\{|\}|\||\*|\\|\$|\_|!|"|#|%|&|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~
+(0,0)
+(1,0)
+(2,0)
+Operator 2 124
+(3,0)
+(4,0)
+(5,0)
+Operator 5 124
+(6,0)
+(7,0)
+(8,0)
+Operator 8 124
+(9,0)
+(10,0)
+(11,0)
+Operator 11 124
+(12,0)
+(13,0)
+(14,0)
+Operator 14 124
+(15,0)
+(16,0)
+(17,0)
+Operator 17 124
+(18,0)
+(19,0)
+(20,0)
+Operator 20 124
+(21,0)
+(22,0)
+(23,0)
+Operator 23 124
+(24,0)
+(25,0)
+(26,0)
+Operator 26 124
+(27,0)
+(28,0)
+Operator 28 124
+(29,0)
+(30,0)
+Operator 30 124
+(31,0)
+(32,0)
+Operator 32 124
+(33,0)
+(34,0)
+Operator 34 124
+(35,0)
+(36,0)
+Operator 36 124
+(37,0)
+(38,0)
+Operator 38 124
+(39,0)
+(40,0)
+Operator 40 124
+(41,0)
+(42,0)
+Operator 42 124
+(43,0)
+(44,0)
+Operator 44 124
+(45,0)
+(46,0)
+Operator 46 124
+(47,0)
+(48,0)
+Operator 48 124
+(49,0)
+(50,0)
+Operator 50 124
+(51,0)
+(52,0)
+Operator 52 124
+(53,0)
+(54,0)
+Operator 54 124
+(55,0)
+(56,0)
+Operator 56 124
+(57,0)
+(58,0)
+Operator 58 124
+(59,0)
+(60,0)
+Operator 60 124
+(61,0)
+(62,0)
+Operator 62 124
+(63,0)
+(64,0)
+Operator 64 124
+(65,0)
+(66,0)
+Operator 66 124
+(67,0)
+(68,0)
+Operator 68 124
+(69,0)
+(70,0)
+Operator 70 124
+(71,0)
+(72,0)
+Operator 72 124
+(73,0)
+(74,0)
+Operator 74 124
+(75,0)
+(76,0)
+Operator 76 124
+(77,0)
+(78,0)
+Operator 78 124
+(79,0)
+(80,0)
+Operator 80 124
+(81,0)
+(82,0)
+Operator 82 124
+(83,0)
+(84,0)
+Operator 84 124
+(85,0)
+(86,0)
+Operator 86 124
+(87,0)
+(88,0)
+Operator 88 124
+(89,0)
+(90,0)
+Operator 90 124
+(91,0)
+(92,0)
+Operator 92 124
+(93,0)
+(94,0)
+Operator 94 124
+(95,0)
+(96,0)
+Operator 96 124
+(97,0)
+(98,0)
+Operator 98 124
+(99,0)
+(100,0)
+Operator 100 124
+(101,0)
+(102,0)
+Operator 102 124
+(103,0)
+(104,0)
+Operator 104 124
+(105,0)
+(106,0)
+Operator 106 124
+(107,0)
+(108,0)
+Operator 108 124
+(109,0)
+(110,0)
+Operator 110 124
+(111,0)
+(112,0)
+Operator 112 124
+(113,0)
+(114,0)
+Operator 114 124
+(115,0)
+(116,0)
+Operator 116 124
+(117,0)
+(118,0)
+Operator 118 124
+(119,0)
+(120,0)
+Operator 120 124
+(121,0)
+(122,0)
+Operator 122 124
+(123,0)
+(124,0)
+Operator 124 124
+(125,0)
+(126,0)
+Operator 126 124
+(127,0)
+(128,0)
+Operator 128 124
+(129,0)
+(130,0)
+Operator 130 124
+(131,0)
+(132,0)
+Operator 132 124
+(133,0)
+(134,0)
+Operator 134 124
+(135,0)
+(136,0)
+Operator 136 124
+(137,0)
+(138,0)
+Operator 138 124
+(139,0)
+(140,0)
+Operator 140 124
+(141,0)
+(142,0)
+Operator 142 124
+(143,0)
+(144,0)
+Operator 144 124
+(145,0)
+(146,0)
+Operator 146 124
+(147,0)
+(148,0)
+Operator 148 124
+(149,0)
+(150,0)
+Operator 150 124
+(151,0)
+(152,0)
+Operator 152 124
+(153,0)
+(154,0)
+Operator 154 124
+(155,0)
+(156,0)
+Operator 156 124
+(157,0)
+(158,0)
+Operator 158 124
+(159,0)
+(160,0)
+Operator 160 124
+(161,0)
+(162,0)
+Operator 162 124
+(163,0)
+(164,0)
+Operator 164 124
+(165,0)
+(166,0)
+Operator 166 124
+(167,0)
+(168,0)
+Operator 168 124
+(169,0)
+(170,0)
+Operator 170 124
+(171,0)
+(172,0)
+Operator 172 124
+(173,0)
+(174,0)
+Operator 174 124
+(175,0)
+(176,0)
+Operator 176 124
+(177,0)
+(178,0)
+Operator 178 124
+(179,0)
+(180,0)
+Operator 180 124
+(181,0)
+(182,0)
+Operator 182 124
+(183,0)
+(184,0)
+Operator 184 124
+(185,0)
+(186,0)
+Operator 186 124
+(187,0)
+(188,0)
+Operator 188 124
+(189,0)
+(190,0)
+Operator 190 124
+(191,0)
+(192,0)
+Operator 192 124
+(193,0)
+(194,0)
+Operator 194 124
+(195,0)
+Nasao
+\(, \), \{, \}, \|, \*, \\, \$, \_, !, ", #, %, &, +, ,, -, ., /, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, :, ;, <, =, >, ?, @, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, [, ], ^, _, `, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, ~, 
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak ( 40
+\(
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak ) 41
+\)
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak { 123
+\{
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak } 125
+\}
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak | 124
+\|
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak * 42
+\*
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak \ 92
+\\
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak $ 36
+\$
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak   32
+\_
+(0,0)
+Usao
+ioi !
+Dodan prijelaz !
+!
+(0,0)
+Usao
+ioi "
+Dodan prijelaz "
+"
+(0,0)
+Usao
+ioi #
+Dodan prijelaz #
+#
+(0,0)
+Usao
+ioi %
+Dodan prijelaz %
+%
+(0,0)
+Usao
+ioi &
+Dodan prijelaz &
+&
+(0,0)
+Usao
+ioi +
+Dodan prijelaz +
++
+(0,0)
+Usao
+ioi ,
+Dodan prijelaz ,
+,
+(0,0)
+Usao
+ioi -
+Dodan prijelaz -
+-
+(0,0)
+Usao
+ioi .
+Dodan prijelaz .
+.
+(0,0)
+Usao
+ioi /
+Dodan prijelaz /
+/
+(0,0)
+Usao
+ioi 0
+Dodan prijelaz 0
+0
+(0,0)
+Usao
+ioi 1
+Dodan prijelaz 1
+1
+(0,0)
+Usao
+ioi 2
+Dodan prijelaz 2
+2
+(0,0)
+Usao
+ioi 3
+Dodan prijelaz 3
+3
+(0,0)
+Usao
+ioi 4
+Dodan prijelaz 4
+4
+(0,0)
+Usao
+ioi 5
+Dodan prijelaz 5
+5
+(0,0)
+Usao
+ioi 6
+Dodan prijelaz 6
+6
+(0,0)
+Usao
+ioi 7
+Dodan prijelaz 7
+7
+(0,0)
+Usao
+ioi 8
+Dodan prijelaz 8
+8
+(0,0)
+Usao
+ioi 9
+Dodan prijelaz 9
+9
+(0,0)
+Usao
+ioi :
+Dodan prijelaz :
+:
+(0,0)
+Usao
+ioi ;
+Dodan prijelaz ;
+;
+(0,0)
+Usao
+ioi <
+Dodan prijelaz <
+<
+(0,0)
+Usao
+ioi =
+Dodan prijelaz =
+=
+(0,0)
+Usao
+ioi >
+Dodan prijelaz >
+>
+(0,0)
+Usao
+ioi ?
+Dodan prijelaz ?
+?
+(0,0)
+Usao
+ioi @
+Dodan prijelaz @
+@
+(0,0)
+Usao
+ioi A
+Dodan prijelaz A
+A
+(0,0)
+Usao
+ioi B
+Dodan prijelaz B
+B
+(0,0)
+Usao
+ioi C
+Dodan prijelaz C
+C
+(0,0)
+Usao
+ioi D
+Dodan prijelaz D
+D
+(0,0)
+Usao
+ioi E
+Dodan prijelaz E
+E
+(0,0)
+Usao
+ioi F
+Dodan prijelaz F
+F
+(0,0)
+Usao
+ioi G
+Dodan prijelaz G
+G
+(0,0)
+Usao
+ioi H
+Dodan prijelaz H
+H
+(0,0)
+Usao
+ioi I
+Dodan prijelaz I
+I
+(0,0)
+Usao
+ioi J
+Dodan prijelaz J
+J
+(0,0)
+Usao
+ioi K
+Dodan prijelaz K
+K
+(0,0)
+Usao
+ioi L
+Dodan prijelaz L
+L
+(0,0)
+Usao
+ioi M
+Dodan prijelaz M
+M
+(0,0)
+Usao
+ioi N
+Dodan prijelaz N
+N
+(0,0)
+Usao
+ioi O
+Dodan prijelaz O
+O
+(0,0)
+Usao
+ioi P
+Dodan prijelaz P
+P
+(0,0)
+Usao
+ioi Q
+Dodan prijelaz Q
+Q
+(0,0)
+Usao
+ioi R
+Dodan prijelaz R
+R
+(0,0)
+Usao
+ioi S
+Dodan prijelaz S
+S
+(0,0)
+Usao
+ioi T
+Dodan prijelaz T
+T
+(0,0)
+Usao
+ioi U
+Dodan prijelaz U
+U
+(0,0)
+Usao
+ioi V
+Dodan prijelaz V
+V
+(0,0)
+Usao
+ioi W
+Dodan prijelaz W
+W
+(0,0)
+Usao
+ioi X
+Dodan prijelaz X
+X
+(0,0)
+Usao
+ioi Y
+Dodan prijelaz Y
+Y
+(0,0)
+Usao
+ioi Z
+Dodan prijelaz Z
+Z
+(0,0)
+Usao
+ioi [
+Dodan prijelaz [
+[
+(0,0)
+Usao
+ioi ]
+Dodan prijelaz ]
+]
+(0,0)
+Usao
+ioi ^
+Dodan prijelaz ^
+^
+(0,0)
+Usao
+ioi _
+Dodan prijelaz _
+_
+(0,0)
+Usao
+ioi `
+Dodan prijelaz `
+`
+(0,0)
+Usao
+ioi a
+Dodan prijelaz a
+a
+(0,0)
+Usao
+ioi b
+Dodan prijelaz b
+b
+(0,0)
+Usao
+ioi c
+Dodan prijelaz c
+c
+(0,0)
+Usao
+ioi d
+Dodan prijelaz d
+d
+(0,0)
+Usao
+ioi e
+Dodan prijelaz e
+e
+(0,0)
+Usao
+ioi f
+Dodan prijelaz f
+f
+(0,0)
+Usao
+ioi g
+Dodan prijelaz g
+g
+(0,0)
+Usao
+ioi h
+Dodan prijelaz h
+h
+(0,0)
+Usao
+ioi i
+Dodan prijelaz i
+i
+(0,0)
+Usao
+ioi j
+Dodan prijelaz j
+j
+(0,0)
+Usao
+ioi k
+Dodan prijelaz k
+k
+(0,0)
+Usao
+ioi l
+Dodan prijelaz l
+l
+(0,0)
+Usao
+ioi m
+Dodan prijelaz m
+m
+(0,0)
+Usao
+ioi n
+Dodan prijelaz n
+n
+(0,0)
+Usao
+ioi o
+Dodan prijelaz o
+o
+(0,0)
+Usao
+ioi p
+Dodan prijelaz p
+p
+(0,0)
+Usao
+ioi q
+Dodan prijelaz q
+q
+(0,0)
+Usao
+ioi r
+Dodan prijelaz r
+r
+(0,0)
+Usao
+ioi s
+Dodan prijelaz s
+s
+(0,0)
+Usao
+ioi t
+Dodan prijelaz t
+t
+(0,0)
+Usao
+ioi u
+Dodan prijelaz u
+u
+(0,0)
+Usao
+ioi v
+Dodan prijelaz v
+v
+(0,0)
+Usao
+ioi w
+Dodan prijelaz w
+w
+(0,0)
+Usao
+ioi x
+Dodan prijelaz x
+x
+(0,0)
+Usao
+ioi y
+Dodan prijelaz y
+y
+(0,0)
+Usao
+ioi z
+Dodan prijelaz z
+z
+(0,0)
+Usao
+ioi ~
+Dodan prijelaz ~
+~
+ioi '
+Dodan prijelaz '
+'(\(|\)|\{|\}|\||\*|\\|\$|\_|!|"|#|%|&|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~)'
+Provjera: '\\(\(|\)|\{|\}|\||\*|\\|\$|\_|!|"|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~)'
+(0,0)
+(1,0)
+(2,0)
+(3,0)
+(4,1)
+(5,1)
+(6,1)
+(7,1)
+(8,1)
+(9,1)
+(10,1)
+(11,1)
+(12,1)
+(13,1)
+(14,1)
+(15,1)
+(16,1)
+(17,1)
+(18,1)
+(19,1)
+(20,1)
+(21,1)
+(22,1)
+(23,1)
+(24,1)
+(25,1)
+(26,1)
+(27,1)
+(28,1)
+(29,1)
+(30,1)
+(31,1)
+(32,1)
+(33,1)
+(34,1)
+(35,1)
+(36,1)
+(37,1)
+(38,1)
+(39,1)
+(40,1)
+(41,1)
+(42,1)
+(43,1)
+(44,1)
+(45,1)
+(46,1)
+(47,1)
+(48,1)
+(49,1)
+(50,1)
+(51,1)
+(52,1)
+(53,1)
+(54,1)
+(55,1)
+(56,1)
+(57,1)
+(58,1)
+(59,1)
+(60,1)
+(61,1)
+(62,1)
+(63,1)
+(64,1)
+(65,1)
+(66,1)
+(67,1)
+(68,1)
+(69,1)
+(70,1)
+(71,1)
+(72,1)
+(73,1)
+(74,1)
+(75,1)
+(76,1)
+(77,1)
+(78,1)
+(79,1)
+(80,1)
+(81,1)
+(82,1)
+(83,1)
+(84,1)
+(85,1)
+(86,1)
+(87,1)
+(88,1)
+(89,1)
+(90,1)
+(91,1)
+(92,1)
+(93,1)
+(94,1)
+(95,1)
+(96,1)
+(97,1)
+(98,1)
+(99,1)
+(100,1)
+(101,1)
+(102,1)
+(103,1)
+(104,1)
+(105,1)
+(106,1)
+(107,1)
+(108,1)
+(109,1)
+(110,1)
+(111,1)
+(112,1)
+(113,1)
+(114,1)
+(115,1)
+(116,1)
+(117,1)
+(118,1)
+(119,1)
+(120,1)
+(121,1)
+(122,1)
+(123,1)
+(124,1)
+(125,1)
+(126,1)
+(127,1)
+(128,1)
+(129,1)
+(130,1)
+(131,1)
+(132,1)
+(133,1)
+(134,1)
+(135,1)
+(136,1)
+(137,1)
+(138,1)
+(139,1)
+(140,1)
+(141,1)
+(142,1)
+(143,1)
+(144,1)
+(145,1)
+(146,1)
+(147,1)
+(148,1)
+(149,1)
+(150,1)
+(151,1)
+(152,1)
+(153,1)
+(154,1)
+(155,1)
+(156,1)
+(157,1)
+(158,1)
+(159,1)
+(160,1)
+(161,1)
+(162,1)
+(163,1)
+(164,1)
+(165,1)
+(166,1)
+(167,1)
+(168,1)
+(169,1)
+(170,1)
+(171,1)
+(172,1)
+(173,1)
+(174,1)
+(175,1)
+(176,1)
+(177,1)
+(178,1)
+(179,1)
+(180,1)
+(181,1)
+(182,1)
+(183,1)
+(184,1)
+(185,1)
+(186,1)
+(187,1)
+(188,1)
+(189,1)
+(190,1)
+(191,1)
+(192,1)
+(193,1)
+(194,1)
+(195,1)
+(196,1)
+(197,1)
+(198,1)
+(199,1)
+(200,1)
+(201,1)
+(202,1)
+(203,0)
+Usao
+ioi '
+Dodan prijelaz '
+'\\(\(|\)|\{|\}|\||\*|\\|\$|\_|!|"|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~)'
+ioi \
+Prilazni znak \ 92
+'\\(\(|\)|\{|\}|\||\*|\\|\$|\_|!|"|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~)'
+ioi (
+Novi bolji \(|\)|\{|\}|\||\*|\\|\$|\_|!|"|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~
+(0,0)
+(1,0)
+(2,0)
+Operator 2 124
+(3,0)
+(4,0)
+(5,0)
+Operator 5 124
+(6,0)
+(7,0)
+(8,0)
+Operator 8 124
+(9,0)
+(10,0)
+(11,0)
+Operator 11 124
+(12,0)
+(13,0)
+(14,0)
+Operator 14 124
+(15,0)
+(16,0)
+(17,0)
+Operator 17 124
+(18,0)
+(19,0)
+(20,0)
+Operator 20 124
+(21,0)
+(22,0)
+(23,0)
+Operator 23 124
+(24,0)
+(25,0)
+(26,0)
+Operator 26 124
+(27,0)
+(28,0)
+Operator 28 124
+(29,0)
+(30,0)
+Operator 30 124
+(31,0)
+(32,0)
+Operator 32 124
+(33,0)
+(34,0)
+Operator 34 124
+(35,0)
+(36,0)
+Operator 36 124
+(37,0)
+(38,0)
+Operator 38 124
+(39,0)
+(40,0)
+Operator 40 124
+(41,0)
+(42,0)
+Operator 42 124
+(43,0)
+(44,0)
+Operator 44 124
+(45,0)
+(46,0)
+Operator 46 124
+(47,0)
+(48,0)
+Operator 48 124
+(49,0)
+(50,0)
+Operator 50 124
+(51,0)
+(52,0)
+Operator 52 124
+(53,0)
+(54,0)
+Operator 54 124
+(55,0)
+(56,0)
+Operator 56 124
+(57,0)
+(58,0)
+Operator 58 124
+(59,0)
+(60,0)
+Operator 60 124
+(61,0)
+(62,0)
+Operator 62 124
+(63,0)
+(64,0)
+Operator 64 124
+(65,0)
+(66,0)
+Operator 66 124
+(67,0)
+(68,0)
+Operator 68 124
+(69,0)
+(70,0)
+Operator 70 124
+(71,0)
+(72,0)
+Operator 72 124
+(73,0)
+(74,0)
+Operator 74 124
+(75,0)
+(76,0)
+Operator 76 124
+(77,0)
+(78,0)
+Operator 78 124
+(79,0)
+(80,0)
+Operator 80 124
+(81,0)
+(82,0)
+Operator 82 124
+(83,0)
+(84,0)
+Operator 84 124
+(85,0)
+(86,0)
+Operator 86 124
+(87,0)
+(88,0)
+Operator 88 124
+(89,0)
+(90,0)
+Operator 90 124
+(91,0)
+(92,0)
+Operator 92 124
+(93,0)
+(94,0)
+Operator 94 124
+(95,0)
+(96,0)
+Operator 96 124
+(97,0)
+(98,0)
+Operator 98 124
+(99,0)
+(100,0)
+Operator 100 124
+(101,0)
+(102,0)
+Operator 102 124
+(103,0)
+(104,0)
+Operator 104 124
+(105,0)
+(106,0)
+Operator 106 124
+(107,0)
+(108,0)
+Operator 108 124
+(109,0)
+(110,0)
+Operator 110 124
+(111,0)
+(112,0)
+Operator 112 124
+(113,0)
+(114,0)
+Operator 114 124
+(115,0)
+(116,0)
+Operator 116 124
+(117,0)
+(118,0)
+Operator 118 124
+(119,0)
+(120,0)
+Operator 120 124
+(121,0)
+(122,0)
+Operator 122 124
+(123,0)
+(124,0)
+Operator 124 124
+(125,0)
+(126,0)
+Operator 126 124
+(127,0)
+(128,0)
+Operator 128 124
+(129,0)
+(130,0)
+Operator 130 124
+(131,0)
+(132,0)
+Operator 132 124
+(133,0)
+(134,0)
+Operator 134 124
+(135,0)
+(136,0)
+Operator 136 124
+(137,0)
+(138,0)
+Operator 138 124
+(139,0)
+(140,0)
+Operator 140 124
+(141,0)
+(142,0)
+Operator 142 124
+(143,0)
+(144,0)
+Operator 144 124
+(145,0)
+(146,0)
+Operator 146 124
+(147,0)
+(148,0)
+Operator 148 124
+(149,0)
+(150,0)
+Operator 150 124
+(151,0)
+(152,0)
+Operator 152 124
+(153,0)
+(154,0)
+Operator 154 124
+(155,0)
+(156,0)
+Operator 156 124
+(157,0)
+(158,0)
+Operator 158 124
+(159,0)
+(160,0)
+Operator 160 124
+(161,0)
+(162,0)
+Operator 162 124
+(163,0)
+(164,0)
+Operator 164 124
+(165,0)
+(166,0)
+Operator 166 124
+(167,0)
+(168,0)
+Operator 168 124
+(169,0)
+(170,0)
+Operator 170 124
+(171,0)
+(172,0)
+Operator 172 124
+(173,0)
+(174,0)
+Operator 174 124
+(175,0)
+(176,0)
+Operator 176 124
+(177,0)
+(178,0)
+Operator 178 124
+(179,0)
+(180,0)
+Operator 180 124
+(181,0)
+(182,0)
+Operator 182 124
+(183,0)
+(184,0)
+Operator 184 124
+(185,0)
+(186,0)
+Operator 186 124
+(187,0)
+(188,0)
+Operator 188 124
+(189,0)
+(190,0)
+Operator 190 124
+(191,0)
+(192,0)
+Operator 192 124
+(193,0)
+(194,0)
+Operator 194 124
+(195,0)
+(196,0)
+Operator 196 124
+(197,0)
+Nasao
+\(, \), \{, \}, \|, \*, \\, \$, \_, !, ", #, %, &, ', +, ,, -, ., /, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, :, ;, <, =, >, ?, @, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, [, ], ^, _, `, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, ~, 
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak ( 40
+\(
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak ) 41
+\)
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak { 123
+\{
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak } 125
+\}
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak | 124
+\|
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak * 42
+\*
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak \ 92
+\\
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak $ 36
+\$
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak   32
+\_
+(0,0)
+Usao
+ioi !
+Dodan prijelaz !
+!
+(0,0)
+Usao
+ioi "
+Dodan prijelaz "
+"
+(0,0)
+Usao
+ioi #
+Dodan prijelaz #
+#
+(0,0)
+Usao
+ioi %
+Dodan prijelaz %
+%
+(0,0)
+Usao
+ioi &
+Dodan prijelaz &
+&
+(0,0)
+Usao
+ioi '
+Dodan prijelaz '
+'
+(0,0)
+Usao
+ioi +
+Dodan prijelaz +
++
+(0,0)
+Usao
+ioi ,
+Dodan prijelaz ,
+,
+(0,0)
+Usao
+ioi -
+Dodan prijelaz -
+-
+(0,0)
+Usao
+ioi .
+Dodan prijelaz .
+.
+(0,0)
+Usao
+ioi /
+Dodan prijelaz /
+/
+(0,0)
+Usao
+ioi 0
+Dodan prijelaz 0
+0
+(0,0)
+Usao
+ioi 1
+Dodan prijelaz 1
+1
+(0,0)
+Usao
+ioi 2
+Dodan prijelaz 2
+2
+(0,0)
+Usao
+ioi 3
+Dodan prijelaz 3
+3
+(0,0)
+Usao
+ioi 4
+Dodan prijelaz 4
+4
+(0,0)
+Usao
+ioi 5
+Dodan prijelaz 5
+5
+(0,0)
+Usao
+ioi 6
+Dodan prijelaz 6
+6
+(0,0)
+Usao
+ioi 7
+Dodan prijelaz 7
+7
+(0,0)
+Usao
+ioi 8
+Dodan prijelaz 8
+8
+(0,0)
+Usao
+ioi 9
+Dodan prijelaz 9
+9
+(0,0)
+Usao
+ioi :
+Dodan prijelaz :
+:
+(0,0)
+Usao
+ioi ;
+Dodan prijelaz ;
+;
+(0,0)
+Usao
+ioi <
+Dodan prijelaz <
+<
+(0,0)
+Usao
+ioi =
+Dodan prijelaz =
+=
+(0,0)
+Usao
+ioi >
+Dodan prijelaz >
+>
+(0,0)
+Usao
+ioi ?
+Dodan prijelaz ?
+?
+(0,0)
+Usao
+ioi @
+Dodan prijelaz @
+@
+(0,0)
+Usao
+ioi A
+Dodan prijelaz A
+A
+(0,0)
+Usao
+ioi B
+Dodan prijelaz B
+B
+(0,0)
+Usao
+ioi C
+Dodan prijelaz C
+C
+(0,0)
+Usao
+ioi D
+Dodan prijelaz D
+D
+(0,0)
+Usao
+ioi E
+Dodan prijelaz E
+E
+(0,0)
+Usao
+ioi F
+Dodan prijelaz F
+F
+(0,0)
+Usao
+ioi G
+Dodan prijelaz G
+G
+(0,0)
+Usao
+ioi H
+Dodan prijelaz H
+H
+(0,0)
+Usao
+ioi I
+Dodan prijelaz I
+I
+(0,0)
+Usao
+ioi J
+Dodan prijelaz J
+J
+(0,0)
+Usao
+ioi K
+Dodan prijelaz K
+K
+(0,0)
+Usao
+ioi L
+Dodan prijelaz L
+L
+(0,0)
+Usao
+ioi M
+Dodan prijelaz M
+M
+(0,0)
+Usao
+ioi N
+Dodan prijelaz N
+N
+(0,0)
+Usao
+ioi O
+Dodan prijelaz O
+O
+(0,0)
+Usao
+ioi P
+Dodan prijelaz P
+P
+(0,0)
+Usao
+ioi Q
+Dodan prijelaz Q
+Q
+(0,0)
+Usao
+ioi R
+Dodan prijelaz R
+R
+(0,0)
+Usao
+ioi S
+Dodan prijelaz S
+S
+(0,0)
+Usao
+ioi T
+Dodan prijelaz T
+T
+(0,0)
+Usao
+ioi U
+Dodan prijelaz U
+U
+(0,0)
+Usao
+ioi V
+Dodan prijelaz V
+V
+(0,0)
+Usao
+ioi W
+Dodan prijelaz W
+W
+(0,0)
+Usao
+ioi X
+Dodan prijelaz X
+X
+(0,0)
+Usao
+ioi Y
+Dodan prijelaz Y
+Y
+(0,0)
+Usao
+ioi Z
+Dodan prijelaz Z
+Z
+(0,0)
+Usao
+ioi [
+Dodan prijelaz [
+[
+(0,0)
+Usao
+ioi ]
+Dodan prijelaz ]
+]
+(0,0)
+Usao
+ioi ^
+Dodan prijelaz ^
+^
+(0,0)
+Usao
+ioi _
+Dodan prijelaz _
+_
+(0,0)
+Usao
+ioi `
+Dodan prijelaz `
+`
+(0,0)
+Usao
+ioi a
+Dodan prijelaz a
+a
+(0,0)
+Usao
+ioi b
+Dodan prijelaz b
+b
+(0,0)
+Usao
+ioi c
+Dodan prijelaz c
+c
+(0,0)
+Usao
+ioi d
+Dodan prijelaz d
+d
+(0,0)
+Usao
+ioi e
+Dodan prijelaz e
+e
+(0,0)
+Usao
+ioi f
+Dodan prijelaz f
+f
+(0,0)
+Usao
+ioi g
+Dodan prijelaz g
+g
+(0,0)
+Usao
+ioi h
+Dodan prijelaz h
+h
+(0,0)
+Usao
+ioi i
+Dodan prijelaz i
+i
+(0,0)
+Usao
+ioi j
+Dodan prijelaz j
+j
+(0,0)
+Usao
+ioi k
+Dodan prijelaz k
+k
+(0,0)
+Usao
+ioi l
+Dodan prijelaz l
+l
+(0,0)
+Usao
+ioi m
+Dodan prijelaz m
+m
+(0,0)
+Usao
+ioi n
+Dodan prijelaz n
+n
+(0,0)
+Usao
+ioi o
+Dodan prijelaz o
+o
+(0,0)
+Usao
+ioi p
+Dodan prijelaz p
+p
+(0,0)
+Usao
+ioi q
+Dodan prijelaz q
+q
+(0,0)
+Usao
+ioi r
+Dodan prijelaz r
+r
+(0,0)
+Usao
+ioi s
+Dodan prijelaz s
+s
+(0,0)
+Usao
+ioi t
+Dodan prijelaz t
+t
+(0,0)
+Usao
+ioi u
+Dodan prijelaz u
+u
+(0,0)
+Usao
+ioi v
+Dodan prijelaz v
+v
+(0,0)
+Usao
+ioi w
+Dodan prijelaz w
+w
+(0,0)
+Usao
+ioi x
+Dodan prijelaz x
+x
+(0,0)
+Usao
+ioi y
+Dodan prijelaz y
+y
+(0,0)
+Usao
+ioi z
+Dodan prijelaz z
+z
+(0,0)
+Usao
+ioi ~
+Dodan prijelaz ~
+~
+ioi '
+Dodan prijelaz '
+'\\(\(|\)|\{|\}|\||\*|\\|\$|\_|!|"|#|%|&|'|+|,|-|.|/|0|1|2|3|4|5|6|7|8|9|:|;|<|=|>|?|@|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|[|]|^|_|`|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|~)'
+Provjera: ++
+(0,0)
+(1,0)
+Usao
+ioi +
+Dodan prijelaz +
+++
+ioi +
+Dodan prijelaz +
+++
+Provjera: --
+(0,0)
+(1,0)
+Usao
+ioi -
+Dodan prijelaz -
+--
+ioi -
+Dodan prijelaz -
+--
+Provjera: +
+(0,0)
+Usao
+ioi +
+Dodan prijelaz +
++
+Provjera: -
+(0,0)
+Usao
+ioi -
+Dodan prijelaz -
+-
+Provjera: \*
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak * 42
+\*
+Provjera: /
+(0,0)
+Usao
+ioi /
+Dodan prijelaz /
+/
+Provjera: %
+(0,0)
+Usao
+ioi %
+Dodan prijelaz %
+%
+Provjera: =
+(0,0)
+Usao
+ioi =
+Dodan prijelaz =
+=
+Provjera: <
+(0,0)
+Usao
+ioi <
+Dodan prijelaz <
+<
+Provjera: <=
+(0,0)
+(1,0)
+Usao
+ioi <
+Dodan prijelaz <
+<=
+ioi =
+Dodan prijelaz =
+<=
+Provjera: >
+(0,0)
+Usao
+ioi >
+Dodan prijelaz >
+>
+Provjera: >=
+(0,0)
+(1,0)
+Usao
+ioi >
+Dodan prijelaz >
+>=
+ioi =
+Dodan prijelaz =
+>=
+Provjera: ==
+(0,0)
+(1,0)
+Usao
+ioi =
+Dodan prijelaz =
+==
+ioi =
+Dodan prijelaz =
+==
+Provjera: !=
+(0,0)
+(1,0)
+Usao
+ioi !
+Dodan prijelaz !
+!=
+ioi =
+Dodan prijelaz =
+!=
+Provjera: !
+(0,0)
+Usao
+ioi !
+Dodan prijelaz !
+!
+Provjera: ~
+(0,0)
+Usao
+ioi ~
+Dodan prijelaz ~
+~
+Provjera: &&
+(0,0)
+(1,0)
+Usao
+ioi &
+Dodan prijelaz &
+&&
+ioi &
+Dodan prijelaz &
+&&
+Provjera: \|\|
+(0,0)
+(1,0)
+(2,0)
+(3,0)
+Usao
+ioi \
+Prilazni znak | 124
+\|\|
+ioi \
+Prilazni znak | 124
+\|\|
+Provjera: &
+(0,0)
+Usao
+ioi &
+Dodan prijelaz &
+&
+Provjera: \|
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak | 124
+\|
+Provjera: ^
+(0,0)
+Usao
+ioi ^
+Dodan prijelaz ^
+^
+Provjera: ,
+(0,0)
+Usao
+ioi ,
+Dodan prijelaz ,
+,
+Provjera: ;
+(0,0)
+Usao
+ioi ;
+Dodan prijelaz ;
+;
+Provjera: \(
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak ( 40
+\(
+Provjera: \)
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak ) 41
+\)
+Provjera: \{
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak { 123
+\{
+Provjera: \}
+(0,0)
+(1,0)
+Usao
+ioi \
+Prilazni znak } 125
+\}
+Provjera: [
+(0,0)
+Usao
+ioi [
+Dodan prijelaz [
+[
+Provjera: ]
+(0,0)
+Usao
+ioi ]
+Dodan prijelaz ]
+]

@@ -1,0 +1,48 @@
+
+int main(int broj, int q);
+int fa(int q);
+int fact(int n){
+  if(n>0){
+   return n * fact(n-1);
+ } else {
+ int q = fa(56);
+ return 1;
+ }
+ }
+int fa(int br)
+{
+   if(br == 0)
+   {
+      int q = 56 + 'q' + '\t' +  '\0' + '\'' + '\"' + '\\';
+      int p = fa('q');
+      main(56,'a');
+      return 0;
+   }
+   else return fa(br-1);
+}
+int main(void)
+{
+    int x=45666665;
+    int y=6;
+    int arr[5125];
+    int a= x + y;
+    int p = arr[4546];
+    int i=0;
+    for(i=0;i<a;++i)
+    {
+       char q = (char)63;
+       int p = 0;
+       int y = q + p;
+       if(i==10)
+       {
+          break;
+       }
+       while(p<100)
+       {
+         ++p;
+       }
+       
+    }
+
+    return 0;
+}

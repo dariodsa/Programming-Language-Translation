@@ -19,6 +19,6 @@
 <naredba_skoka> KR_RETURN <izraz> TOCKAZAREZ
 <prijevodna_jedinica> <vanjska_deklaracija>
 <prijevodna_jedinica> <prijevodna_jedinica> <vanjska_deklaracija>
-<vanjska deklaracija> <definicija_funkcije>
-<vanjska deklaracija> <deklaracija>
+<vanjska_deklaracija> <definicija_funkcije>
+<vanjska_deklaracija> <deklaracija>
 <naredba_skoka> KR_BREAK TOCKAZAREZ

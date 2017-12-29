@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <string.h>
+#include <stack>
 #include <string>
 #include <utility>
 #include <fstream>
@@ -50,6 +51,22 @@ struct Tip
 		definicija = false;
 		deklaracija = false;
 	}
+	Tip stoFunkcijaVraca()
+	{
+		return tipovi[tipovi.size()-1];
+	}
+	bool parametri(vector<Tip> _tipovi)
+	{
+		if(_tipovi.size() != tipovi.size() - 1)
+			return false;
+		for(int i=0;i<_tipovi.size();++i)
+		{
+			bool cmp = _tipovi[i]==tipovi[i];
+			if(!cmp)
+				return false;
+		}
+		return true;
+	}
 	void PostaviDefiniciju()
 	{
 		definicija = true;
@@ -59,6 +76,7 @@ struct Tip
 		deklaracija = true;
 	}
 };
+stack<Tip> AKTIVNA_FUNKCIJA;
 bool relacijaImplicitna(Tip tip1,Tip tip2)
 {
 	// U ~ V
@@ -211,17 +229,6 @@ vector<pair<string,int> >ulaz[5000];
 vector<int>V[10000];
 vector<Input>input;
 vector<Semantika>semantika;
-bool usporedbaParametara(vector<Tip> tipoviFunkcije, vector<Tip>tipoviParam)
-{
-	for(int i=0;i<tipoviParam.size();++i)
-	{
-		if(!(tipoviParam[i] == tipoviFunkcije[i]))
-		{
-			return false;
-		}
-	}
-	return true;
-}
 bool findTheVariable(Varijabla varijabla,int poc)
 {
 	for(int i=0;i<djelokrugovi[poc].varijable.size();++i)
@@ -258,6 +265,17 @@ bool castPromjena(Tip A,Tip B)
 		return true;
 	
 	return false;
+}
+bool usporedbaParametara(vector<Tip> _tipovi1, vector<Tip> _tipovi2)
+{
+	if(_tipovi1.size()!=_tipovi2.size())
+		return false;
+	for(int i=0;i<_tipovi1.size();++i)
+	{
+		if(!relacijaImplicitna(_tipovi1[i],_tipovi2[i]))
+			return false;
+	}
+	return true;
 }
 void init()
 {
@@ -333,80 +351,102 @@ void popisDeklaracija(int pos,int broj)
 		start(V[pos][0]);
 		start(V[pos][1]);
 		if(semantika[V[pos][0]].tip.konstanta == true)
-		{
 			ispis(pos);
-			exit(0);
-		}
-		//provjera definiranih ime funkcije
-		/*bool found = false;
-		for(int i=0;i<djelokrugovi[AKTIVNI_DJELOKRUG].varijable.size();++i)
+		
+		bool success = true;
+		for(int i=0;i<djelokrugovi[0].varijable.size();++i)
 		{
-			if(djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].definicija==false && 
-			   djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].ime.compare(semantika[V[pos][1]].ime)!=0)
-			   {}
-			else 
+			Tip A;
+			if(djelokrugovi[0].varijable[i].tip.tipovi.size()==2)
 			{
-				found = true;
-				break;
+				if(djelokrugovi[0].varijable[i].ime==semantika[V[pos][1]].ime &&
+				   djelokrugovi[0].varijable[i].tip.deklaracija &&
+				   !djelokrugovi[0].varijable[i].tip.definicija &&
+				   djelokrugovi[0].varijable[i].tip.tipovi[0]==Tip(KR_VOID,false,false) &&
+				   djelokrugovi[0].varijable[i].tip.stoFunkcijaVraca()==semantika[V[pos][0]].tip)
+				   {
+				   	success = true;
+				   	break;
+				   }
+				if(djelokrugovi[0].varijable[i].ime==semantika[V[pos][1]].ime &&
+				   djelokrugovi[0].varijable[i].tip.definicija)
+				   {
+				   	success = false;
+				   	break;
+				   }
 			}
 		}
-		if(found)
-		{
-			printf("ERROR\n");exit(0);
-		}
-		//provjera deklariranih
-		found = false;
-		for(int i=0;i<djelokrugovi[AKTIVNI_DJELOKRUG].varijable.size();++i)
-		{
-			if(djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].deklaracija && 
-			   djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].ime.compare(semantika[V[pos][1]].ime)==0)
-			{
-				if(djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].tipovi[0]==Tip(KR_VOID, false, false) && 
-				   djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].tipovi[1]==semantika[V[pos][0]].tip &&
-				   djelokrugovi[AKTIVNI_DJELOKRUG].varijable[i].tipovi.size()==2)
-				   {}
-				else found = true;
-			}
-		}
-		if(found)
-		{
-			printf("ERROR\n");exit(0);
-		}
-		//zabiljezi deklaraciju i definiciju
-		vector<Tip>_tipovi;
-		_tipovi.push_back(Tip(KR_VOID, false, false));
+		if(!success)
+			ispis(pos);
+		vector<Tip> _tipovi;
+		_tipovi.push_back(Tip(KR_VOID,false,false));
 		_tipovi.push_back(semantika[V[pos][0]].tip);
-		Funkcija F = Funkcija(semantika[V[pos][1]].ime,_tipovi);
+		Tip F = Tip(semantika[V[pos][1]].ime,_tipovi);
 		F.definicija = true;
 		F.deklaracija = true;
-		funkcije.push_back(F);
-		
-		start(V[pos][5]);*/
+		djelokrugovi[0].varijable.push_back(Varijabla(F.ime,F));
+		AKTIVNA_FUNKCIJA.push(F);
+		start(V[pos][5]);
+		AKTIVNA_FUNKCIJA.pop();
 	}
 	else if(broj==1) // <definicija_funkcije> ::= <ime_tipa> IDN L_ZAGRADA <lista_parametara> D_ZAGRADA <slozena_naredba>
 	{
 		start(V[pos][0]);
+		start(V[pos][1]);
 		if(semantika[V[pos][0]].tip.konstanta == true)
-		{
-			printf("ERROR\n");
-			exit(0);
-		}
+			ispis(pos);
 		bool found = false;
-		/*for(int i=0;i<funkcije.size();++i)
+		for(int i=0;i<djelokrugovi[0].varijable.size();++i)
 		{
-			if(funkcije[i].ime.compare(semantika[V[pos][1]].ime)==0 && funkcije[i].definicija==true)
-			{
-				found = true;
-			}
-		}*/
-		if(found)
-		{
-			printf("ERROR\n");
-			exit(0);
+			if(djelokrugovi[0].varijable[i].ime == semantika[V[pos][1]].ime &&
+			   djelokrugovi[0].varijable[i].tip.definicija)
+			   found = true;
 		}
+		if(found)
+			ispis(pos);
+			
 		start(V[pos][3]);
+		
+		found = true;
+		for(int i=0;i<djelokrugovi[0].varijable.size();++i)
+		{
+			if(djelokrugovi[0].varijable[i].tip.tipovi.size()==1 + semantika[V[pos][3]].tipovi.size())
+			{
+				if(djelokrugovi[0].varijable[i].ime == semantika[V[pos][1]].ime &&
+				   djelokrugovi[0].varijable[i].tip.deklaracija && 
+				   !djelokrugovi[0].varijable[i].tip.definicija &&
+				   ( !(djelokrugovi[0].varijable[i].tip.stoFunkcijaVraca() == semantika[V[pos][0]].tip) ||
+				     !djelokrugovi[0].varijable[i].tip.parametri(semantika[V[pos][3]].tipovi)))
+				   {
+				   	found = false;
+				   	break;
+				   }
+				   
+			}
+		}
+		if(!found)
+			ispis(pos);
+		
+		vector<Tip> _tipovi;
+		for(int i=0;i<semantika[V[pos][3]].tipovi.size();++i)
+		{
+			_tipovi.push_back(semantika[V[pos][3]].tipovi[i]);
+		}
+		_tipovi.push_back(semantika[V[pos][0]].tip);
+		Tip F = Tip(semantika[V[pos][1]].ime,_tipovi);
+		F.definicija = true;
+		F.deklaracija = true;
+		djelokrugovi[0].varijable.push_back(Varijabla(F.ime,F));
+		AKTIVNA_FUNKCIJA.push(F);
+		
+		for(int i=0;i<semantika[V[pos][3]].tipovi.size();++i)
+		{
+			semantika[V[pos][5]].tipovi.push_back(semantika[V[pos][3]].tipovi[i]);
+			semantika[V[pos][5]].imena.push_back(semantika[V[pos][3]].imena[i]);
+		}
 		start(V[pos][5]);
 		
+		AKTIVNA_FUNKCIJA.pop();
 	}
 	else if(broj==2) // <lista_parametara> ::= <deklaracija_parametra>
 	{
@@ -532,7 +572,8 @@ void popisDeklaracija(int pos,int broj)
 				find = true;
 		}
 		if(find) ispis(pos);
-		if(!rasponBroja(input[V[pos][2]].ostalo,"1","1024"))ispis(pos);
+	//	if(!rasponBroja(input[V[pos][2]].ostalo,"1","1024"))
+	//		ispis(pos);
 		
 		Tip _tip;
 		_tip.tip =  semantika[pos].tip.tip;
@@ -582,6 +623,11 @@ void popisNaredba(int pos,int broj)
 		Djelokrug D = Djelokrug(AKTIVNI_DJELOKRUG);
 		djelokrugovi.push_back(D);
 		AKTIVNI_DJELOKRUG = djelokrugovi.size() - 1;
+		for(int i=0;i<semantika[pos].tipovi.size();++i)
+		{
+			Varijabla V = Varijabla(semantika[pos].imena[i],semantika[pos].tipovi[i]);
+			djelokrugovi[AKTIVNI_DJELOKRUG].varijable.push_back(V);
+		}
 		start(V[pos][1]);
 		AKTIVNI_DJELOKRUG = djelokrugovi[AKTIVNI_DJELOKRUG].parent;
 	}
@@ -705,10 +751,18 @@ void popisNaredba(int pos,int broj)
 	else if(broj==17) // <naredba_skoka> ::= KR_RETURN TOCKAZAREZ
 	{
 		//nalazi se unutar funkcije params -> void
+		if(AKTIVNA_FUNKCIJA.empty())
+			ispis(pos);
+		if(!(AKTIVNA_FUNKCIJA.top().stoFunkcijaVraca() == Tip(KR_VOID,false,false)))
+			ispis(pos);
 	}
 	else if(broj==18) // <naredba_skoka> ::= KR_RETURN <izraz> TOCKAZAREZ
 	{
 		start(V[pos][1]);
+		if(AKTIVNA_FUNKCIJA.empty())
+			ispis(pos);
+		if(!relacijaImplicitna(semantika[V[pos][1]].tip,AKTIVNA_FUNKCIJA.top().stoFunkcijaVraca()))
+			ispis(pos);
 		//naredba se nalazi unutar funkcije tipa params -> pov i vrijedi izraz.tip ~~ pov
 	}
 	else if(broj==19) // <prijevodna_jedinica> ::= <vanjska_deklaracija>
@@ -755,8 +809,8 @@ void popisIzraza(int pos,int broj)
 	{
 		semantika[pos].l_izraz = 0;
 		semantika[pos].tip = Tip(KR_INT,false,false);
-		if(!rasponBroja("-2147483648","2147483647"))
-			ispis(pos);
+		/*if(!rasponBroja("-2147483648","2147483647"))
+			ispis(pos);*/
 	}
 	else if(broj==2) // <primarni_izraz> o= ZNAK
 	{
@@ -808,7 +862,7 @@ void popisIzraza(int pos,int broj)
 	{
 		start(V[pos][0]);
 		
-		if(!(semantika[V[pos][0]].tip.jesamLiFunkcija && 
+		if(!(semantika[V[pos][0]].tip.jesamFunkcija && 
 		   semantika[V[pos][0]].tip.tipovi[0].tip==KR_VOID && 
 		   semantika[V[pos][0]].tip.tipovi.size()==2))
 		   {
@@ -823,14 +877,14 @@ void popisIzraza(int pos,int broj)
 		start(V[pos][0]);
 		start(V[pos][2]);
 		
-		if(!(semantika[V[pos][0]].tip.jesamLiFunkcija && 
+		if(!(semantika[V[pos][0]].tip.jesamFunkcija && 
 		     semantika[V[pos][0]].tip.tipovi.size() == semantika[V[pos][2]].tipovi.size()
-		    )
+		    ))
 	    {
 	    	ispis(pos);
 	    }
 		
-		if(!usporedbaParametar(semantika[V[pos][0]].tip.tipovi,
+		if(!usporedbaParametara(semantika[V[pos][0]].tip.tipovi,
 		                       semantika[V[pos][2]].tipovi))
         {
 	    	ispis(pos);
@@ -1381,8 +1435,7 @@ int main()
 		ulaz[dubina].push_back(make_pair(temp, id));
 		
 		input.push_back(Input(temp));
-		if(id==0)
-			cout<<temp<<endl;
+		
 		if(id==0){++id;continue;}
 		//spoji gornjeg sa nize dubine sa trenutnim
 		V[ulaz[dubina-1][ulaz[dubina-1].size()-1].second].push_back(id);

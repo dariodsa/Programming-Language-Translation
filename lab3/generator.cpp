@@ -82,8 +82,10 @@ bool relacijaImplicitna(Tip tip1,Tip tip2)
 {
 	// U ~ V
 	//ako se U moze prebaciti u V
+	if(tip1.konstanta==tip2.konstanta && tip1.tip==tip2.tip)return true;
 	if(tip1.konstanta && !tip2.konstanta && tip1.tip==tip2.tip && tip1.polje==false && tip2.polje==false) return true;
-	if(!tip1.konstanta && !tip2.konstanta && tip1.tip==KR_INT && tip2.tip==KR_CHAR && tip1.polje==false && tip2.polje==false) return true;
+	if(!tip1.konstanta && tip2.konstanta && tip1.tip==tip2.tip && tip1.polje==false && tip2.polje==false) return true;
+	//if(!tip1.konstanta && !tip2.konstanta && tip1.tip==KR_INT && tip2.tip==KR_CHAR && tip1.polje==false && tip2.polje==false) return true;
 	if(!tip1.konstanta && !tip2.konstanta && tip2.tip==KR_INT && tip1.tip==KR_CHAR && tip1.polje==false && tip2.polje==false) return true;
 	if(!tip1.konstanta && tip2.konstanta && tip1.tip==tip2.tip && tip1.polje && tip2.polje) return true;
 	if(tip1.konstanta==tip2.konstanta && tip1.tip==tip2.tip && tip1.polje==tip2.polje)return true;
@@ -330,12 +332,13 @@ void ispis(int pos)
 bool castPromjena(Tip A,Tip B)
 {
 	//4.3.1
-	if(A == Tip(KR_INT, false, false) && A == B)return true;
+	/*if(A == Tip(KR_INT, false, false) && A == B)return true;
 	if(A == Tip(KR_CHAR, false, false) && A == B)return true;
 	if(A == Tip(KR_INT, false, false) && B == Tip(KR_CHAR, false, false))
-		return true;
-	
-	return false;
+		return true;*/
+	if((A.jesamFunkcija || B.jesamFunkcija || A.polje || B.polje))
+		return false;
+	return true;	
 }
 int dalje(int pos,string S)
 {
@@ -645,7 +648,11 @@ void popisDeklaracija(int pos,int broj)
 			Tip T = semantika[V[pos][0]].tip;
 			T.konstanta = false;
 			if(!relacijaImplicitna(semantika[V[pos][2]].tip,T))
+			{
+				fprintf(stderr,"relacija implicitna\n");
+				printf("%d %d %d %d\n",semantika[V[pos][2]].tip.tip,semantika[V[pos][2]].tip.konstanta,T.tip,T.konstanta);
 				ispis(pos);
+			}
 		}
 		else if(semantika[V[pos][0]].tip.polje || (semantika[V[pos][0]].tip.polje && semantika[V[pos][0]].tip.konstanta))
 		{
@@ -678,6 +685,7 @@ void popisDeklaracija(int pos,int broj)
 		}
 		if(find) ispis(pos);
 		Varijabla _varijabla = Varijabla(semantika[V[pos][0]].ime,semantika[pos].tip);
+		cout<<"Spremam "<<_varijabla.ime<<" "<<_varijabla.tip.tip<<" "<<_varijabla.tip.konstanta<<endl;
 		djelokrugovi[AKTIVNI_DJELOKRUG].varijable.push_back(_varijabla);
 	}
 	else if(broj==14) // <izravni_deklarator> ::= IDN L_UGL_ZAGRADA BROJ D_UGL_ZAGRADA
@@ -860,6 +868,11 @@ void popisNaredba(int pos,int broj)
 		Djelokrug D = Djelokrug(AKTIVNI_DJELOKRUG);
 		djelokrugovi.push_back(D);
 		AKTIVNI_DJELOKRUG = djelokrugovi.size() - 1;
+		for(int i=0;i<semantika[pos].tipovi.size();++i)
+		{
+			Varijabla V = Varijabla(semantika[pos].imena[i],semantika[pos].tipovi[i]);
+			djelokrugovi[AKTIVNI_DJELOKRUG].varijable.push_back(V);
+		}
 		start(V[pos][1]);
 		start(V[pos][2]);
 		AKTIVNI_DJELOKRUG = djelokrugovi[AKTIVNI_DJELOKRUG].parent;
@@ -1027,7 +1040,9 @@ void popisIzraza(int pos,int broj)
 		}
 		Tip T = getTheVariable(Varijabla(semantika[V[pos][0]].ime,Tip()),AKTIVNI_DJELOKRUG);
 		semantika[pos].tip = T;
-		semantika[pos].l_izraz = 1;
+		
+		if((T.tip == KR_INT || T.tip == KR_CHAR) && T.konstanta==false && T.polje==false && T.jesamFunkcija==false)
+			semantika[pos].l_izraz = 1;
 		
 		fprintf(stderr,"GRESKA, NE ZNAM STO DA RADIM??\n");
 		//Provjera deklaracija
@@ -1250,8 +1265,8 @@ void popisIzraza(int pos,int broj)
 		{
 			ispis(pos);
 		}
-		Tip A = Tip(2,false,false);
-		semantika[pos].tip = Tip(semantika[V[pos][0]].tip.tip,semantika[V[pos][0]].tip.polje,true);
+		
+		semantika[pos].tip = Tip(semantika[V[pos][1]].tip.tip,semantika[V[pos][1]].tip.polje,true);
 		
 	}
 	else if(broj==25) // <specifikator_tipa> ::= KR_VOID

@@ -11,7 +11,7 @@ University of Zagreb, FER
 ## Labosi :             
 - [x] Prvi labos         
 - [x] Drugi labos    
-- [ ] Treci labos  
+- [x] Treci labos  
 - [ ] Cetvrti labos
                     
  :smile: :+1:    

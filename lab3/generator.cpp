@@ -9,8 +9,8 @@
 #include <utility>
 #include <sstream> 
 #include <fstream>
-#include <io.h>
-#include <fcntl.h>
+/*#include <io.h>
+#include <fcntl.h>*/
 using namespace std;
 int KR_INT = 1;
 int KR_CHAR = 2;
@@ -1875,7 +1875,7 @@ bool foundFunction(Varijabla V)
 }
 int main()
 {
-	_setmode( _fileno( stdout ),  _O_BINARY );
+	//_setmode( _fileno( stdout ),  _O_BINARY );
 	string temp = "";
 	int id=0;
 	while(getline(cin,temp))

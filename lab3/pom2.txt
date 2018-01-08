@@ -18,3 +18,4 @@
 <inicijalizator> <izraz_pridruzivanja>
 <inicijalizator> L_VIT_ZAGRADA <lista_izraza_pridruzivanja> D_VIT_ZAGRADA
 <lista_izraza_pridruzivanja> <izraz_pridruzivanja>
+<lista_izraza_pridruzivanja> <lista_izraza_pridruzivanja> ZAREZ <izraz_pridruzivanja>

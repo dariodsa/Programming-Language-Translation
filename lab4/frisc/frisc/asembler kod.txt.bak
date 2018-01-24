@@ -1,0 +1,10 @@
+﻿tralala LOAD R7, (blabla)
+LOAD R1, (broj)
+
+JP_NN (lab1)
+LOAD R2, (broj)
+lab1 LOAD R4, (broj)
+HALT
+
+blabla DW 030
+broj DW 101

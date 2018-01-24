@@ -1,0 +1,16 @@
+     MOVE 40000, R7
+     MOVE 12,R0
+     PUSH R0
+     MOVE 10,R0
+     PUSH R0
+     CALL MUL
+DALJE POP R6
+     HALT
+MUL  POP R0
+     POP R1
+     MOVE R0,R2
+OPET ADD R2,R0,R2
+     SUB R1,1,R1
+     JP_NZ OPET
+     PUSH R2
+     JP DALJE

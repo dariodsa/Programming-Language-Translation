@@ -1,0 +1,10 @@
+    MOVE %D 16, R0
+    MOVE %D 3, R1
+    MOVE 0, R2 ; rezultat dijeljenja
+PETLJA SUB R0, R1, R0 ; oduzeti djelitelj od djeljenika
+    JR_ULT GOTOVO ; ako nije uspjelo, onda je kraj
+    ADD R2, 1, R2 ; ako je uspjelo, pove?ati rezultat
+    JR PETLJA
+GOTOVO ADD R0,R1,R0 
+    STORE R2, (1008) ; spremiti rezultat
+    HALT

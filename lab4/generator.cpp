@@ -677,6 +677,8 @@ void popisDeklaracija(int pos,int broj)
 			semantika[V[pos][5]].tipovi.push_back(semantika[V[pos][3]].tipovi[i]);
 			semantika[V[pos][5]].imena.push_back(semantika[V[pos][3]].imena[i]);
 		}
+		//todo kreiraj labelu funkcije ne treba odmah instrukcija
+		cout<<"F_"<<F.ime<<" "<<endl;
 		start(V[pos][5]);
 		
 		AKTIVNA_FUNKCIJA.pop();
@@ -839,7 +841,7 @@ void popisDeklaracija(int pos,int broj)
 		        //cout<<
 		}
 
-		//todo povecati broj varijabli za jedan
+		
 	}
 	else if(broj==14) // <izravni_deklarator> ::= IDN L_UGL_ZAGRADA BROJ D_UGL_ZAGRADA
 	{
@@ -855,7 +857,7 @@ void popisDeklaracija(int pos,int broj)
 		if(find) ispis(pos);
 		if(!rasponBroja(input[V[pos][2]].ostalo,1,1024))
 			ispis(pos);
-		
+
 		Tip _tip;
 		_tip.tip =  semantika[pos].tip.tip;
 		_tip.polje = true;
@@ -865,6 +867,17 @@ void popisDeklaracija(int pos,int broj)
 		
 		semantika[pos].br_elem = toBroj(input[V[pos][2]].ostalo);
 		semantika[pos].tip.polje = true;
+		if(AKTIVNI_DJELOKRUG==0)
+		{
+		        //Globalna varijabla
+			cout<<"G_"<<semantika[V[pos][0]].ime<<" DW %D 0"<<endl;
+		}
+		else
+		{
+		        //Lokalna varijabla
+		        //TODO dodati varijablu na stog PAZI LOKALNA
+		        //cout<<
+		}
 		//todo deklaracija polja dodati onoliko na stack koliko iznosi broj
 		//todo povecati broj varijabli za velicinu polja
 	}
@@ -1158,7 +1171,9 @@ void popisNaredba(int pos,int broj)
 		AKTIVNE_PETLJE++;
 		start(V[pos][5]);
 		AKTIVNE_PETLJE--;
-		cout<<"PETLJA_GOTOV_"<<broj<<" "<<endl;
+		cout<<"PETLJA_"<<broj<<"_INKREMENT  "<<endl;
+		cout<<"   JP PETLJA_"<<broj<<" "<<endl;
+		cout<<"PETLJA_"<<broj<<"_GOTOV"<<endl;
 		petljeID.pop();
 		//todo naredba for-a
 	}
@@ -1184,7 +1199,7 @@ void popisNaredba(int pos,int broj)
 		cout<<"PETLJA_"<<broj<<"_INKREMENT  "<<endl;
 		start(V[pos][4]);
 		cout<<"   JP PETLJA_"<<broj<<" "<<endl;
-		cout<<"PETLJA_GOTOV_"<<broj<<" "<<endl;
+		cout<<"PETLJA_"<<broj<<"_GOTOV"<<endl;
 		petljeID.pop();
 		//todo naredba for-a
 	}
@@ -1405,7 +1420,7 @@ void popisIzraza(int pos,int broj)
 		semantika[pos].l_izraz = 0;
 		//todo poziv funkcije dohvat imena funkcije preko postfiks_izraza i call
 		cout<<"   CALL "<<"F_"<<semantika[V[pos][0]].ime<<endl;
-		cout<<"   MOVE 
+		//cout<<"   MOVE 
 		//semantika[pos].tip = ;
 	}
 	else if(broj==8) // <postfiks_izraz> ::= <postfiks_izraz> L_ZAGRADA <lista_argumenata> D_ZAGRADA
@@ -1430,6 +1445,7 @@ void popisIzraza(int pos,int broj)
 			ispis(pos);
 	    }
 		
+		couz<<"   CALL F_"<<semantika[V[pos][0]].ime<<endl;
 		//todo poziv funkcije dohvat imena funkcije preko postfiks_izraza 
 		//todo push na stog listu argumenata i onda call
 		semantika[pos].tip = semantika[V[pos][0]].tip.tipovi[semantika[V[pos][0]].tip.tipovi.size()-1];

@@ -22,8 +22,12 @@ vector<string>funkcijeIzrazi;
 vector<string>funkcijeDeklaracije;
 vector<string>funkcijeNaredbe;
 
+vector<string> definicijaGlobalne;
+
 int BR_PETLJE = 1;
 int BR_IF = 1;
+
+int stackPointer = 0x40000;
 
 stack<int> petljeID;
 //stack<int> ifID;
@@ -258,6 +262,17 @@ bool findTheVariable(Varijabla varijabla,int poc)
 	}
 	if(djelokrugovi[poc].parent==-1)return false;
 	return findTheVariable(varijabla, djelokrugovi[poc].parent);
+}
+Varijabla getTheVariableReal(Varijabla varijabla,int poc)
+{
+	
+	for(int i=0;i<djelokrugovi[poc].varijable.size();++i)
+	{
+		//cout<<"Ime varijable spremljene u memoriji "<<djelokrugovi[poc].varijable[i].ime<< " polje "<<djelokrugovi[poc].varijable[i].tip.polje<<" funckija "<<djelokrugovi[poc].varijable[i].tip.jesamFunkcija<<endl;
+		if(djelokrugovi[poc].varijable[i].ime.compare(varijabla.ime)==0)
+			return djelokrugovi[poc].varijable[i];
+	}
+	return getTheVariableReal(varijabla, djelokrugovi[poc].parent);
 }
 Tip getTheVariable(Varijabla varijabla,int poc)
 {
@@ -623,6 +638,9 @@ void popisDeklaracija(int pos,int broj)
 		//todo kreiraj labelu funkcije ne treba odmah instrukcija
 		AKTIVNA_FUNKCIJA.push(F);
 		cout<<"F_"<<F.ime<<" "<<endl;
+		cout<<"   POP R0"<<endl;
+		cout<<"   STORE R0, (R5)"<<endl;
+		cout<<"   ADD R5, 4 , R5"<<endl;
 		start(V[pos][5]);
 		AKTIVNA_FUNKCIJA.pop();
 	}
@@ -679,6 +697,9 @@ void popisDeklaracija(int pos,int broj)
 		}
 		//todo kreiraj labelu funkcije ne treba odmah instrukcija
 		cout<<"F_"<<F.ime<<" "<<endl;
+		cout<<"   POP R0"<<endl;
+		cout<<"   STORE R0, (R5)"<<endl;
+		cout<<"   ADD R5, 4 , R5"<<endl;
 		start(V[pos][5]);
 		
 		AKTIVNA_FUNKCIJA.pop();
@@ -780,6 +801,9 @@ void popisDeklaracija(int pos,int broj)
 		semantika[V[pos][0]].tip = semantika[pos].tip;
 		start(V[pos][0]);
 		start(V[pos][2]);
+		cout<<"   POP R1 ; uzimam vrijednost"<<endl;
+		cout<<"   POP R0 ; uzimam adresu"<<endl;
+		cout<<"   STORE R1, (R0) ; spremam "<<endl;
 		if(!semantika[V[pos][0]].tip.jesamFunkcija && !semantika[V[pos][0]].tip.polje)
 		{
 			Tip T = semantika[V[pos][0]].tip;
@@ -826,21 +850,22 @@ void popisDeklaracija(int pos,int broj)
 		}
 		if(find) ispis(pos);
 		Varijabla _varijabla = Varijabla(semantika[V[pos][0]].ime,semantika[pos].tip);
-		//cout<<"Spremam "<<_varijabla.ime<<" "<<_varijabla.tip.tip<<" "<<_varijabla.tip.konstanta<<endl;
-		djelokrugovi[AKTIVNI_DJELOKRUG].varijable.push_back(_varijabla);
-		
+		_varijabla.mem_lokacija = stackPointer - 4;
 		if(AKTIVNI_DJELOKRUG==0)
 		{
-		        //Globalna varijabla
 			cout<<"G_"<<semantika[V[pos][0]].ime<<" DW %D 0"<<endl;
+			cout<<"   MOVE G_"<<semantika[V[pos][0]].ime<<", R0"<<endl;
+			cout<<"   PUSH R0"<<endl;
+			/*definicijaGlobalne.push_back("G_"+semantika[V[pos][0]].ime+" DW %D 0");
+			definicijaGlobalne.push_back("   MOVE G_"+semantika[V[pos][0]].ime+", R0");
+			definicijaGlobalne.push_back("   PUSH R0");*/
 		}
 		else
 		{
-		        //Lokalna varijabla
-		        //TODO dodati varijablu na stog PAZI LOKALNA
-		        //cout<<
+		    cout<<"   PUSH R0"<<endl;
+		    stackPointer-=4;
 		}
-
+		djelokrugovi[AKTIVNI_DJELOKRUG].varijable.push_back(_varijabla);
 		
 	}
 	else if(broj==14) // <izravni_deklarator> ::= IDN L_UGL_ZAGRADA BROJ D_UGL_ZAGRADA
@@ -857,13 +882,13 @@ void popisDeklaracija(int pos,int broj)
 		if(find) ispis(pos);
 		if(!rasponBroja(input[V[pos][2]].ostalo,1,1024))
 			ispis(pos);
+		int  intValue = toBroj(input[V[pos][2]].ostalo);
 
 		Tip _tip;
 		_tip.tip =  semantika[pos].tip.tip;
 		_tip.polje = true;
 		_tip.konstanta = semantika[pos].tip.konstanta;
 		Varijabla _varijabla = Varijabla(semantika[V[pos][0]].ime,_tip);
-		djelokrugovi[AKTIVNI_DJELOKRUG].varijable.push_back(_varijabla);
 		
 		semantika[pos].br_elem = toBroj(input[V[pos][2]].ostalo);
 		semantika[pos].tip.polje = true;
@@ -871,13 +896,24 @@ void popisDeklaracija(int pos,int broj)
 		{
 		        //Globalna varijabla
 			cout<<"G_"<<semantika[V[pos][0]].ime<<" DW %D 0"<<endl;
+			for(int i=0;i<intValue;++i)
+			{
+				cout<<"   DW %D 0"<<endl;
+			}
+			cout<<"   MOVE G_"<<semantika[V[pos][0]].ime<<", R0"<<endl;
+			cout<<"   PUSH R0"<<endl;
 		}
 		else
 		{
-		        //Lokalna varijabla
 		        //TODO dodati varijablu na stog PAZI LOKALNA
-		        //cout<<
+		        for(int i=0;i<intValue;++i)
+		        {
+					cout<<"   PUSH R0"<<endl;
+					stackPointer-=4;
+				}
 		}
+		_varijabla.mem_lokacija = stackPointer;
+		djelokrugovi[AKTIVNI_DJELOKRUG].varijable.push_back(_varijabla);
 		//todo deklaracija polja dodati onoliko na stack koliko iznosi broj
 		//todo povecati broj varijabli za velicinu polja
 	}
@@ -1234,7 +1270,9 @@ void popisNaredba(int pos,int broj)
 		if(!(AKTIVNA_FUNKCIJA.top().stoFunkcijaVraca() == Tip(KR_VOID,false,false)))
 			ispis(pos);
 		//todo brisanje svega sto si dodao
-		cout<<"   PUSH R5"<<endl;
+		cout<<"   SUB R5, 4, R5"<<endl;
+		cout<<"   LOAD R4, (R5)"<<endl;
+		cout<<"   PUSH R4"<<endl;
 		cout<<"   RET"<<endl;
 		//todo samo RET
 	}
@@ -1243,9 +1281,12 @@ void popisNaredba(int pos,int broj)
 		start(V[pos][1]);
 		cout<<"   POP R0"<<endl;
 		cout<<"   MOVE R0,R6"<<endl;
+		cout<<"   PUSH R6"<<endl;
 		//brisanje
 		
-		cout<<"   PUSH R5"<<endl;
+		cout<<"   SUB R5, 4, R5"<<endl;
+		cout<<"   LOAD R4, (R5)"<<endl;
+		cout<<"   PUSH R4"<<endl;
 		cout<<"   RET"<<endl;
 		if(AKTIVNA_FUNKCIJA.empty())
 		{
@@ -1301,17 +1342,16 @@ void popisIzraza(int pos,int broj)
 		}
 		Tip T = getTheVariable(Varijabla(semantika[V[pos][0]].ime,Tip()),AKTIVNI_DJELOKRUG);
 		semantika[pos].tip = T;
-		/*semantika[pos].tip.polje = T.polje;
-		semantika[pos].tip.konstanta = T.konstanta;
-		semantika[pos].tip.polje = T.polje;*/
 		
 		if((T.tip == KR_INT || T.tip == KR_CHAR) && T.konstanta==false && T.polje==false && T.jesamFunkcija==false)
 			semantika[pos].l_izraz = 1;
-		//cout<<"Varijabla "<<semantika[V[pos][0]].ime<<" "<<semantika[pos].l_izraz<<endl;
-		//cout<<"Varijabla "<<semantika[pos].tip.tip<<" "<<semantika[pos].tip.polje<<" "<<semantika[pos].tip.konstanta<<endl;
-		//fprintf(stderr,"GRESKA, NE ZNAM STO DA RADIM??\n");
-		//Provjera deklaracija
-		//exit(0);
+		
+		cout<<"   MOVE 0, R1"<<endl;
+		cout<<"   MOVE R7, R2"<<endl;
+		cout<<"   SUB R7, %D "<< 8<<", R1 ; NE RADI"<<endl;
+		cout<<"   LOAD R0, (R1)"<<endl;
+		cout<<"   PUSH R0"<<endl;
+		
 	}
 	else if(broj==1) // <primarni_izraz> = BROJ
 	{
@@ -1321,6 +1361,9 @@ void popisIzraza(int pos,int broj)
 		
 		if(!rasponBroja(input[V[pos][0]].ostalo,-2147483648,2147483647))
 			ispis(pos);
+		
+		cout<<"   MOVE %D "<<br<<" , R0 ; primarni izraz broj"<<endl;
+		cout<<"   PUSH R0"<<endl;
 	}
 	else if(broj==2) // <primarni_izraz> o= ZNAK
 	{
@@ -1419,6 +1462,9 @@ void popisIzraza(int pos,int broj)
 		semantika[pos].tip     = semantika[V[pos][0]].tip.tipovi[semantika[V[pos][0]].tip.tipovi.size()-1];
 		semantika[pos].l_izraz = 0;
 		//todo poziv funkcije dohvat imena funkcije preko postfiks_izraza i call
+		cout<<"   MOVE R0, R7"<<endl;
+		cout<<"   LOAD R0, (R4)"<<endl;
+		cout<<"   ADD R4, 4, R4 ; OBAVEZNO TO NEGDJE ISKORISTITI"<<endl;
 		cout<<"   CALL "<<"F_"<<semantika[V[pos][0]].ime<<endl;
 		//cout<<"   MOVE 
 		//semantika[pos].tip = ;
@@ -1445,7 +1491,7 @@ void popisIzraza(int pos,int broj)
 			ispis(pos);
 	    }
 		
-		couz<<"   CALL F_"<<semantika[V[pos][0]].ime<<endl;
+		cout<<"   CALL F_"<<semantika[V[pos][0]].ime<<endl;
 		//todo poziv funkcije dohvat imena funkcije preko postfiks_izraza 
 		//todo push na stog listu argumenata i onda call
 		semantika[pos].tip = semantika[V[pos][0]].tip.tipovi[semantika[V[pos][0]].tip.tipovi.size()-1];
@@ -2172,7 +2218,9 @@ int main()
 	djelokrugovi.push_back(D);
 	AKTIVNI_DJELOKRUG = 0;
 	cout<<"   MOVE 40000, R7"<<endl;
-	cout<<"   CALL F_MAIN"<<endl;
+	cout<<"   MOVE 10000, R5"<<endl;
+	cout<<"   MOVE 22000, R4"<<endl;
+	cout<<"   CALL F_main"<<endl;
     cout<<"   HALT"<<endl;
 	start(0);
 	bool mainFound = false;

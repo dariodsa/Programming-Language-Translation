@@ -1,0 +1,40 @@
+   MOVE 40000, R7
+   CALL F_main
+   HALT
+G_x DW %D 0
+   MOVE G_x, R0
+   PUSH R0
+   MOVE %D 3 , R0 ; primarni izraz broj
+   PUSH R0
+   PUSH R1 ; uzimam vrijednost
+   PUSH R0 ; uzimam adresu
+   STORE R1, (R0) ; spremam 
+F_main 
+   PUSH R0
+   MOVE %D 5 , R0 ; primarni izraz broj
+   PUSH R0
+   PUSH R1 ; uzimam vrijednost
+   PUSH R0 ; uzimam adresu
+   STORE R1, (R0) ; spremam 
+   PUSH R0
+   MOVE 0, R1
+   MOVE R7, R2
+   SUB R7, %D 8, R1 ; NE RADI
+   LOAD R0, (R1)
+   PUSH R0
+   MOVE %D 1 , R0 ; primarni izraz broj
+   PUSH R0
+   POP R0
+   POP R1
+   ADD R0,R1,R0
+   PUSH R0
+   PUSH R1 ; uzimam vrijednost
+   PUSH R0 ; uzimam adresu
+   STORE R1, (R0) ; spremam 
+   MOVE %D 0 , R0 ; primarni izraz broj
+   PUSH R0
+   POP R0
+   MOVE R0,R6
+   PUSH R5
+   RET
+funkcija

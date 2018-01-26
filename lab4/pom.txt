@@ -1,0 +1,24 @@
+<slozena_naredba> L_VIT_ZAGRADA <lista_naredbi> D_VIT_ZAGRADA
+<slozena_naredba> L_VIT_ZAGRADA <lista_deklaracija> <lista_naredbi> D_VIT_ZAGRADA
+<lista_naredbi> <naredba>
+<lista_naredbi> <lista_naredbi> <naredba>
+<naredba> <slozena_naredba>
+<naredba> <izraz_naredba>
+<naredba> <naredba_grananja>
+<naredba> <naredba_petlje>
+<naredba> <naredba_skoka>
+<izraz_naredba> TOCKAZAREZ
+<izraz_naredba> <izraz> TOCKAZAREZ
+<naredba_grananja> KR_IF L_ZAGRADA <izraz> D_ZAGRADA <naredba>
+<naredba_grananja> KR_IF L_ZAGRADA <izraz> D_ZAGRADA <naredba> KR_ELSE <naredba>
+<naredba_petlje> KR_WHILE L_ZAGRADA <izraz> D_ZAGRADA <naredba>
+<naredba_petlje> KR_FOR L_ZAGRADA <izraz_naredba> <izraz_naredba> D_ZAGRADA <naredba>
+<naredba_petlje> KR_FOR L_ZAGRADA <izraz_naredba> <izraz_naredba> <izraz> D_ZAGRADA <naredba>
+<naredba_skoka> KR_CONTINUE TOCKAZAREZ
+<naredba_skoka> KR_RETURN TOCKAZAREZ
+<naredba_skoka> KR_RETURN <izraz> TOCKAZAREZ
+<prijevodna_jedinica> <vanjska_deklaracija>
+<prijevodna_jedinica> <prijevodna_jedinica> <vanjska_deklaracija>
+<vanjska_deklaracija> <definicija_funkcije>
+<vanjska_deklaracija> <deklaracija>
+<naredba_skoka> KR_BREAK TOCKAZAREZ

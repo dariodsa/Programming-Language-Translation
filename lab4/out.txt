@@ -1,0 +1,58 @@
+   MOVE 3FFC8, R7
+   MOVE 10000, R5
+   MOVE 22000, R4
+   MOVE R7, R0
+   LOAD R0, (R4)
+   ADD R4, 4, R4
+   CALL I_init
+   HALT
+G_x DW %D 0
+   MOVE G_x, R0
+   PUSH R0
+   MOVE %D 3 , R0 ; primarni izraz broj
+   PUSH R0
+   POP R1 ; uzimam vrijednost
+   POP R0 ; uzimam adresu
+   STORE R1, (R0) ; spremam 
+   RET
+F_main 
+   POP R0
+   STORE R0, (R5)
+   ADD R5, 4 , R5
+   PUSH R0
+   MOVE %D 5 , R0 ; primarni izraz broj
+   PUSH R0
+   POP R1 ; uzimam vrijednost
+   POP R0 ; uzimam adresu
+   STORE R1, (R0) ; spremam 
+   SUB R7, %D -4, R1 ; varijabla y stack pointer je na 262144
+   PUSH R1
+   MOVE 0, R1
+   MOVE R7, R2
+   SUB R7, %D 0, R1 ; vrijednost var y
+   LOAD R0, (R1)
+   PUSH R0
+   LOAD R0, (G_x)
+   PUSH R0
+   POP R0
+   POP R1
+   ADD R0,R1,R0
+   PUSH R0
+   POP R0
+   POP R1
+   STORE R0, (R1) ; spremam neku varijablu
+   MOVE 0, R1
+   MOVE R7, R2
+   SUB R7, %D -4, R1 ; vrijednost var y
+   LOAD R0, (R1)
+   PUSH R0
+   POP R0
+   MOVE R0,R6
+   SUB R5, 4, R5
+   LOAD R0, (R5)
+   PUSH R0
+   RET
+I_init
+   CALL G_x
+   CALL F_main
+   HALT

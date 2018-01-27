@@ -1,9 +1,10 @@
-   MOVE 3FFC8, R7
-   MOVE 10000, R5
-   MOVE 22000, R4
-   MOVE R7, R0
-   LOAD R0, (R4)
+   MOVE 40000, R7 ; normalni stog
+   MOVE 30000, R5 ; sluzi za povratne adrese
+   MOVE 22000, R4 ; sluzi za djelokrug 
+   MOVE 10000, R3 ; sluzi za lokalne varijable
+   MOVE R3, R0
    ADD R4, 4, R4
+   LOAD R0, (R4)
    CALL I_init
    HALT
 G_x DW %D 0
@@ -17,22 +18,130 @@ G_x DW %D 0
    RET
 F_main 
    POP R0
+   ADD R5, 4 , R5        ; spremam PA
    STORE R0, (R5)
-   ADD R5, 4 , R5
-   PUSH R0
-   MOVE %D 5 , R0 ; primarni izraz broj
+   MOVE R3, R0
+   ADD R4, 4, R4
+   STORE R0, (R4)   ; spremam djelokrug vrh
+   SUB R3, %D 4, R3  ; pomicem prema dolje
+   MOVE %D 0, R0
+   STORE R0, (R3) ; var y = 0
+   PUSH R3
+   MOVE %D 0 , R0 ; primarni izraz broj
    PUSH R0
    POP R1 ; uzimam vrijednost
    POP R0 ; uzimam adresu
-   STORE R1, (R0) ; spremam 
-   SUB R7, %D -4, R1 ; varijabla y stack pointer je na 262144
-   PUSH R1
-   MOVE 0, R1
-   MOVE R7, R2
-   SUB R7, %D 0, R1 ; vrijednost var y
-   LOAD R0, (R1)
+   STORE R1, (R0) ; spremam  y = 0
+   SUB R3, %D 4, R3
+   MOVE %D 0, R0
+   STORE R0, (R3) ; var i
+   PUSH R3
+   MOVE %D 0 , R0 ; primarni izraz broj
    PUSH R0
-   LOAD R0, (G_x)
+   POP R1 ; uzimam vrijednost
+   POP R0 ; uzimam adresu
+   STORE R1, (R0) ; spremam i = 0
+   MOVE R3, R0
+   ADD R0, %D 0, R0
+   PUSH R0
+   MOVE %D 0 , R0 ; primarni izraz broj
+   PUSH R0
+   POP R0
+   POP R1
+   STORE R0, (R1) ; spremam neku varijablu i = 0
+PETLJA_1 
+   MOVE R3, R0
+   ADD R0, %D 0, R0
+   LOAD R1, (R0)  ; ucitavam i
+   PUSH R1
+   MOVE %D 10 , R0 ; primarni izraz broj
+   PUSH R0
+   POP R0
+   POP R1
+   CMP R1,R0         ; usporedba sa 10
+   JP_SLT dalje0
+   MOVE 0,R0
+   PUSH R0
+   JP gotovo0
+dalje0 
+   MOVE 1,R0
+   PUSH R0
+gotovo0 
+   POP R0
+   CMP R0, 0
+   JP_EQ PETLJA_1_GOTOV
+   MOVE R3, R0         ; idemo dalje
+   ADD R4, 4, R4       ; pomak r4 za 4
+   STORE R0, (R4)      ; spremam djelokrug 
+   SUB R3, %D 4, R3
+   MOVE %D 0, R0
+   STORE R0, (R3) ; var j
+   PUSH R3
+   MOVE %D 0 , R0 ; primarni izraz broj
+   PUSH R0
+   POP R1 ; uzimam vrijednost
+   POP R0 ; uzimam adresu
+   STORE R1, (R0) ; spremam  ; dodajem varijablu j
+   MOVE R3, R0
+   ADD R0, %D 0, R0
+   PUSH R0
+   MOVE %D 0 , R0 ; primarni izraz broj
+   PUSH R0
+   POP R0
+   POP R1
+   STORE R0, (R1) ; spremam neku varijablu ; init j na 0
+PETLJA_2 
+   MOVE R3, R0
+   ADD R0, %D 0, R0
+   LOAD R1, (R0)  ; ucitavam j 
+   PUSH R1
+   MOVE %D 2 , R0 ; primarni izraz broj
+   PUSH R0
+   POP R0
+   POP R1
+   CMP R1,R0      ; compare j sa 2
+   JP_SLT dalje1
+   MOVE 0,R0           
+   PUSH R0
+   JP gotovo1
+dalje1 
+   MOVE 1,R0
+   PUSH R0
+gotovo1 
+   POP R0
+   CMP R0, 0
+   JP_EQ PETLJA_2_GOTOV
+   MOVE R3, R0         ; spremam djelokrug 
+   ADD R4, 4, R4
+   STORE R0, (R4)
+   MOVE R3, R0
+   ADD R0, %D 8, R0
+   PUSH R0
+   MOVE R3, R0
+   ADD R0, %D 8, R0
+   LOAD R1, (R0)
+   PUSH R1
+   MOVE %D 1 , R0 ; primarni izraz broj
+   PUSH R0
+   POP R0
+   POP R1
+   ADD R0,R1,R0
+   PUSH R0
+   POP R0
+   POP R1
+   STORE R0, (R1) ; spremam neku varijablu y = y + 1 to radi
+   SUB R4, 4, R4
+   LOAD R0, (R4)
+   MOVE R0, R3
+PETLJA_2_INKREMENT  
+   MOVE R3, R0
+   ADD R0, %D 0, R0
+   PUSH R0
+   MOVE R3, R0
+   ADD R0, %D 0, R0
+   LOAD R1, (R0)
+   PUSH R1
+   MOVE %D 1 , R0 ; primarni izraz broj
    PUSH R0
    POP R0
    POP R1
@@ -41,17 +150,43 @@ F_main
    POP R0
    POP R1
    STORE R0, (R1) ; spremam neku varijablu
-   MOVE 0, R1
-   MOVE R7, R2
-   SUB R7, %D -4, R1 ; vrijednost var y
-   LOAD R0, (R1)
+   JP PETLJA_2 
+PETLJA_2_GOTOV
+   SUB R4, 4, R4
+   LOAD R0, (R4)
+   MOVE R0, R3
+PETLJA_1_INKREMENT  
+   MOVE R3, R0
+   ADD R0, %D 0, R0
+   PUSH R0
+   MOVE R3, R0
+   ADD R0, %D 0, R0
+   LOAD R1, (R0)
+   PUSH R1
+   MOVE %D 1 , R0 ; primarni izraz broj
    PUSH R0
    POP R0
+   POP R1
+   ADD R0,R1,R0
+   PUSH R0
+   POP R0
+   POP R1
+   STORE R0, (R1) ; spremam neku varijablu  ; i = i + 1
+   JP PETLJA_1 
+PETLJA_1_GOTOV
+   MOVE R3, R0
+   ADD R0, %D 4, R0
+   LOAD R1, (R0)
+   PUSH R1
+   POP R0
    MOVE R0,R6
-   SUB R5, 4, R5
    LOAD R0, (R5)
+   SUB R5, 4, R5
    PUSH R0
    RET
+   SUB R4, 4, R4
+   LOAD R0, (R4)
+   MOVE R0, R3
 I_init
    CALL G_x
    CALL F_main

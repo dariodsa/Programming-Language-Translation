@@ -4,7 +4,7 @@ for filename in ../lab3/kodovi/*.out;
     name=${filename##*/}
     base=${name%.out}
     ./evaluator.bat $base".txt"
-    ./compare iz.txt $filename status.txt
+    ./compare.exe iz.txt $filename status.txt
     fileSize=$(stat -c%s "status.txt")
     if [ $fileSize -ne 0 ]
     then

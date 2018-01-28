@@ -8,8 +8,8 @@ cd analizator
 cd ..
 cd ..
 cd lab3
-./generator <out.txt
+./generator.exe <out.txt
 cd ..
 cd lab4
-./generator <"../lab3/out.txt" >out.txt
+./generator.exe <"../lab3/out.txt" >out.txt
 ./node main.js out.txt >iz.txt

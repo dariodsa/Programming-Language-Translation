@@ -4,6 +4,7 @@ node_js:
   - "6"
 before_script:
   - npm install
+  - chmod +x lab4/evaluator.bash
 script:
   - cd lab4
   - ./evaluator.bash

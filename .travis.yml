@@ -5,6 +5,8 @@ node_js:
 before_script:
   - npm install
   - chmod +x lab4/evaluator.bash
+  - chmod +x lab4/evaluator.bat
+  - chmod +x lab4/compare.exe
 script:
   - cd lab4
   - ./evaluator.bash

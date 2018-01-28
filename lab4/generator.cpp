@@ -889,6 +889,13 @@ void popisDeklaracija(int pos,int broj)
 				cout<<"   SUB R3, 4, R3"<<endl;
 				cout<<"   STORE R0, (R3)"<<endl;
 			}
+			//printf("%d %d\n",semantika[V[pos][0]].tip.vel,semantika[V[pos][2]].tipovi.size());
+			for(int i=0;i<semantika[V[pos][0]].tip.vel-semantika[V[pos][2]].tipovi.size();++i)
+			{
+				cout<<"   MOVE 0 , R0"<<endl;
+				cout<<"   SUB R3, 4, R3"<<endl;
+				cout<<"   STORE R0, (R3)"<<endl;
+			}
 		}
 		if(!semantika[V[pos][0]].tip.jesamFunkcija && !semantika[V[pos][0]].tip.polje)
 		{
@@ -1003,7 +1010,7 @@ void popisDeklaracija(int pos,int broj)
 		
 		semantika[pos].br_elem = toBroj(input[V[pos][2]].ostalo);
 		semantika[pos].tip.polje = true;
-		
+		semantika[pos].tip.vel   = intValue;
 		if(semantika[pos].samo==1)
 		{
 			if(AKTIVNI_DJELOKRUG==0)
@@ -1449,7 +1456,7 @@ void popisNaredba(int pos,int broj)
 		// naredba se nalazi unutar petlje ili bloka koji je u petlji 
 		int broj = petljeID.top();
 		int how = howMany(AKTIVNI_DJELOKRUG, FUNKCIJA);
-		cout<<"   ADD R3, "<<how<<", R3 ;pomak"<<endl;
+		cout<<"   ADD R3, %D "<<how<<", R3 ;pomak"<<endl;
 		cout<<"   JP PETLJA_"<<broj<<"_INKREMENT"<<endl;
 	}
 	else if(broj==23) // <naredba_skoka> ::= (KR_BREAK  TOCKAZAREZ
@@ -1461,7 +1468,7 @@ void popisNaredba(int pos,int broj)
 		//todo jp na labelu_BREAK
 		int broj = petljeID.top();
 		int how = howMany(AKTIVNI_DJELOKRUG, PETLJA);
-		cout<<"   ADD R3, "<<how<<", R3 ;pomak"<<endl;
+		cout<<"   ADD R3, %D "<<how<<", R3 ;pomak"<<endl;
 		cout<<"   JP PETLJA_"<<broj<<"_GOTOV "<<endl;
 		//todo napraviti stack label za break i uzeti ga
 	}
@@ -1477,7 +1484,7 @@ void popisNaredba(int pos,int broj)
 		cout<<"   SUB R5, 4, R5"<<endl;
 		addPush("R0");
 		int how = howMany(AKTIVNI_DJELOKRUG, FUNKCIJA);
-		cout<<"   ADD R3, "<<how<<", R3 ;pomak"<<endl;
+		cout<<"   ADD R3, %D "<<how<<", R3 ;pomak"<<endl;
 		cout<<"   RET"<<endl;
 		//todo samo RET
 	}
@@ -1492,7 +1499,7 @@ void popisNaredba(int pos,int broj)
 		addPush("R0");
 		stackPointer += 4;
 		int how = howMany(AKTIVNI_DJELOKRUG, FUNKCIJA);
-		cout<<"   ADD R3, "<<how<<", R3 ;pomak"<<endl;
+		cout<<"   ADD R3, %D "<<how<<", R3 ;pomak"<<endl;
 		cout<<"   RET"<<endl;
 		if(AKTIVNA_FUNKCIJA.empty())
 		{
@@ -1681,13 +1688,24 @@ void popisIzraza(int pos,int broj)
 			ispis(pos);
 		}
 		start(V[pos][2]);
-		cout<<"   POP R0;indeks"<<endl;
-		cout<<"   POP R1;pocAdresa"<<endl;
-		cout<<"   SHL R0, 2, R0"<<endl;
-		cout<<"   SUB R1, R0, R0"<<endl;
-		
-		cout<<"   LOAD R1, (R0)"<<endl;
-		cout<<"   PUSH R1"<<endl;
+		if(semantika[pos].memOrVal!=1)
+		{
+			cout<<"   POP R0;indeks"<<endl;
+			cout<<"   POP R1;pocAdresa"<<endl;
+			cout<<"   SHL R0, 2, R0"<<endl;
+			cout<<"   SUB R1, R0, R0"<<endl;
+			
+			cout<<"   LOAD R1, (R0)"<<endl;
+			cout<<"   PUSH R1"<<endl;
+		}
+		else
+		{
+			cout<<"   POP R0;indeks"<<endl;
+			cout<<"   POP R1;pocAdresa"<<endl;
+			cout<<"   SHL R0, 2, R0"<<endl;
+			cout<<"   SUB R1, R0, R0"<<endl;
+			cout<<"   PUSH R0"<<endl;
+		}
 		if(relacijaImplicitna(semantika[V[pos][2]].tip,Tip(KR_INT,false,false))==false)
 		{
 			//cout<<semantika[V[pos][2]].tip.tip<<endl;
@@ -1995,7 +2013,12 @@ void popisIzraza(int pos,int broj)
 		{
 			ispis(pos);
 		}
-		//todo  push na stack i pozvati funckiju
+		cout<<"   POP R0"<<endl;
+		cout<<"   POP R1"<<endl;
+		cout<<"   PUSH R1"<<endl;
+		cout<<"   PUSH R0"<<endl;
+		cout<<"   CALL DIV"<<endl;
+		cout<<"   PUSH R6"<<endl;
 		semantika[pos].l_izraz=0;
 		semantika[pos].tip = Tip (KR_INT,false,false);
 	}
@@ -2642,8 +2665,8 @@ int main()
     cout<<"MOD POP R0"<<endl;
     cout<<"   ADD R5, 4 , R5"<<endl;
     cout<<"   STORE R0, (R5)"<<endl;
-	cout<<"   POP R1"<<endl;
 	cout<<"   POP R0"<<endl;
+	cout<<"   POP R1"<<endl;
     cout<<"   MOVE 0, R2"<<endl;
     cout<<"H_PETLJA SUB R0, R1, R0 ; oduzeti djelitelj od djeljenika"<<endl;
     cout<<"   JR_ULT H_GOTOVO ; ako nije uspjelo, onda je kraj"<<endl;
@@ -2655,5 +2678,57 @@ int main()
     cout<<"   SUB R5, 4, R5"<<endl;
     cout<<"   PUSH R0"<<endl;
     cout<<"   RET"<<endl;
+    //-----------------------
+    cout<<"DIV POP R0"<<endl;
+	cout<<"   ADD R5, 4 , R5"<<endl;
+    cout<<"   STORE R0, (R5)"<<endl;
+	cout<<"   POP R1"<<endl;
+	cout<<"   POP R0"<<endl;
+	
+    cout<<"   MOVE 0, R2"<<endl;
+    cout<<"   CMP R0, R2"<<endl;
+    cout<<"   JP_N neg1"<<endl;
+    cout<<"   JP pr3"<<endl;
+    cout<<"   MOVE 0, R2 ; rezultat dijeljenja"<<endl;
+    cout<<"neg1 XOR R0, -1, R0"<<endl;
+    cout<<"   ADD R0, 1, R0"<<endl;
+    cout<<"   MOVE 0, R2"<<endl;
+    cout<<"pr2  CMP R1, R2"<<endl;
+    cout<<"   JP_N neg2"<<endl;
+    cout<<"   JP PETLJA2"<<endl;
+    cout<<"neg2 XOR R1, -1, R1"<<endl;
+    cout<<"   ADD R1, 1, R1"<<endl;
+    cout<<"   MOVE 0, R2"<<endl;
+    cout<<"   JP PETLJA"<<endl;
+    cout<<"pr3 MOVE 0, R2"<<endl;
+    cout<<"   CMP R1, R2"<<endl;
+    cout<<"   JP_N neg3"<<endl;
+    cout<<"   JP PETLJA"<<endl;
+    cout<<"neg3 XOR R1, -1, R1"<<endl;
+    cout<<"   ADD R1, 1, R1"<<endl;
+    cout<<"   MOVE 0, R2"<<endl;
+    cout<<"   JP PETLJA2"<<endl;
+    cout<<"PETLJA SUB R0, R1, R0 ; oduzeti djelitelj od djeljenika"<<endl;
+    cout<<"   JR_ULT GOTOVOP ; ako nije uspjelo, onda je kraj"<<endl;
+    cout<<"   ADD R2, 1, R2 ; ako je uspjelo, pove?ati rezultat"<<endl;
+    cout<<"   JR PETLJA"<<endl;
+    cout<<"PETLJA2 SUB R0, R1, R0 ; oduzeti djelitelj od djeljenika"<<endl;
+    cout<<"   JR_ULT GOTOVON ; ako nije uspjelo, onda je kraj"<<endl;
+    cout<<"   ADD R2, 1, R2 ; ako je uspjelo, pove?ati rezultat"<<endl;
+    cout<<"   JR PETLJA2"<<endl;
+	cout<<"GOTOVOP"<<endl;
+    cout<<"   MOVE R2, R6"<<endl;
+    cout<<"   LOAD R0, (R5)"<<endl;
+    cout<<"   SUB R5, 4, R5"<<endl;
+    cout<<"   PUSH R0"<<endl;
+    cout<<"   RET"<<endl;
+    cout<<"GOTOVON"<<endl;
+    cout<<"   XOR R2, -1, R2"<<endl;
+    cout<<"   ADD R2, 1, R2"<<endl;
+    cout<<"   MOVE R2, R6"<<endl;
+    cout<<"   LOAD R0, (R5)"<<endl;
+    cout<<"   SUB R5, 4, R5"<<endl;
+    cout<<"   PUSH R0"<<endl;
+	cout<<"   RET"<<endl;
 	return 0;
 }

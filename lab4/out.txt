@@ -7,42 +7,60 @@
    STORE R0, (R4)
    CALL I_init
    HALT
+G_x DW %D 0
+   MOVE G_x, R0
+   PUSH R0
+   MOVE %D 2 , R0 ; primarni izraz broj
+   PUSH R0
+   POP R0
+   XOR R0, -1, R0
+   ADD R0,1,R0
+   PUSH R0
+   POP R0
+   XOR R0, -1, R0
+   ADD R0,1,R0
+   PUSH R0
+   POP R1 ; uzimam vrijednost
+   POP R0 ; uzimam adresu
+   STORE R1, (R0) ; spremam 
+   RET
 F_main 
    POP R0
    ADD R5, 4 , R5
    STORE R0, (R5)
    SUB R3, %D 4, R3
    MOVE %D 0, R0
-   STORE R0, (R3) ; var x
+   STORE R0, (R3) ; var y
    PUSH R3
-   MOVE %D 3 , R0 ; primarni izraz broj
+   MOVE %D 17 , R0 ; primarni izraz broj
    PUSH R0
    POP R1 ; uzimam vrijednost
    POP R0 ; uzimam adresu
    STORE R1, (R0) ; spremam 
    SUB R3, %D 4, R3
    MOVE %D 0, R0
-   STORE R0, (R3) ; var y
+   STORE R0, (R3) ; var z
    PUSH R3
-   MOVE %D 2 , R0 ; primarni izraz broj
+   LOAD R0, (G_x)
    PUSH R0
-   POP R1 ; uzimam vrijednost
-   POP R0 ; uzimam adresu
-   STORE R1, (R0) ; spremam 
    MOVE R3, R0
    ADD R0, %D 4, R0
    LOAD R1, (R0)
    PUSH R1
+   POP R0
+   MOVE R0,R1
+   POP R0
+   PUSH R1
+   PUSH R0
+   CALL MOD
+   PUSH R6
+   POP R1 ; uzimam vrijednost
+   POP R0 ; uzimam adresu
+   STORE R1, (R0) ; spremam 
    MOVE R3, R0
    ADD R0, %D 0, R0
    LOAD R1, (R0)
    PUSH R1
-   POP R0
-   POP R1
-   PUSH R0
-   PUSH R1
-   CALL MUL
-   PUSH R6
    POP R0
    MOVE R0,R6
    LOAD R0, (R5)
@@ -52,6 +70,7 @@ F_main
    RET
    ADD R3 , %D 8 , R3 
 I_init
+   CALL G_x
    CALL F_main
    HALT
 MUL  POP R0  ;MNOZENJE

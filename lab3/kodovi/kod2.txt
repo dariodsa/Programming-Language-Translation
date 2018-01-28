@@ -1,0 +1,11 @@
+int x = 3;
+int fo(int xa, int y)
+{
+   int z = x;
+   int ka = x + xa + y + z;
+   return ka;
+}
+int main(void)
+{
+   return fo(1,2); //3+1+2+3=9
+}

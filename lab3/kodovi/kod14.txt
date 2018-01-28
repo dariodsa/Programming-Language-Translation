@@ -1,0 +1,18 @@
+int x = 0;
+int y = 3;
+int main(void)
+{
+    if(x<y)
+    {
+      ++x;
+    }
+    else if(x<y)
+    {
+      ++x;
+    }
+    else if(x<y)
+    {
+      ++x;
+    }
+    return x;
+}

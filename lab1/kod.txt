@@ -1,9 +1,6 @@
-int main(void){
-int a;
-int b;
-int c;
-if(a>b && 5<c)
-{
-++a;
-}              
+int x = 3;
+int main(void) {
+  int x = 5;
+  int y = x + 1; // 6
+  return y;
 }

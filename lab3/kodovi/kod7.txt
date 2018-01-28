@@ -1,0 +1,7 @@
+int x = -(-2);
+int main(void)
+{
+     int y = 17;
+     int z = x%y;
+     return z;
+}

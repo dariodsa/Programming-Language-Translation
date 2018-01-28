@@ -1,0 +1,12 @@
+int main(void)
+{
+    int x = -(-328);
+    
+    int i=0;
+    while(x>0)
+    {
+       i = i + x%10;
+       x=x/10;
+    } 
+    return i;
+}

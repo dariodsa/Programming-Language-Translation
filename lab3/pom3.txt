@@ -15,10 +15,10 @@
 <unarni_izraz> OP_INC <unarni_izraz>
 <unarni_izraz> OP_DEC <unarni_izraz>
 <unarni_izraz> <unarni_operator> <cast_izraz>
-<unarni operator> PLUS
-<unarni operator> MINUS
-<unarni operator> OP_TILDA
-<unarni operator> OP_NEG
+<unarni_operator> PLUS
+<unarni_operator> MINUS
+<unarni_operator> OP_TILDA
+<unarnivoperator> OP_NEG
 <cast_izraz> <unarni_izraz>
 <cast_izraz> L_ZAGRADA <ime_tipa> D_ZAGRADA <cast_izraz>
 <ime_tipa> <specifikator_tipa>

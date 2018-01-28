@@ -1,0 +1,7 @@
+int x = 3;
+int main(void)
+{
+   int z = 3;
+   int k = ++x + z++;
+   return k; //7       
+}

@@ -7,51 +7,129 @@
    STORE R0, (R4)
    CALL I_init
    HALT
-F_main 
-   POP R0
-   ADD R5, 4 , R5
-   STORE R0, (R5)
-   SUB R3, %D 4, R3
-   MOVE %D 0, R0
-   STORE R0, (R3) ; var x
-   PUSH R3
-   MOVE %D 3 , R0 ; primarni izraz broj
+G_x DW %D 0
+   MOVE G_x, R0
    PUSH R0
-   POP R1 ; uzimam vrijednost
-   POP R0 ; uzimam adresu
-   STORE R1, (R0) ; spremam 
-   SUB R3, %D 4, R3
-   MOVE %D 0, R0
-   STORE R0, (R3) ; var y
-   PUSH R3
    MOVE %D 2 , R0 ; primarni izraz broj
    PUSH R0
    POP R1 ; uzimam vrijednost
    POP R0 ; uzimam adresu
    STORE R1, (R0) ; spremam 
-   MOVE R3, R0
-   ADD R0, %D 4, R0
-   LOAD R1, (R0)
-   PUSH R1
-   MOVE R3, R0
-   ADD R0, %D 0, R0
-   LOAD R1, (R0)
-   PUSH R1
+   RET
+G_y DW %D 0
+   MOVE G_y, R0
+   PUSH R0
+   MOVE %D 3 , R0 ; primarni izraz broj
+   PUSH R0
+   POP R1 ; uzimam vrijednost
+   POP R0 ; uzimam adresu
+   STORE R1, (R0) ; spremam 
+   RET
+F_main 
+   POP R0
+   ADD R5, 4 , R5
+   STORE R0, (R5)
+IF_1 
+   LOAD R0, (G_x)
+   PUSH R0
+   LOAD R0, (G_y)
+   PUSH R0
    POP R0
    POP R1
+   CMP R1,R0
+   JP_SLT dalje0
+   MOVE 0,R0
    PUSH R0
+   JP gotovo0
+dalje0 
+   MOVE 1,R0
+   PUSH R0
+gotovo0 
+   POP R0
+   CMP R0,0
+   JP_EQ IF_1_KRAJ
+   MOVE G_x, R0
+   PUSH R0
+   POP R0
+   LOAD R1, (R0)
+   ADD R1, %D 1, R1
+   STORE R1, (R0)
    PUSH R1
-   CALL MUL
-   PUSH R6
+   ADD R3 , %D 0 , R3 
+   JP IF_ELSE_1
+IF_1_KRAJ 
+IF_2 
+   LOAD R0, (G_x)
+   PUSH R0
+   LOAD R0, (G_y)
+   PUSH R0
+   POP R0
+   POP R1
+   CMP R1,R0
+   JP_SLT dalje1
+   MOVE 0,R0
+   PUSH R0
+   JP gotovo1
+dalje1 
+   MOVE 1,R0
+   PUSH R0
+gotovo1 
+   POP R0
+   CMP R0,0
+   JP_EQ IF_2_KRAJ
+   MOVE G_x, R0
+   PUSH R0
+   POP R0
+   LOAD R1, (R0)
+   ADD R1, %D 1, R1
+   STORE R1, (R0)
+   PUSH R1
+   ADD R3 , %D 0 , R3 
+   JP IF_ELSE_2
+IF_2_KRAJ 
+IF_3 
+   LOAD R0, (G_x)
+   PUSH R0
+   LOAD R0, (G_y)
+   PUSH R0
+   POP R0
+   POP R1
+   CMP R1,R0
+   JP_SLT dalje2
+   MOVE 0,R0
+   PUSH R0
+   JP gotovo2
+dalje2 
+   MOVE 1,R0
+   PUSH R0
+gotovo2 
+   POP R0
+   CMP R0,0
+   JP_EQ IF_3_KRAJ
+   MOVE G_x, R0
+   PUSH R0
+   POP R0
+   LOAD R1, (R0)
+   ADD R1, %D 1, R1
+   STORE R1, (R0)
+   PUSH R1
+   ADD R3 , %D 0 , R3 
+IF_3_KRAJ 
+IF_ELSE_2 
+IF_ELSE_1 
+   LOAD R0, (G_x)
+   PUSH R0
    POP R0
    MOVE R0,R6
    LOAD R0, (R5)
    SUB R5, 4, R5
    PUSH R0
-   ADD R3, %D 8, R3 ;pomak
+   ADD R3, %D 0, R3 ;pomak
    RET
-   ADD R3 , %D 8 , R3 
+   ADD R3 , %D 0 , R3 
 I_init
+   CALL G_x
+   CALL G_y
    CALL F_main
    HALT
 MUL  POP R0  ;MNOZENJE

@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/dariodsa/Programming-Language-Translation.svg?branch=master)](https://travis-ci.org/dariodsa/Programming-Language-Translation)
 # PPJ labosi       
 2017/2018   
 University of Zagreb, FER    

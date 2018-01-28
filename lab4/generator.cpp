@@ -883,18 +883,33 @@ void popisDeklaracija(int pos,int broj)
 		}
 		else
 		{
-			for(int i=0;i<semantika[V[pos][2]].tipovi.size();++i)
+			if(AKTIVNI_DJELOKRUG==0)
 			{
-				cout<<"   POP R0"<<endl;
-				cout<<"   SUB R3, 4, R3"<<endl;
-				cout<<"   STORE R0, (R3)"<<endl;
+				string ime = semantika[V[pos][0]].ime;
+				cout<<"   MOVE G_"<<ime<<" , R1"<<endl;
+				for(int i=0;i<semantika[V[pos][2]].tipovi.size();++i)
+				{
+					cout<<"   POP R0"<<endl;
+					cout<<"   STORE R0, (R1)"<<endl;
+					cout<<"   ADD R1, %D 4, R1"<<endl;
+				}
+				cout<<"   RET"<<endl;
 			}
-			//printf("%d %d\n",semantika[V[pos][0]].tip.vel,semantika[V[pos][2]].tipovi.size());
-			for(int i=0;i<semantika[V[pos][0]].tip.vel-semantika[V[pos][2]].tipovi.size();++i)
+			if(AKTIVNI_DJELOKRUG!=0)
 			{
-				cout<<"   MOVE 0 , R0"<<endl;
-				cout<<"   SUB R3, 4, R3"<<endl;
-				cout<<"   STORE R0, (R3)"<<endl;
+				for(int i=0;i<semantika[V[pos][2]].tipovi.size();++i)
+				{
+					cout<<"   POP R0"<<endl;
+					cout<<"   SUB R3, 4, R3"<<endl;
+					cout<<"   STORE R0, (R3)"<<endl;
+				}
+				//printf("%d %d\n",semantika[V[pos][0]].tip.vel,semantika[V[pos][2]].tipovi.size());
+				for(int i=0;i<semantika[V[pos][0]].tip.vel-semantika[V[pos][2]].tipovi.size();++i)
+				{
+					cout<<"   MOVE 0 , R0"<<endl;
+					cout<<"   SUB R3, 4, R3"<<endl;
+					cout<<"   STORE R0, (R3)"<<endl;
+				}
 			}
 		}
 		if(!semantika[V[pos][0]].tip.jesamFunkcija && !semantika[V[pos][0]].tip.polje)
@@ -1011,6 +1026,7 @@ void popisDeklaracija(int pos,int broj)
 		semantika[pos].br_elem = toBroj(input[V[pos][2]].ostalo);
 		semantika[pos].tip.polje = true;
 		semantika[pos].tip.vel   = intValue;
+		semantika[pos].ime = semantika[V[pos][0]].ime;
 		if(semantika[pos].samo==1)
 		{
 			if(AKTIVNI_DJELOKRUG==0)
@@ -1046,7 +1062,7 @@ void popisDeklaracija(int pos,int broj)
 					cout<<"   DW %D 0"<<endl;
 				}
 				cout<<"   MOVE G_"<<semantika[V[pos][0]].ime<<", R0"<<endl;
-				cout<<"   PUSH R0"<<endl;
+				//cout<<"   PUSH R0"<<endl;
 			}
 			else
 			{
@@ -1349,8 +1365,10 @@ void popisNaredba(int pos,int broj)
 			ispis(pos);
 		}
 		start(V[pos][4]);
+		cout<<"   JP IF_ELSE_"<<broj<<endl;
 		cout<<"IF_"<<broj<<"_KRAJ "<<endl;
 		start(V[pos][6]);
+		cout<<"IF_ELSE_"<<broj<<" "<<endl;
 		//todo naredba if-a
 	}
 	else if(broj==13) // <naredba_petlje> ::= KR_WHILE L_ZAGRADA <izraz> D_ZAGRADA <naredba>
@@ -2546,6 +2564,8 @@ bool foundFunction(Varijabla V)
 int main()
 {
 	//_setmode( _fileno( stdout ),  _O_BINARY );
+	//freopen("a.frisc","w",stdout);
+	
 	string temp = "";
 	int id=0;
 	while(getline(cin,temp))

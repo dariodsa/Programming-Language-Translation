@@ -251,12 +251,15 @@ struct Semantika
 	int tipV;
 	
 	int samo;
+	
+	int op;
 	Semantika()
 	{
 		 memOrVal = 0;
 		 djelo = 0;
 		 tipV = 0; 
 		 samo = 0;
+		 op = 0;
 	};
 };
 int FUNKCIJA = 1;
@@ -606,6 +609,7 @@ void init()
 int izvrsiIzraz(int pos)
 {
 	string S1 = getStringToCompare(pos);
+	
 	for(int i=0;i<funkcijeIzrazi.size();++i)
 	{
 		if(S1.compare(funkcijeIzrazi[i])==0)
@@ -1844,8 +1848,39 @@ void popisIzraza(int pos,int broj)
 	}
 	else if(broj==16) // <unarni_izraz> ::= <unarni_operator> <cast_izraz>
 	{
+		
+		start(V[pos][0]);
 		start(V[pos][1]);
 		
+		cout<<"   POP R0"<<endl;
+		
+		if(semantika[V[pos][0]].op == 1)
+		{
+			cout<<"   PUSH R0"<<endl;
+		}
+		if(semantika[V[pos][0]].op == 2)
+		{
+			cout<<"   XOR R0, -1, R0"<<endl;
+			cout<<"   ADD R0,1,R0"<<endl;
+			cout<<"   PUSH R0"<<endl;
+		}
+		if(semantika[V[pos][0]].op == 3)
+		{
+			cout<<"   XOR R0,%D -1 , R0"<<endl;
+			cout<<"   PUSH R0"<<endl;
+		}
+		if(semantika[V[pos][0]].op == 4)
+		{
+			cout<<"   POP R0"<<endl;
+			cout<<"   MOVE R0, R1"<<endl;
+			cout<<"   SHR R1, 1, R1"<<endl;
+			cout<<"   AND R0, 1, R0"<<endl;
+			cout<<"   OR R0, R1, R0"<<endl;
+			cout<<"   SUB R0, 1, R0"<<endl;
+			cout<<"   SHR R0, %D 31, R0"<<endl;
+
+			cout<<"   PUSH R0"<<endl;
+		}
 		if(!relacijaImplicitna(semantika[V[pos][1]].tip,Tip(KR_INT, false, false)))
 		{
 			ispis(pos);
@@ -1856,13 +1891,21 @@ void popisIzraza(int pos,int broj)
 		//todo ako je unarni operator jednak plus dodaj isti na stack i u memoriju
 	}
 	else if(broj==17)// <unarni_operator> plus
-	{}
+	{
+		semantika[pos].op = 1;
+	}
 	else if(broj==18)// unarni_operator minus
-	{}
+	{
+		semantika[pos].op = 2;
+		
+	}
 	else if(broj==19)// <unarni_operator> op_tilda
-	{}
+	{
+		semantika[pos].op = 3;
+	}
 	else if(broj==20)// <unarni_operator> OP_NEG
 	{
+		semantika[pos].op = 4;
 		//todo funkcija za OP_NEG
 		// 
 	}
@@ -1933,7 +1976,12 @@ void popisIzraza(int pos,int broj)
 		}
 		semantika[pos].l_izraz=0;
 		semantika[pos].tip = Tip (KR_INT,false,false);
-		//todo  push na stack i pozvati funckiju
+		cout<<"   POP R0"<<endl;
+		cout<<"   POP R1"<<endl;
+		cout<<"   PUSH R0"<<endl;
+		cout<<"   PUSH R1"<<endl;
+		cout<<"   CALL MUL"<<endl;
+		cout<<"   PUSH R6"<<endl;
 	}
 	else if(broj==30) // <multiplikativni_izraz> ::= <multiplikativni_izraz> (OP_DIJELI ) <cast_izraz>
 	{
@@ -2414,9 +2462,11 @@ void start(int pos)
 	{
 		printf("djeca %d\n",V[pos][i]);
 	}*/
+	
 	if(input[pos].jesamLiIzraz())
 	{
 		int broj = izvrsiIzraz(pos);
+		
 		popisIzraza(pos,broj);
 	}
 	else if(input[pos].jesamLiStrukturaPrograma())
@@ -2554,6 +2604,56 @@ int main()
 			}
 		}
 	}
-	
+	cout<<"MUL  POP R0  ;MNOZENJE"<<endl;
+	cout<<"   ADD R5, 4 , R5"<<endl;
+    cout<<"   STORE R0, (R5)"<<endl;
+	cout<<"   POP R1"<<endl;
+	cout<<"   POP R0"<<endl;
+	cout<<"   MOVE 0, R2"<<endl;
+	cout<<"   CMP R0, 0"<<endl;
+	cout<<"   JP_Z GOTOVP"<<endl;
+	cout<<"   CMP R1, 0"<<endl;
+	cout<<"   JP_Z GOTOVP"<<endl;
+	cout<<"   MOVE R0,R2"<<endl;
+	cout<<"   CMP R1, 0"<<endl;
+    cout<<"   JP_N OPETN"<<endl;
+	cout<<"OPETP SUB R1,%D 1,R1"<<endl;
+	cout<<"   JP_Z GOTOVP"<<endl;
+	cout<<"   ADD R2,R0,R2"<<endl;
+	cout<<"   JP OPETP"<<endl;
+	cout<<"OPETN ADD R1, 1, R1"<<endl;
+	cout<<"   JP_Z GOTOVN"<<endl;
+	cout<<"   ADD R2,R0,R2"<<endl;
+	cout<<"   JP OPETN"<<endl;
+	cout<<"GOTOVP   "<<endl;
+	cout<<"   MOVE R2, R6"<<endl;
+	cout<<"   LOAD R0, (R5)"<<endl;
+    cout<<"   SUB R5, 4, R5"<<endl;
+    cout<<"   PUSH R0"<<endl;
+    cout<<"   RET"<<endl;
+	cout<<"GOTOVN XOR R2, -1, R2"<<endl;
+	cout<<"   ADD R2, 1, R2"<<endl;
+	cout<<"   MOVE R2, R6"<<endl;
+	cout<<"   LOAD R0, (R5)"<<endl;
+    cout<<"   SUB R5, 4, R5"<<endl;
+    cout<<"   PUSH R0"<<endl;
+    cout<<"   RET"<<endl;
+    //--------------------------------------------
+    cout<<"MOD POP R0"<<endl;
+    cout<<"   ADD R5, 4 , R5"<<endl;
+    cout<<"   STORE R0, (R5)"<<endl;
+	cout<<"   POP R1"<<endl;
+	cout<<"   POP R0"<<endl;
+    cout<<"   MOVE 0, R2"<<endl;
+    cout<<"H_PETLJA SUB R0, R1, R0 ; oduzeti djelitelj od djeljenika"<<endl;
+    cout<<"   JR_ULT H_GOTOVO ; ako nije uspjelo, onda je kraj"<<endl;
+    cout<<"   ADD R2, 1, R2 ; ako je uspjelo, pove?ati rezultat"<<endl;
+    cout<<"   JR H_PETLJA"<<endl;
+    cout<<"H_GOTOVO ADD R0,R1,R0"<<endl;
+    cout<<"   MOVE R0, R6 ; spremiti rezultat"<<endl;
+    cout<<"   LOAD R0, (R5)"<<endl;
+    cout<<"   SUB R5, 4, R5"<<endl;
+    cout<<"   PUSH R0"<<endl;
+    cout<<"   RET"<<endl;
 	return 0;
 }

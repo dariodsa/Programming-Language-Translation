@@ -1,0 +1,15 @@
+int fa(int x)
+{
+   int y = 5;
+   int xa = x;
+   ++xa;
+   ++y;
+   ++x;
+   return y;
+}
+int main(void)
+{
+   /*int x = fa(5);
+   int y = fa(6);*/
+   return fa(5) + fa(6);
+}

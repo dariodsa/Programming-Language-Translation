@@ -116,13 +116,13 @@
                      <unarni_izraz>
                       <postfiks_izraz>
                        <primarni_izraz>
-                        IDN 5 x
+                        IDN 5 y
                    OP_MOD 5 %
                    <cast_izraz>
                     <unarni_izraz>
                      <postfiks_izraz>
                       <primarni_izraz>
-                       IDN 5 y
+                       IDN 5 x
       TOCKAZAREZ 5 ;
     <lista_naredbi>
      <naredba>

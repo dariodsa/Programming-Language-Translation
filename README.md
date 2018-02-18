@@ -3,16 +3,13 @@
 2017/2018   
 University of Zagreb, FER    
 `main()`   
-## Autori:
-- Paula Rinkovec     
+## Autor:
 - Dario Sindicic   
-- Josip Nimac    
-- Mario Kalac   
 
 ## Labosi :             
 - [x] Prvi labos         
 - [x] Drugi labos    
 - [x] Treci labos  
-- [ ] Cetvrti labos
+- [x] Cetvrti labos
                     
  :smile: :+1:    

@@ -2,6 +2,6 @@ int x = -(-2);
 int main(void)
 {
      int y = 17;
-     int z = x%y;
+     int z = y%x;
      return z;
 }
